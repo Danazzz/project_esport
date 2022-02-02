@@ -11,7 +11,7 @@ if(mysqli_connect_errno()){
 
 // fungsi base_url
 function base_url($url = null){
-    $base_url = "http://localhost/project_esport/admin";
+    $base_url = "http://localhost/project_esport";
     if($url != null){
         return $base_url."/".$url;
     }
@@ -19,5 +19,4 @@ function base_url($url = null){
         return $base_url;
     }
 }
-
 ?>
