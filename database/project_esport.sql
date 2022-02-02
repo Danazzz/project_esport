@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 25, 2022 at 09:52 AM
+-- Generation Time: Feb 02, 2022 at 07:37 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -33,6 +33,7 @@ CREATE TABLE `admin` (
   `kode_otp` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `role` enum('admin','organizer') NOT NULL,
+  `id_person` int(11) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -84,6 +85,26 @@ CREATE TABLE `join_tournament` (
   `created_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `person`
+--
+
+CREATE TABLE `person` (
+  `id_person` int(11) NOT NULL,
+  `description` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `person`
+--
+
+INSERT INTO `person` (`id_person`, `description`) VALUES
+(1, 'isAdmin'),
+(2, 'isUser'),
+(3, 'isOrganizer');
 
 -- --------------------------------------------------------
 
@@ -150,20 +171,28 @@ CREATE TABLE `tournament` (
 
 CREATE TABLE `user` (
   `id_user` varchar(50) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `status` varchar(50) NOT NULL,
-  `password` varchar(20) NOT NULL,
-  `email` varchar(50) NOT NULL,
   `full_name` varchar(100) NOT NULL,
-  `gender` enum('L','P','Unknown') NOT NULL,
-  `birth_date` date NOT NULL,
   `phone_number` varchar(15) NOT NULL,
-  `poin` int(11) NOT NULL,
+  `birth_date` date NOT NULL,
+  `gender` enum('L','P','Unknown') NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(20) NOT NULL,
   `otp_code` smallint(6) NOT NULL,
+  `status` enum('0','1') NOT NULL,
+  `poin` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
   `image` varchar(255) NOT NULL,
+  `id_person` int(11) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id_user`, `full_name`, `phone_number`, `birth_date`, `gender`, `email`, `password`, `otp_code`, `status`, `poin`, `username`, `image`, `id_person`, `created_at`, `updated_at`) VALUES
+('41930026', 'I Nyoman tes', '089635524614', '2022-02-02', 'L', 'tes@gmail.com', 'tes', 1234, '1', 10, 'admin', 'hjghjghj.jpg', 2, '2022-02-02 13:24:35', '2022-02-02 13:24:35');
 
 --
 -- Indexes for dumped tables
@@ -173,7 +202,8 @@ CREATE TABLE `user` (
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id_admin`);
+  ADD PRIMARY KEY (`id_admin`),
+  ADD UNIQUE KEY `id_person` (`id_person`);
 
 --
 -- Indexes for table `game`
@@ -201,6 +231,12 @@ ALTER TABLE `join_tournament`
   ADD UNIQUE KEY `id_squad` (`id_squad`);
 
 --
+-- Indexes for table `person`
+--
+ALTER TABLE `person`
+  ADD PRIMARY KEY (`id_person`);
+
+--
 -- Indexes for table `signup/login`
 --
 ALTER TABLE `signup/login`
@@ -223,7 +259,8 @@ ALTER TABLE `tournament`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id_user`);
+  ADD PRIMARY KEY (`id_user`),
+  ADD UNIQUE KEY `id_person` (`id_person`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -242,6 +279,12 @@ ALTER TABLE `join_tournament`
   MODIFY `id_join_tournament` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `person`
+--
+ALTER TABLE `person`
+  MODIFY `id_person` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `signup/login`
 --
 ALTER TABLE `signup/login`
@@ -250,6 +293,12 @@ ALTER TABLE `signup/login`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `admin`
+--
+ALTER TABLE `admin`
+  ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`id_person`) REFERENCES `person` (`id_person`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `join_squad`
@@ -273,6 +322,12 @@ ALTER TABLE `join_tournament`
 --
 ALTER TABLE `signup/login`
   ADD CONSTRAINT `signup/login_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `user`
+--
+ALTER TABLE `user`
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`id_person`) REFERENCES `person` (`id_person`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
