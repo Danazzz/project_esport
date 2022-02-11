@@ -1,10 +1,11 @@
 <?php
 require_once "../config/conn.php";
+ 
 if(isset($_SESSION['user'])){
   echo "<script>window.location='".base_url()."';</script>";
-} else{
+}
+else{
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +21,7 @@ if(isset($_SESSION['user'])){
   <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+  <link rel="icon" href="../dist/img/LogoESIDPS.png">
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -34,15 +36,11 @@ if(isset($_SESSION['user'])){
       <?php
       if(isset($_POST['login'])){
           $email = trim(mysqli_real_escape_string($con, $_POST['email']));
-          $password = trim(mysqli_real_escape_string($con, $_POST['password']));
-          $login = mysqli_query($con, "SELECT*FROM user WHERE email = '$email' AND password = '$password'") or die (mysqli_error($conn));
+          $password = sha1(trim(mysqli_real_escape_string($con, $_POST['password'])));
+          $login = mysqli_query($con, "SELECT*FROM login WHERE email = '$email' AND password = '$password'") or die (mysqli_error($con));
           if (mysqli_num_rows($login) > 0){
-            $extra="../index.html";
-            $_SESSION['user'] = $user;
-            $host=$_SERVER['HTTP_HOST'];
-            $uri=rtrim(dirname($_SERVER['PHP_SELF']),'/\\');
-            header("location:http://$host$uri/$extra");
-            exit();
+            $_SESSION['user'] = $email;
+            echo "<script>window.location='".base_url('')."';</script>";
           }else{ ?>
             <div class="row">
                 <div class="col-lg-12">
@@ -59,7 +57,7 @@ if(isset($_SESSION['user'])){
 
       <form action="" method="post">
         <div class="input-group mb-3">
-          <input type="email" class="form-control" name="email" placeholder="Email" required autofocus>
+          <input type="email" class="form-control" name="email" id="email" placeholder="Email" required autofocus>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -67,7 +65,7 @@ if(isset($_SESSION['user'])){
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" name="password" placeholder="Password">
+          <input type="password" class="form-control" name="password" id="password" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -77,7 +75,7 @@ if(isset($_SESSION['user'])){
 
           <!-- /.col -->
           <div class="col-12">
-            <button type="submit" name="login" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" name="login" class="btn btn-primary btn-block">Log In</button>
           </div>
           <!-- /.col -->
         </div>
@@ -96,11 +94,11 @@ if(isset($_SESSION['user'])){
 <!-- /.login-box -->
 
 <!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
+<script src="../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
+<script src="../dist/js/adminlte.min.js"></script>
 </body>
 </html>
 <?php
