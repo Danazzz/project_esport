@@ -3,7 +3,6 @@ require_once "config/conn.php";
 if(!isset($_SESSION['user'])){
   echo "<script>window.location='".base_url('auth/loginn.php')."';</script>";
 } ?>
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,6 +31,7 @@ if(!isset($_SESSION['user'])){
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  <!-- Icon Logo -->
   <link rel="icon" href="dist/img/LogoESIDPS.png">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -177,7 +177,7 @@ if(!isset($_SESSION['user'])){
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index.html" class="brand-link">
+    <a href="homepage.php" class="brand-link">
       <img src="dist/img/LogoESIDPS.png" alt="Esport Logo" class="brand-image" style="opacity: .8">
       <span class="brand-text font-weight-light">Admin Panel</span>
     </a>
@@ -236,9 +236,9 @@ if(!isset($_SESSION['user'])){
           <div style="height: 0; margin: 0.5rem 0; overflow: hidden; border-top: 1px solid #8c8e91;"></div>
 
           <li class="nav-header">User Admin</li>
-            <a href="#" class="nav-link">
+            <a href="user/index.html" class="nav-link">
               <i class="nav-icon fa fa-user"></i>
-              <p>Users</p>
+              <p>User</p>
             </a>
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-users"></i>
@@ -278,7 +278,6 @@ if(!isset($_SESSION['user'])){
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <!-- <li class="breadcrumb-item active">Dashboard v1</li> -->
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -300,7 +299,7 @@ if(!isset($_SESSION['user'])){
               <div class="icon">
                 <i class="ion ion-ios-game-controller-b"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="games/index.html" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -313,7 +312,7 @@ if(!isset($_SESSION['user'])){
               <div class="icon">
                 <i class="ion ion-trophy"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="tournament/index.html" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
         </div>

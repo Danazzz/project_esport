@@ -221,7 +221,7 @@ if(!isset($_SESSION['user'])){
           <li class="nav-header">User Admin</li>
             <a href="index.html" class="nav-link">
               <i class="nav-icon fa fa-user"></i>
-              <p>User</p>
+              <p>Users</p>
             </a>
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-users"></i>
@@ -250,12 +250,12 @@ if(!isset($_SESSION['user'])){
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>User</h1>
+            <h1>Projects</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">User Admin</a></li>
-              <li class="breadcrumb-item active">User</li>
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Projects</li>
             </ol>
           </div>
         </div>
@@ -287,10 +287,10 @@ if(!isset($_SESSION['user'])){
                           No.
                       </th>
                       <th style="width: 20%">
-                          ID Number
+                          ID
                       </th>
                       <th style="width: 30%">
-                          Nama
+                          Name
                       </th>
                       <th>
                           Registered
