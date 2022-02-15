@@ -12,4 +12,13 @@ if(isset($_POST['add'])) {
     mysqli_query($con,"INSERT INTO user(full_name, phone_number, birth_date, gender, email, password ) VALUES ( '$fullName', '$phone', '$birth', '$gender', '$email' '$password')") or die (mysqli_error($con));
     echo "<script>alert('Data berhasil ditambah');window.location='loginn.php';</script>";
 }
+
+function register($data) {
+    $fullname = stripslashes($data['fullname']);
+    $phone = $data['phone'];
+    $date = $data['date'];
+    $gender = $data['gender'];
+    $email = $data['email'];
+    $password = $data['password'];
+}
 ?>
