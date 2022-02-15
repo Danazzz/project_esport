@@ -43,7 +43,7 @@ if(isset($_POST['register'])) {
 
       <form action="" method="post">
         <div class="input-group mb-3">
-          <input type="text" id="username" name="username" class="form-control" placeholder="username">
+          <input type="text" id="fullname" name="fullname" class="form-control" placeholder="Full Name" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -51,7 +51,29 @@ if(isset($_POST['register'])) {
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="email" name="email" id="email" class="form-control" placeholder="Email">
+          <input type="tel" id="phone" name="phone" class="form-control" placeholder="Phone" required>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-phone"></span>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <input type="date" id="date" name="date" class="form-control" placeholder="Birth of Date" required>
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender</label>
+            <div>
+              <label class="radio-inline">
+                <input type="radio" name="gender" id="L" value="L" required=""> Male
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="gender" id="P" value="P"> Female
+              </label>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -59,22 +81,14 @@ if(isset($_POST['register'])) {
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+          <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
           </div>
         </div>
-        <div class="mb-3">
-          <input type="password" class="form-control" placeholder="Retype password">
-        </div>
         <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="agreeTerms" name="terms" value="agree">
-            </div>
-          </div>
           <!-- /.col -->
           <div class="col-12 mb-3">
             <button type="submit" name="register" class="btn btn-primary btn-block">Register</button>
