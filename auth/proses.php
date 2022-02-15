@@ -14,11 +14,16 @@ if(isset($_POST['add'])) {
 }
 
 function register($data) {
-    $fullname = stripslashes($data['fullname']);
-    $phone = $data['phone'];
-    $date = $data['date'];
-    $gender = $data['gender'];
-    $email = $data['email'];
-    $password = $data['password'];
+    $username = $data['username'];
+    $email = $data['email']);
+    $password = mysqli_real_escape_string($con, $data['password']);
+    $password2 = mysqli_real_escape_string($con, $data['password2']);
+
+    if($password !== $password2) {
+        echo "<script>
+                alert('password tidak sesuai!');
+              </script>";
+        return false;
+    }
 }
 ?>
