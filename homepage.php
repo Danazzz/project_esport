@@ -223,29 +223,28 @@ if (!isset($_SESSION['user'])) {
                 <li class="nav-item">
                   <a href="pages/examples/projects.html" class="nav-link">
                     <i class="nav-icon fa fa-book"></i>
-                    <p class="text">Administration</p>
+                    <p class="text">Admin</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="auth/register.php" class="nav-link">
-                    <i class="nav-icon fa fa-plus"></i>
-                    <p>Register</p>
+                  <a href="content/user/" class="nav-link">
+                    <i class="nav-icon fa fa-book"></i>
+                    <p class="text">User</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="content/squad/" class="nav-link">
+                    <i class="nav-icon fa fa-book"></i>
+                    <p class="text">Squad</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="content/tournament/" class="nav-link">
+                    <i class="nav-icon fa fa-book"></i>
+                    <p class="text">Tournament</p>
                   </a>
                 </li>
               </ul>
-            </li>
-
-            <div style="height: 0; margin: 0.5rem 0; overflow: hidden; border-top: 1px solid #8c8e91;"></div>
-
-            <li class="nav-header">User Admin</li>
-            <a href="content/user/index.html" class="nav-link">
-              <i class="nav-icon fa fa-user"></i>
-              <p>User</p>
-            </a>
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-users"></i>
-              <p>Squad</p>
-            </a>
             </li>
 
             <div style="height: 0; margin: 0.5rem 0; overflow: hidden; border-top: 1px solid #8c8e91;"></div>
@@ -255,7 +254,13 @@ if (!isset($_SESSION['user'])) {
                 <p>Documentation</p>
               </a>
             </li>
-            <li class="nav-item mt-3">
+            <li class="nav-item">
+                  <a href="auth/register.php" class="nav-link">
+                    <i class="nav-icon fa fa-plus"></i>
+                    <p>Register</p>
+                  </a>
+                </li>
+            <li class="nav-item">
               <a href="auth/logout.php" class="nav-link">
                 <i class="nav-icon fa fa-power-off"></i>
                 <p>LogOut</p>
@@ -275,7 +280,7 @@ if (!isset($_SESSION['user'])) {
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Dashboard</h1>
+              <h1 class="m-0">Homepage</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
@@ -290,34 +295,6 @@ if (!isset($_SESSION['user'])) {
       <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
-          <!-- Small boxes (Stat box) -->
-          <div class="row col-12">
-            <div class="col-lg-6">
-              <!-- small box -->
-              <div class="small-box bg-secondary">
-                <div class="inner">
-                  <h3>Games</h3>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-ios-game-controller-b"></i>
-                </div>
-                <a href="content/games/index.html" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-6">
-              <!-- small box -->
-              <div class="small-box bg-secondary">
-                <div class="inner">
-                  <h3>Tournament</h3>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-trophy"></i>
-                </div>
-                <a href="content/tournament/index.html" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-          </div>
           <!-- /.row -->
           <!-- Main row -->
           <div class="row">
