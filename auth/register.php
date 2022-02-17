@@ -41,6 +41,34 @@ if(isset($_POST['register'])) {
     <div class="card-body register-card-body">
       <p class="login-box-msg">Register a new User</p>
 
+      <?php
+      if(isset($_POST['register'])){
+        $password = sha1(trim(mysqli_real_escape_string($con, $_POST['password'])));
+        $pw1 = sha1(trim(mysqli_real_escape_string($con, $_POST['pw1'])));
+        if ($_POST['password']== $_POST['pw1']){
+          $id_user = uniqid();
+          $username = trim(mysqli_real_escape_string($con, $_POST['username']));
+          $email = trim(mysqli_real_escape_string($con, $_POST['email']));
+          $password = sha1(trim(mysqli_real_escape_string($con, $_POST['password'])));
+      
+          mysqli_query($con,"INSERT INTO login (id_user, email, password ) VALUES ( '$id_user', '$email', '$password')") or die (mysqli_error($con));
+          mysqli_query($con,"INSERT INTO user (id_user, username) VALUES ('$id_user', '$username')") or die (mysqli_error($con));
+          echo "<script>alert('Data berhasil ditambah');window.location='loginn.php';</script>";
+      } else { ?>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="alert alert-danger alert-dismissable" role="alert">
+                <a href="loginn.php" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <strong>Register Failed!</strong> Different Password
+            </div>
+          </div>
+        </div>
+        <?php
+        }
+      }
+      ?>
+
       <form action="" method="post">
         <div class="input-group mb-3">
           <input type="text" id="username" name="username" class="form-control" placeholder="username">
@@ -67,7 +95,7 @@ if(isset($_POST['register'])) {
           </div>
         </div>
         <div class="mb-3">
-          <input type="password" class="form-control" placeholder="Retype password">
+          <input type="password" name="pw1" id="pw1" class="form-control" placeholder="Retype password">
         </div>
         <div class="row">
           <div class="col-8">
