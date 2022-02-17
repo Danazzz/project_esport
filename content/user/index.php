@@ -268,8 +268,6 @@ if(!isset($_SESSION['user'])){
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Projects</h3>
-
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
               <i class="fas fa-minus"></i>
@@ -353,17 +351,17 @@ if(!isset($_SESSION['user'])){
                       </td>
                       <td class="text-center"><?= $data['status'] ?></td>
                       <td class="project-actions text-right">
-                        <a href="crud/detail.php?id<?= $data['id_user'] ?>" class="btn btn-primary btn-sm" >
+                        <a href="crud/detail.php?id=<?= $data['id_user'] ?>" class="btn btn-primary btn-sm" >
                             <i class="fas fa-folder">
                             </i>
                             View
                         </a>
-                        <a href="crud/edit.php?id<?= $data['id_user'] ?>" class="btn btn-info btn-sm">
+                        <a href="crud/edit.php?id=<?= $data['id_user'] ?>" class="btn btn-info btn-sm">
                             <i class="fas fa-pencil-alt">
                             </i>
                             Edit
                         </a>
-                        <a href="crud/delete.php?id<?= $data['id_user'] ?>" onclick="return confirm('Are you sure to delete this user?')" class="btn btn-danger btn-sm">
+                        <a href="crud/delete.php?id=<?= $data['id_user'] ?>" onclick="return confirm('Are you sure to delete this user?')" class="btn btn-danger btn-sm">
                             <i class="fas fa-trash">
                             </i>
                             Delete

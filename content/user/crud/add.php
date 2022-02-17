@@ -1,5 +1,5 @@
 <?php
-require_once "../../config/conn.php";
+require_once "../../../config/conn.php";
 if(!isset($_SESSION['user'])){
   echo "<script>window.location='".base_url('../../auth/loginn.php')."';</script>";
 } ?>
@@ -9,16 +9,16 @@ if(!isset($_SESSION['user'])){
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin Panel ESPORT | User Add</title>
+  <title>Admin Panel ESPORT | Add User</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../../../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../../../dist/css/adminlte.min.css">
   <!-- Icon Logo -->
-  <link rel="icon" href="../../dist/img/LogoESIDPS.png">
+  <link rel="icon" href="../../../dist/img/LogoESIDPS.png">
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -66,7 +66,7 @@ if(!isset($_SESSION['user'])){
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <img src="../../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Brad Diesel
@@ -82,7 +82,7 @@ if(!isset($_SESSION['user'])){
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <img src="../../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   John Pierce
@@ -98,7 +98,7 @@ if(!isset($_SESSION['user'])){
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <img src="../../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Nora Silvester
@@ -158,8 +158,8 @@ if(!isset($_SESSION['user'])){
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="../../homepage.php" class="brand-link">
-      <img src="../../dist/img/LogoESIDPS.png" alt="Esport Logo" class="brand-image" style="opacity: .8">
+    <a href="../../../homepage.php" class="brand-link">
+      <img src="../../../dist/img/LogoESIDPS.png" alt="Esport Logo" class="brand-image" style="opacity: .8">
       <span class="brand-text font-weight-light">Admin Panel</span>
     </a>
 
@@ -168,7 +168,7 @@ if(!isset($_SESSION['user'])){
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="../../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">Admin</a>
@@ -208,7 +208,7 @@ if(!isset($_SESSION['user'])){
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../auth/register.php" class="nav-link">
+                <a href="../../../auth/register.php" class="nav-link">
                   <i class="nav-icon fa fa-plus"></i>
                   <p>Register</p>
                 </a>
@@ -231,7 +231,7 @@ if(!isset($_SESSION['user'])){
 
           <div style="height: 0; margin: 0.5rem 0; overflow: hidden; border-top: 1px solid #8c8e91;"></div>
           <li class="nav-item mt-3">
-            <a href="../../auth/logout.php" class="nav-link">
+            <a href="../../../auth/logout.php" class="nav-link">
               <i class="nav-icon fa fa-power-off"></i>
               <p>LogOut</p>
             </a>
@@ -264,56 +264,77 @@ if(!isset($_SESSION['user'])){
 
     <!-- Main content -->
     <section class="content">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="card card-primary">
-            <div class="card-header">
-              <h3 class="card-title">General</h3>
+      <form action="proses.php" method="post">
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Profile</h3>
 
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
               </div>
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="full_name">Full Name</label>
+                  <input type="text" name="full_name" id="full_name" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone</label>
+                  <input type="tel" id="phone" name="phone" pattern="[0-9]{12}" class="form-control" placeholder="+62">
+                </div>
+                <div class="form-group">
+                  <label for="birth_date">Birth of Date</label>
+                  <input type="date" name="birth_date" id="birth_date" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <div>
+                        <label class="radio-inline">
+                            <input type="radio" name="gender" id="L" value="L" required=""> Male
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="gender" id="P" value="P"> Female
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                  <label for="status">Status</label>
+                  <select name="status" id="status" class="form-control custom-select">
+                    <option selected disabled>Select one</option>
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                    <option value="organizer">Organizer</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" name="email" id="email" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" name="password" id="password" class="form-control">
+                </div>
+              </div>
+              <div class="row">
+                <div class="mb-3 mx-auto">
+                  <input type="submit" name="add" value="Add User" class="btn btn-success">
+                </div>
+              </div>
+              <!-- /.card-body -->
             </div>
-            <div class="card-body">
-              <div class="form-group">
-                <label for="inputName">Project Name</label>
-                <input type="text" id="inputName" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="inputDescription">Project Description</label>
-                <textarea id="inputDescription" class="form-control" rows="4"></textarea>
-              </div>
-              <div class="form-group">
-                <label for="inputStatus">Status</label>
-                <select id="inputStatus" class="form-control custom-select">
-                  <option selected disabled>Select one</option>
-                  <option>On Hold</option>
-                  <option>Canceled</option>
-                  <option>Success</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="inputClientCompany">Client Company</label>
-                <input type="text" id="inputClientCompany" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="inputProjectLeader">Project Leader</label>
-                <input type="text" id="inputProjectLeader" class="form-control">
-              </div>
-            </div>
-            <!-- /.card-body -->
+            <!-- /.card -->
           </div>
-          <!-- /.card -->
         </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <a href="../index.html" class="btn btn-secondary">Cancel</a>
-          <input type="submit" value="Create new Porject" class="btn btn-success float-right">
+        <div class="row">
+          <div class="col-12 mb-3">
+            <a href="../index.html" class="btn btn-secondary float-right">Cancel</a>
+          </div>
         </div>
-      </div>
+      </form>
     </section>
     <!-- /.content -->
   </div>
@@ -335,10 +356,10 @@ if(!isset($_SESSION['user'])){
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
+<script src="../../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
+<script src="../../../dist/js/adminlte.min.js"></script>
 </body>
 </html>

@@ -1,18 +1,24 @@
+<?php
+require_once "../../../config/conn.php";
+if(!isset($_SESSION['user'])){
+  echo "<script>window.location='".base_url('../../auth/loginn.php')."';</script>";
+} ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin Panel ESPORT | User Detail</title>
+  <title>Admin Panel ESPORT | Detail User</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../../../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../../../dist/css/adminlte.min.css">
   <!-- Icon Logo -->
-  <link rel="icon" href="../../dist/img/LogoESIDPS.png">
+  <link rel="icon" href="../../../dist/img/LogoESIDPS.png">
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -60,7 +66,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <img src="../../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Brad Diesel
@@ -76,7 +82,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <img src="../../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   John Pierce
@@ -92,7 +98,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <img src="../../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Nora Silvester
@@ -152,8 +158,8 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="../../homepage.php" class="brand-link">
-      <img src="../../dist/img/LogoESIDPS.png" alt="Esport Logo" class="brand-image" style="opacity: .8">
+    <a href="../../../homepage.php" class="brand-link">
+      <img src="../../../dist/img/LogoESIDPS.png" alt="Esport Logo" class="brand-image" style="opacity: .8">
       <span class="brand-text font-weight-light">Admin Panel</span>
     </a>
 
@@ -162,7 +168,7 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="../../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">Admin</a>
@@ -202,7 +208,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../auth/register.php" class="nav-link">
+                <a href="../../../auth/register.php" class="nav-link">
                   <i class="nav-icon fa fa-plus"></i>
                   <p>Register</p>
                 </a>
@@ -225,7 +231,7 @@
 
           <div style="height: 0; margin: 0.5rem 0; overflow: hidden; border-top: 1px solid #8c8e91;"></div>
           <li class="nav-item mt-3">
-            <a href="../../auth/logout.php" class="nav-link">
+            <a href="../../../auth/logout.php" class="nav-link">
               <i class="nav-icon fa fa-power-off"></i>
               <p>LogOut</p>
             </a>
@@ -244,12 +250,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Project Detail</h1>
+            <h1>Detail</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Project Detail</li>
+              <li class="breadcrumb-item"><a href="../index.html">User</a></li>
+              <li class="breadcrumb-item active">Detail</li>
             </ol>
           </div>
         </div>
@@ -258,11 +264,21 @@
 
     <!-- Main content -->
     <section class="content">
+      <?php
+      $id = @$_GET['id'];
+      $sql = "SELECT * FROM user 
+      INNER JOIN login ON user.id_user = login.id_user 
+      WHERE user.id_user = '$id'
+      ";
+      $query = mysqli_query($con, $sql);
+      $data = mysqli_fetch_array($query);
+      // var_dump($data);die;
+      ?>
 
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Projects Detail</h3>
+          <h3 class="card-title">Detail</h3>
 
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
