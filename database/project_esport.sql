@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 15, 2022 at 02:23 AM
+-- Generation Time: Feb 18, 2022 at 05:52 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -20,23 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `project_esport`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admin`
---
-
-CREATE TABLE `admin` (
-  `id_admin` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `kode_otp` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `role` enum('admin','organizer') NOT NULL,
-  `id_person` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -109,27 +92,8 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`id_logIn`, `id_user`, `email`, `password`, `otp_code`, `logIn_at`, `logOut_at`, `created_at`, `updated_at`) VALUES
-(1, '41930026', 'tes@gmail.com', 'd1c056a983786a38ca76a05cda240c7b86d77136', 1234, '2022-02-03 12:27:11', '2022-02-03 12:27:11', '2022-02-03 12:27:11', '2022-02-03 12:27:11');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `person`
---
-
-CREATE TABLE `person` (
-  `id_person` int(11) NOT NULL,
-  `description` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `person`
---
-
-INSERT INTO `person` (`id_person`, `description`) VALUES
-(1, 'isAdmin'),
-(2, 'isUser'),
-(3, 'isOrganizer');
+(1, '41930026', 'artaputra97@gmail.com', 'd1c056a983786a38ca76a05cda240c7b86d77136', 1234, '2022-02-18 09:35:53', '2022-02-18 09:35:53', '2022-02-18 09:35:53', '2022-02-18 09:35:53'),
+(3, '620e01ad9c154', 'artaputra95@gmail.com', 'd1c056a983786a38ca76a05cda240c7b86d77136', 0, '2022-02-18 09:33:50', '2022-02-18 09:33:50', '2022-02-18 09:33:50', '2022-02-18 09:33:50');
 
 -- --------------------------------------------------------
 
@@ -189,7 +153,8 @@ CREATE TABLE `user` (
   `poin` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `image` varchar(255) NOT NULL,
-  `id_person` int(11) NOT NULL,
+  `role` enum('admin','user','organizer') NOT NULL,
+  `description` text NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -198,20 +163,13 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `full_name`, `phone_number`, `birth_date`, `gender`, `status`, `poin`, `username`, `image`, `id_person`, `created_at`, `updated_at`) VALUES
-('41930001', 'I Putu tes', '0811392406', '2022-02-01', 'L', '1', 5, 'tes', 'tes.jpg', 3, '2022-02-14 15:40:04', '2022-02-14 15:40:04'),
-('41930026', 'I Nyoman tes', '089635524614', '2022-02-02', 'L', '1', 10, 'admin', 'hjghjghj.jpg', 2, '2022-02-02 13:24:35', '2022-02-02 13:24:35');
+INSERT INTO `user` (`id_user`, `full_name`, `phone_number`, `birth_date`, `gender`, `status`, `poin`, `username`, `image`, `role`, `description`, `created_at`, `updated_at`) VALUES
+('41930026', 'Nyoman Dana Wardhianaaaa', '089635524614', '2022-02-03', 'L', '1', 10, 'admin', 'hjghjghj.jpg', 'admin', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sodales, erat ut sagittis mattis, est lorem venenatis tellus, in semper dolor ligula vitae risus. Cras vitae turpis non tellus ullamcorper faucibus sed ac ante. Cras dui dolor, dictum sit amet scelerisque in, volutpat blandit magna. Aliquam dui sem, sodales non nunc ut, congue lacinia purus. Quisque eget justo nec lorem sagittis volutpat. Ut rutrum vulputate imperdiet. Sed porta, sem vitae sagittis sodales, lacus tortor fringilla eros, quis sodales lacus libero id urna. Nam condimentum ligula hendrerit ipsum lacinia, at tincidunt est vestibulum. Fusce ac rhoncus erat, eu dictum sem. Sed quis posuere dolor, vitae hendrerit sapien. Mauris cursus nulla sit amet neque viverra cursus. Sed efficitur vitae tortor sed venenatis. Integer sed diam tortor.', '2022-02-18 10:57:53', '2022-02-18 10:57:53'),
+('620e01ad9c154', 'Nyoman Dana Wardhiana', '089635524614', '2022-02-03', 'L', '', 0, '', '', 'admin', '', '2022-02-18 09:33:50', '2022-02-18 09:33:50');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id_admin`),
-  ADD UNIQUE KEY `id_person` (`id_person`);
 
 --
 -- Indexes for table `game`
@@ -246,12 +204,6 @@ ALTER TABLE `login`
   ADD UNIQUE KEY `id_user` (`id_user`);
 
 --
--- Indexes for table `person`
---
-ALTER TABLE `person`
-  ADD PRIMARY KEY (`id_person`);
-
---
 -- Indexes for table `squad`
 --
 ALTER TABLE `squad`
@@ -267,8 +219,7 @@ ALTER TABLE `tournament`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id_user`),
-  ADD UNIQUE KEY `id_person` (`id_person`);
+  ADD PRIMARY KEY (`id_user`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -290,23 +241,11 @@ ALTER TABLE `join_tournament`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `id_logIn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `person`
---
-ALTER TABLE `person`
-  MODIFY `id_person` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_logIn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `admin`
---
-ALTER TABLE `admin`
-  ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`id_person`) REFERENCES `person` (`id_person`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `join_squad`
@@ -330,12 +269,6 @@ ALTER TABLE `join_tournament`
 --
 ALTER TABLE `login`
   ADD CONSTRAINT `login_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `user`
---
-ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`id_person`) REFERENCES `person` (`id_person`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
