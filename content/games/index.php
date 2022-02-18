@@ -54,7 +54,7 @@
                         Status
                       </th>
                       <th style="width: 20%" class="text-center">
-                        <a href="crud/add.php" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-plus"></i>Add new user</a>
+                        <a href="crud/add.php" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-plus"></i> Add new user</a>
                       </th>
                   </tr>
               </thead>

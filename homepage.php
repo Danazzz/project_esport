@@ -223,29 +223,28 @@ if (!isset($_SESSION['user'])) {
                 <li class="nav-item">
                   <a href="pages/examples/projects.html" class="nav-link">
                     <i class="nav-icon fa fa-book"></i>
-                    <p class="text">Administration</p>
+                    <p class="text">Admin</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="auth/register.php" class="nav-link">
-                    <i class="nav-icon fa fa-plus"></i>
-                    <p>Register</p>
+                  <a href="content/user/" class="nav-link">
+                    <i class="nav-icon fa fa-book"></i>
+                    <p class="text">User</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="content/squad/" class="nav-link">
+                    <i class="nav-icon fa fa-book"></i>
+                    <p class="text">Squad</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="content/tournament/" class="nav-link">
+                    <i class="nav-icon fa fa-book"></i>
+                    <p class="text">Tournament</p>
                   </a>
                 </li>
               </ul>
-            </li>
-
-            <div style="height: 0; margin: 0.5rem 0; overflow: hidden; border-top: 1px solid #8c8e91;"></div>
-
-            <li class="nav-header">User Admin</li>
-            <a href="content/user/index.html" class="nav-link">
-              <i class="nav-icon fa fa-user"></i>
-              <p>User</p>
-            </a>
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-users"></i>
-              <p>Squad</p>
-            </a>
             </li>
 
             <div style="height: 0; margin: 0.5rem 0; overflow: hidden; border-top: 1px solid #8c8e91;"></div>
@@ -255,7 +254,13 @@ if (!isset($_SESSION['user'])) {
                 <p>Documentation</p>
               </a>
             </li>
-            <li class="nav-item mt-3">
+            <li class="nav-item">
+                  <a href="auth/register.php" class="nav-link">
+                    <i class="nav-icon fa fa-plus"></i>
+                    <p>Register</p>
+                  </a>
+                </li>
+            <li class="nav-item">
               <a href="auth/logout.php" class="nav-link">
                 <i class="nav-icon fa fa-power-off"></i>
                 <p>LogOut</p>
@@ -275,7 +280,7 @@ if (!isset($_SESSION['user'])) {
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Dashboard</h1>
+              <h1 class="m-0">Homepage</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
@@ -289,7 +294,12 @@ if (!isset($_SESSION['user'])) {
 
       <!-- Main content -->
       <section class="content">
+<<<<<<< HEAD
         <div class="container-fluid"
+=======
+        <div class="container-fluid">
+          <!-- /.row -->
+>>>>>>> 12acf531f4af5f048099bd9ebcae2ce757dac0b1
           <!-- Main row -->
           <div class="row">
             <!-- Left col -->

@@ -1,7 +1,7 @@
 <?php
-require_once "../../config/conn.php";
+require_once "../../../config/conn.php";
 if(!isset($_SESSION['user'])){
-  echo "<script>window.location='".base_url('../../auth/loginn.php')."';</script>";
+  echo "<script>window.location='".base_url('../../../auth/loginn.php')."';</script>";
 } ?>
 
 <!DOCTYPE html>
@@ -9,16 +9,16 @@ if(!isset($_SESSION['user'])){
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin Panel ESPORT | CRUD User</title>
+  <title>Admin Panel ESPORT</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../../../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../../../dist/css/adminlte.min.css">
   <!-- Icon Logo -->
-  <link rel="icon" href="../../dist/img/LogoESIDPS.png">
+  <link rel="icon" href="../../../dist/img/LogoESIDPS.png">
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -66,7 +66,7 @@ if(!isset($_SESSION['user'])){
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <img src="../../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Brad Diesel
@@ -82,7 +82,7 @@ if(!isset($_SESSION['user'])){
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <img src="../../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   John Pierce
@@ -98,7 +98,7 @@ if(!isset($_SESSION['user'])){
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <img src="../../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Nora Silvester
@@ -155,99 +155,99 @@ if(!isset($_SESSION['user'])){
   </nav>
   <!-- /.navbar -->
 
-    <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="../../homepage.php" class="brand-link">
-        <img src="../../dist/img/LogoESIDPS.png" alt="Esport Logo" class="brand-image" style="opacity: .8">
-        <span class="brand-text font-weight-light">Admin Panel</span>
+      <a href="../../../homepage.php" class="brand-link">
+      <img src="../../../dist/img/LogoESIDPS.png" alt="Esport Logo" class="brand-image" style="opacity: .8">
+      <span class="brand-text font-weight-light">Admin Panel</span>
       </a>
 
       <!-- Sidebar -->
       <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="../../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block">Admin</a>
+          <a href="#" class="d-block">Admin</a>
           </div>
-        </div>
+      </div>
 
-        <!-- SidebarSearch Form -->
-        <div class="form-inline">
+      <!-- SidebarSearch Form -->
+      <div class="form-inline">
           <div class="input-group" data-widget="sidebar-search">
-            <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-            <div class="input-group-append">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
               <button class="btn btn-sidebar">
-                <i class="fas fa-search fa-fw"></i>
+              <i class="fas fa-search fa-fw"></i>
               </button>
-            </div>
           </div>
-        </div>
+          </div>
+      </div>
 
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item menu-open">
+          <li class="nav-item menu-open">
               <a href="#" class="nav-link active">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
                   Dashboard
                   <i class="right fas fa-angle-left"></i>
-                </p>
+              </p>
               </a>
               <ul class="nav nav-treeview">
-                <li class="nav-item">
+              <li class="nav-item">
                   <a href="pages/examples/projects.html" class="nav-link">
-                    <i class="nav-icon fa fa-book"></i>
-                    <p class="text">Admin</p>
+                  <i class="nav-icon fa fa-book"></i>
+                  <p class="text">Admin</p>
                   </a>
-                </li>
-                <li class="nav-item">
+              </li>
+              <li class="nav-item">
                   <a href="content/user/" class="nav-link">
-                    <i class="nav-icon fa fa-book"></i>
-                    <p class="text">User</p>
+                  <i class="nav-icon fa fa-book"></i>
+                  <p class="text">User</p>
                   </a>
-                </li>
-                <li class="nav-item">
+              </li>
+              <li class="nav-item">
                   <a href="content/squad/" class="nav-link">
-                    <i class="nav-icon fa fa-book"></i>
-                    <p class="text">Squad</p>
+                  <i class="nav-icon fa fa-book"></i>
+                  <p class="text">Squad</p>
                   </a>
-                </li>
-                <li class="nav-item">
+              </li>
+              <li class="nav-item">
                   <a href="content/tournament/" class="nav-link">
-                    <i class="nav-icon fa fa-book"></i>
-                    <p class="text">Tournament</p>
+                  <i class="nav-icon fa fa-book"></i>
+                  <p class="text">Tournament</p>
                   </a>
-                </li>
+              </li>
               </ul>
-            </li>
+          </li>
 
-            <div style="height: 0; margin: 0.5rem 0; overflow: hidden; border-top: 1px solid #8c8e91;"></div>
-            <li class="nav-item">
+          <div style="height: 0; margin: 0.5rem 0; overflow: hidden; border-top: 1px solid #8c8e91;"></div>
+          <li class="nav-item">
               <a href="https://adminlte.io/docs/3.1/" class="nav-link">
-                <i class="nav-icon fas fa-file"></i>
-                <p>Documentation</p>
+              <i class="nav-icon fas fa-file"></i>
+              <p>Documentation</p>
               </a>
-            </li>
-            <li class="nav-item">
+          </li>
+          <li class="nav-item">
                   <a href="auth/register.php" class="nav-link">
-                    <i class="nav-icon fa fa-plus"></i>
-                    <p>Register</p>
+                  <i class="nav-icon fa fa-plus"></i>
+                  <p>Register</p>
                   </a>
-                </li>
-            <li class="nav-item">
+              </li>
+          <li class="nav-item">
               <a href="auth/logout.php" class="nav-link">
-                <i class="nav-icon fa fa-power-off"></i>
-                <p>LogOut</p>
+              <i class="nav-icon fa fa-power-off"></i>
+              <p>LogOut</p>
               </a>
-            </li>
+          </li>
           </ul>
-        </nav>
-        <!-- /.sidebar-menu -->
+      </nav>
+      <!-- /.sidebar-menu -->
       </div>
       <!-- /.sidebar -->
-    </aside>
+  </aside>
