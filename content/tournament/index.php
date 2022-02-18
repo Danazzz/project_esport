@@ -1,5 +1,5 @@
 <?php
-require_once "../config/conn.php";
+require_once "../../config/conn.php";
 if(!isset($_SESSION['user'])){
   echo "<script>window.location='".base_url('../auth/loginn.php')."';</script>";
 } ?>
@@ -14,11 +14,11 @@ if(!isset($_SESSION['user'])){
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
   <!-- Icon Logo -->
-  <link rel="icon" href="../dist/img/LogoESIDPS.png">
+  <link rel="icon" href="../../dist/img/LogoESIDPS.png">
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -250,7 +250,7 @@ if(!isset($_SESSION['user'])){
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Projects</h1>
+            <h1>Tournament</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
