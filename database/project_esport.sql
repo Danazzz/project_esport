@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2022 at 05:52 AM
+-- Generation Time: Feb 18, 2022 at 08:12 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -30,12 +30,19 @@ SET time_zone = "+00:00";
 CREATE TABLE `game` (
   `id_game` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `type` varchar(20) NOT NULL,
-  `genre` varchar(20) NOT NULL,
-  `popularity` int(11) NOT NULL,
   `image` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `history`
+--
+
+CREATE TABLE `history` (
+  `id_history` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -93,7 +100,30 @@ CREATE TABLE `login` (
 
 INSERT INTO `login` (`id_logIn`, `id_user`, `email`, `password`, `otp_code`, `logIn_at`, `logOut_at`, `created_at`, `updated_at`) VALUES
 (1, '41930026', 'artaputra97@gmail.com', 'd1c056a983786a38ca76a05cda240c7b86d77136', 1234, '2022-02-18 09:35:53', '2022-02-18 09:35:53', '2022-02-18 09:35:53', '2022-02-18 09:35:53'),
-(3, '620e01ad9c154', 'artaputra95@gmail.com', 'd1c056a983786a38ca76a05cda240c7b86d77136', 0, '2022-02-18 09:33:50', '2022-02-18 09:33:50', '2022-02-18 09:33:50', '2022-02-18 09:33:50');
+(3, '620e01ad9c154', 'gusardhi@gmail.com', 'd1c056a983786a38ca76a05cda240c7b86d77136', 0, '2022-02-18 13:15:29', '2022-02-18 13:15:29', '2022-02-18 13:15:29', '2022-02-18 13:15:29');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `organizer`
+--
+
+CREATE TABLE `organizer` (
+  `id_organizer` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `schedule_tournament`
+--
+
+CREATE TABLE `schedule_tournament` (
+  `id_schedule` int(11) NOT NULL,
+  `open_registration` date NOT NULL,
+  `technical_meeting` date NOT NULL,
+  `tournament_starts` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -116,14 +146,26 @@ CREATE TABLE `squad` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `topup`
+--
+
+CREATE TABLE `topup` (
+  `id_topup` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tournament`
 --
 
 CREATE TABLE `tournament` (
   `id_tournament` varchar(50) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `status` enum('free','paid') NOT NULL,
-  `state` varchar(50) NOT NULL,
+  `type` enum('free','paid') NOT NULL,
+  `status` enum('open','closed','ongoing','comingsoon') NOT NULL,
+  `mode` varchar(255) NOT NULL,
+  `location` enum('online','offline') NOT NULL,
   `city` varchar(50) NOT NULL,
   `address` text NOT NULL,
   `coordinates` varchar(255) NOT NULL,
@@ -135,6 +177,34 @@ CREATE TABLE `tournament` (
   `endTime` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaction`
+--
+
+CREATE TABLE `transaction` (
+  `id_transaction` int(11) NOT NULL,
+  `id_user` varchar(255) NOT NULL,
+  `poin` int(11) NOT NULL,
+  `id_topup` int(11) NOT NULL,
+  `id_transfer` int(11) NOT NULL,
+  `id_withdraw` int(11) NOT NULL,
+  `id_history` int(11) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transfer`
+--
+
+CREATE TABLE `transfer` (
+  `id_transfer` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -165,7 +235,17 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id_user`, `full_name`, `phone_number`, `birth_date`, `gender`, `status`, `poin`, `username`, `image`, `role`, `description`, `created_at`, `updated_at`) VALUES
 ('41930026', 'Nyoman Dana Wardhianaaaa', '089635524614', '2022-02-03', 'L', '1', 10, 'admin', 'hjghjghj.jpg', 'admin', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sodales, erat ut sagittis mattis, est lorem venenatis tellus, in semper dolor ligula vitae risus. Cras vitae turpis non tellus ullamcorper faucibus sed ac ante. Cras dui dolor, dictum sit amet scelerisque in, volutpat blandit magna. Aliquam dui sem, sodales non nunc ut, congue lacinia purus. Quisque eget justo nec lorem sagittis volutpat. Ut rutrum vulputate imperdiet. Sed porta, sem vitae sagittis sodales, lacus tortor fringilla eros, quis sodales lacus libero id urna. Nam condimentum ligula hendrerit ipsum lacinia, at tincidunt est vestibulum. Fusce ac rhoncus erat, eu dictum sem. Sed quis posuere dolor, vitae hendrerit sapien. Mauris cursus nulla sit amet neque viverra cursus. Sed efficitur vitae tortor sed venenatis. Integer sed diam tortor.', '2022-02-18 10:57:53', '2022-02-18 10:57:53'),
-('620e01ad9c154', 'Nyoman Dana Wardhiana', '089635524614', '2022-02-03', 'L', '', 0, '', '', 'admin', '', '2022-02-18 09:33:50', '2022-02-18 09:33:50');
+('620e01ad9c154', 'gus ardhi', '098765432123', '2022-02-01', 'L', '', 0, '', '', 'user', '', '2022-02-18 13:15:29', '2022-02-18 13:15:29');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `withdraw`
+--
+
+CREATE TABLE `withdraw` (
+  `id_withdraw` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -204,6 +284,12 @@ ALTER TABLE `login`
   ADD UNIQUE KEY `id_user` (`id_user`);
 
 --
+-- Indexes for table `schedule_tournament`
+--
+ALTER TABLE `schedule_tournament`
+  ADD PRIMARY KEY (`id_schedule`);
+
+--
 -- Indexes for table `squad`
 --
 ALTER TABLE `squad`
@@ -214,6 +300,12 @@ ALTER TABLE `squad`
 --
 ALTER TABLE `tournament`
   ADD PRIMARY KEY (`id_tournament`);
+
+--
+-- Indexes for table `transaction`
+--
+ALTER TABLE `transaction`
+  ADD PRIMARY KEY (`id_transaction`);
 
 --
 -- Indexes for table `user`
@@ -242,6 +334,18 @@ ALTER TABLE `join_tournament`
 --
 ALTER TABLE `login`
   MODIFY `id_logIn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `schedule_tournament`
+--
+ALTER TABLE `schedule_tournament`
+  MODIFY `id_schedule` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `transaction`
+--
+ALTER TABLE `transaction`
+  MODIFY `id_transaction` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables

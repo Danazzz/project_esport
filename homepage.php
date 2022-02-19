@@ -294,12 +294,9 @@ if (!isset($_SESSION['user'])) {
 
       <!-- Main content -->
       <section class="content">
-<<<<<<< HEAD
         <div class="container-fluid"
-=======
         <div class="container-fluid">
           <!-- /.row -->
->>>>>>> 12acf531f4af5f048099bd9ebcae2ce757dac0b1
           <!-- Main row -->
           <div class="row">
             <!-- Left col -->
