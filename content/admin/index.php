@@ -38,21 +38,21 @@
           <table class="table table-striped projects">
               <thead>
                   <tr>
-                      <th style="width: 1%">
-                        No.
-                      </th>
-                      <th style="width: 20%">
-                        ID Number
-                      </th>
-                      <th style="width: 30%">
-                        Name
-                      </th>
-                      <th>
-                        Registered
-                      </th>
-                      <th style="width: 8%" class="text-center">
-                        Status
-                      </th>
+                    <th style="width: 1%">
+                      No.
+                    </th>
+                    <th style="width: 20%">
+                      ID Number
+                    </th>
+                    <th style="width: 30%">
+                      Name
+                    </th>
+                    <th>
+                      Registered
+                    </th>
+                    <th style="width: 8%" class="text-center">
+                      Status
+                    </th>
                   </tr>
               </thead>
               <tbody>
@@ -71,7 +71,7 @@
                   $search = trim(mysqli_real_escape_string($con, $_POST['search']));
                   if($search != ''){
                                     $sql = "SELECT * FROM user
-                                    WHERE name = '%$search%'
+                                    WHERE full_name = '%$search%'
                                     ORDER BY created_at DESC, updated_at DESC
                     ";
                     $query = $sql;
@@ -115,7 +115,7 @@
                             </i>
                             Edit
                         </a>
-                        <a href="crud/delete.php?id=<?= $data['id_user'] ?>" onclick="return confirm('Are you sure you want to delete this admin?')" class="btn btn-danger btn-sm">
+                        <a href="crud/delete.php?id=<?= $data['id_user'] ?>" onclick="return confirm('Are you sure you want to delete this Admin?')" class="btn btn-danger btn-sm">
                             <i class="fas fa-trash">
                             </i>
                             Delete

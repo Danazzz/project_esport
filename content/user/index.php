@@ -38,24 +38,21 @@
           <table class="table table-striped projects">
               <thead>
                   <tr>
-                      <th style="width: 1%">
-                        No.
-                      </th>
-                      <th style="width: 20%">
-                        ID Number
-                      </th>
-                      <th style="width: 30%">
-                        Name
-                      </th>
-                      <th>
-                        Registered
-                      </th>
-                      <th style="width: 8%" class="text-center">
-                        Status
-                      </th>
-                      <th style="width: 20%" class="text-center">
-                        <a href="crud/add.php" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-plus"></i>Add new user</a>
-                      </th>
+                    <th style="width: 1%">
+                      No.
+                    </th>
+                    <th style="width: 20%">
+                      ID Number
+                    </th>
+                    <th style="width: 30%">
+                      Name
+                    </th>
+                    <th>
+                      Registered
+                    </th>
+                    <th style="width: 8%" class="text-center">
+                      Status
+                    </th>
                   </tr>
               </thead>
               <tbody>
@@ -74,7 +71,7 @@
                   $search = trim(mysqli_real_escape_string($con, $_POST['search']));
                   if($search != ''){
                                     $sql = "SELECT * FROM user
-                                    WHERE name = '%$search%'
+                                    WHERE full_name = '%$search%'
                                     ORDER BY created_at DESC, updated_at DESC
                     ";
                     $query = $sql;

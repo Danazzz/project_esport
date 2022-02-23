@@ -17,13 +17,13 @@ $data = mysqli_fetch_array($query);
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <strong>Id User:</strong>
+            <strong>Id Admin:</strong>
             <h1 class="text-primary"><?= $data['id_user'] ?></h1>
 
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../index.html">User</a></li>
+              <li class="breadcrumb-item"><a href="../index.html">Admin</a></li>
               <li class="breadcrumb-item active">Detail</li>
             </ol>
           </div>

@@ -1,4 +1,42 @@
-<?php include_once('../../_include/header_crud.php'); ?>
+<?php include_once('../../_include/header_crud.php'); 
+
+if(isset($_POST['edit'])) {
+  $id = $_POST['id'];
+  $oldimage = $_POST['oldimage'];
+  $full_name = trim(mysqli_real_escape_string($con, $_POST['full_name']));
+  $phone = trim(mysqli_real_escape_string($con, $_POST['phone']));
+  $birth_date = trim(mysqli_real_escape_string($con, $_POST['birth_date']));
+  $gender = trim(mysqli_real_escape_string($con, $_POST['gender']));
+  $username = trim(mysqli_real_escape_string($con, $_POST['username']));
+  $description = trim(mysqli_real_escape_string($con, $_POST['description']));
+  $email = trim(mysqli_real_escape_string($con, $_POST['email']));
+  $password = sha1(trim(mysqli_real_escape_string($con, $_POST['password'])));
+  if($_FILES['image']['error'] === 4){
+      $image = $oldimage;
+  } else {
+      $path = "../../../database/img/".$oldimage;
+      unlink($path);
+      $image = upload();
+  }
+
+  mysqli_query($con,"UPDATE user
+  INNER JOIN login ON user.id_user = login.id_user
+  SET full_name = '$full_name', phone_number = '$phone', birth_date = '$birth_date', gender = '$gender', description = '$description', image = '$image', username = '$username', email = '$email', password = '$password'
+  WHERE user.id_user = '$id'") 
+  or die (mysqli_error($con));
+  // echo "<script>alert('User detail updated successfully');window.location='../index.html';</script>";
+}
+
+$id = @$_GET['id'];
+$sql = "SELECT * FROM user 
+INNER JOIN login ON user.id_user = login.id_user 
+WHERE user.id_user = '$id'
+";
+$query = mysqli_query($con, $sql);
+$data = mysqli_fetch_array($query);
+
+// var_dump($data);die;
+?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -21,18 +59,9 @@
 
     <!-- Main content -->
     <section class="content">
-      <?php
-      $id = @$_GET['id'];
-      $sql = "SELECT * FROM user 
-      INNER JOIN login ON user.id_user = login.id_user 
-      WHERE user.id_user = '$id'
-      ";
-      $query = mysqli_query($con, $sql);
-      $data = mysqli_fetch_array($query);
-      // var_dump($data);die;
-      ?>
-      <form action="proses.php" method="post" enctype="multipart/form-data">
+      <form action="" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?= $id ?>">
+        <input type="hidden" name="oldimage" value="<?= $data['image'] ?>">
         <div class="row">
           <div class="col-md-6 mx-auto">
             <div class="card card-primary">
@@ -61,38 +90,11 @@
                   <label for="birth_date">Birth of Date</label>
                   <input type="date" name="birth_date" id="birth_date" class="form-control" value="<?= $data['birth_date'] ?>">
                 </div>
-                <div class="form-group">
-                    <label for="gender">Gender</label>
-                    <div>
-                        <label class="radio-inline">
-                            <input type="radio" name="gender" id="L" value="L"> Male
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="gender" id="P" value="P"> Female
-                        </label>
-                    </div>
-                </div>
-                <div class="form-group">
-                  <label for="role">Role</label>
-                  <select name="role" id="role" class="form-control custom-select">
-                  <?php
-                  if($data['role'] == "admin"){ ?>
-                    <option value="admin" selected>Admin</option>
-                    <option value="user">User</option>
-                    <option value="organizer">Organizer</option>
-                  <?php
-                  } else if($data['role'] == "user"){ ?>
-                    <option value="user" selected>User</option>
-                    <option value="admin">Admin</option>
-                    <option value="organizer">Organizer</option>
-                  <?php
-                  } else if($data['role'] == "organizer"){ ?>
-                    <option value="organizer" selected>Organizer</option>
-                    <option value="admin">Admin</option>
-                    <option value="user">User</option>
-                  <?php	
-                  }
-                  ?>
+                <div class="mb-3">
+                  <select type="gender" id="gender" name="gender" class="form-control custom-select">
+                    <option selected disabled>Select your Gender</option>
+                    <option value="L">Male</option>
+                    <option value="P">Female</option>
                   </select>
                 </div>
                 <div class="form-group">
