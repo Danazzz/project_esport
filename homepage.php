@@ -10,7 +10,7 @@ if (!isset($_SESSION['user'])) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin Panel ESPORT | Dashboard</title>
+  <title>Admin Panel ESPORT</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -227,6 +227,12 @@ if (!isset($_SESSION['user'])) {
                   </a>
                 </li>
                 <li class="nav-item">
+                  <a href="content/organizer/" class="nav-link">
+                    <i class="nav-icon fa fa-book"></i>
+                    <p class="text">Organizer</p>
+                  </a>
+                </li>
+                <li class="nav-item">
                   <a href="content/user/" class="nav-link">
                     <i class="nav-icon fa fa-book"></i>
                     <p class="text">User</p>
@@ -242,6 +248,12 @@ if (!isset($_SESSION['user'])) {
                   <a href="content/tournament/" class="nav-link">
                     <i class="nav-icon fa fa-book"></i>
                     <p class="text">Tournament</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="content/games/" class="nav-link">
+                    <i class="nav-icon fa fa-book"></i>
+                    <p class="text">Games</p>
                   </a>
                 </li>
               </ul>

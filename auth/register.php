@@ -1,17 +1,5 @@
 <?php
 require_once "../config/conn.php";
-
-//Code for Registration 
-if(isset($_POST['register'])) {
-	$username=$_POST['username'];
-	$email=$_POST['email'];
-	$password=$_POST['password'];
-	$enc_password=$password;
-	$msg=mysqli_query($con,"insert into user(username,email,password) values('$username','$email','$password')");
-	if($msg) {
-		echo "<script>alert('Register successfully');</script>";
-	}
-}
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +7,7 @@ if(isset($_POST['register'])) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin Panel | Registration Page</title>
+  <title>Admin Panel ESPORT</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -51,9 +39,10 @@ if(isset($_POST['register'])) {
           $email = trim(mysqli_real_escape_string($con, $_POST['email']));
           $password = sha1(trim(mysqli_real_escape_string($con, $_POST['password'])));
       
-          mysqli_query($con,"INSERT INTO login (id_user, email, password ) VALUES ( '$id_user', '$email', '$password')") or die (mysqli_error($con));
-          mysqli_query($con,"INSERT INTO user (id_user, username) VALUES ('$id_user', '$username')") or die (mysqli_error($con));
-          echo "<script>alert('Data berhasil ditambah');window.location='loginn.php';</script>";
+          mysqli_query($con,"INSERT INTO user (id_user) VALUES ('$id_user')") or die (mysqli_error($con));
+          mysqli_query($con,"INSERT INTO login (id_user, username, email, password ) VALUES ('$id_user', '$username', '$email', '$password')") or die (mysqli_error($con));
+          echo "<script>alert('Registration successfully!');window.location='loginn.php';</script>";
+          echo "<script>alert('User Registered');window.location='loginn.php';</script>";
       } else { ?>
         <div class="row">
           <div class="col-lg-12">
@@ -111,7 +100,7 @@ if(isset($_POST['register'])) {
         </div>
       </form>
 
-      <a href="loginn.php" class="text-center">Back to Login</a>
+      <a href="loginn.php" class="text-center">Back</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->

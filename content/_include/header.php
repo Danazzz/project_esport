@@ -200,29 +200,41 @@ if(!isset($_SESSION['user'])){
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="pages/examples/projects.html" class="nav-link">
+                  <a href="../../content/admin/" class="nav-link">
                     <i class="nav-icon fa fa-book"></i>
                     <p class="text">Admin</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="content/user/" class="nav-link">
+                  <a href="../../content/organizer/" class="nav-link">
+                    <i class="nav-icon fa fa-book"></i>
+                    <p class="text">Organizer</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="../../content/user/" class="nav-link">
                     <i class="nav-icon fa fa-book"></i>
                     <p class="text">User</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="content/squad/" class="nav-link">
+                  <a href="../../content/squad/" class="nav-link">
                     <i class="nav-icon fa fa-book"></i>
                     <p class="text">Squad</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="content/tournament/" class="nav-link">
+                  <a href="../../content/tournament/" class="nav-link">
                     <i class="nav-icon fa fa-book"></i>
                     <p class="text">Tournament</p>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a href="../../content/games/" class="nav-link">
+                  <i class="nav-icon fa fa-book"></i>
+                  <p class="text">Games</p>
+                  </a>
+              </li>
               </ul>
             </li>
 
@@ -234,13 +246,13 @@ if(!isset($_SESSION['user'])){
               </a>
             </li>
             <li class="nav-item">
-                  <a href="auth/register.php" class="nav-link">
+                  <a href="../../auth/register.php" class="nav-link">
                     <i class="nav-icon fa fa-plus"></i>
                     <p>Register</p>
                   </a>
                 </li>
             <li class="nav-item">
-              <a href="auth/logout.php" class="nav-link">
+              <a href="../../auth/logout.php" class="nav-link">
                 <i class="nav-icon fa fa-power-off"></i>
                 <p>LogOut</p>
               </a>
