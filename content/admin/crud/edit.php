@@ -61,38 +61,11 @@
                   <label for="birth_date">Birth of Date</label>
                   <input type="date" name="birth_date" id="birth_date" class="form-control" value="<?= $data['birth_date'] ?>">
                 </div>
-                <div class="form-group">
-                    <label for="gender">Gender</label>
-                    <div>
-                        <label class="radio-inline">
-                            <input type="radio" name="gender" id="L" value="L"> Male
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="gender" id="P" value="P"> Female
-                        </label>
-                    </div>
-                </div>
-                <div class="form-group">
-                  <label for="role">Role</label>
-                  <select name="role" id="role" class="form-control custom-select">
-                  <?php
-                  if($data['role'] == "admin"){ ?>
-                    <option value="admin" selected>Admin</option>
-                    <option value="user">User</option>
-                    <option value="organizer">Organizer</option>
-                  <?php
-                  } else if($data['role'] == "user"){ ?>
-                    <option value="user" selected>User</option>
-                    <option value="admin">Admin</option>
-                    <option value="organizer">Organizer</option>
-                  <?php
-                  } else if($data['role'] == "organizer"){ ?>
-                    <option value="organizer" selected>Organizer</option>
-                    <option value="admin">Admin</option>
-                    <option value="user">User</option>
-                  <?php	
-                  }
-                  ?>
+                <div class="mb-3">
+                  <select type="gender" id="gender" name="gender" class="form-control custom-select">
+                    <option selected disabled>Select your Gender</option>
+                    <option value="L">Male</option>
+                    <option value="P">Female</option>
                   </select>
                 </div>
                 <div class="form-group">

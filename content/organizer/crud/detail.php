@@ -17,7 +17,7 @@ $data = mysqli_fetch_array($query);
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <strong>Id User:</strong>
+            <strong>Id Organizer:</strong>
             <h1 class="text-primary"><?= $data['id_user'] ?></h1>
 
           </div>
