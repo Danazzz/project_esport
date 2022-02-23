@@ -76,7 +76,7 @@ require_once "../config/conn.php";
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="text" id="username" name="username" class="form-control" placeholder="username">
+          <input type="text" id="username" name="username" class="form-control" placeholder="username" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -110,13 +110,20 @@ require_once "../config/conn.php";
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+          <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
           </div>
         </div>
+<<<<<<< HEAD
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" placeholder="Re-type Password" required>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+=======
         <div class="mb-3">
           <input type="password" name="pw1" id="pw1" class="form-control" placeholder="Retype password">
         </div>
@@ -135,11 +142,17 @@ require_once "../config/conn.php";
           <div class="col-8">
             <div class="icheck-primary">
               <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+<<<<<<< HEAD
+>>>>>>> 12acf531f4af5f048099bd9ebcae2ce757dac0b1
+=======
               <label for="agreeTerms">
                 I agree to the <a href="#">terms</a>
               </label>
+>>>>>>> c430a7635bbaa802f74e51f372f645f3b6f08ed0
             </div>
           </div>
+        </div>
+        <div class="row">
           <!-- /.col -->
           <div class="col-12 mb-3">
             <button type="submit" name="register" class="btn btn-primary btn-block">Register</button>

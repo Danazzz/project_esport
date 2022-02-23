@@ -63,7 +63,6 @@ function get_time_ago( $time )
         }
     }
 }
-
 // function upload file to local database
 function upload(){
     $nameFile = $_FILES['image']['name'];
