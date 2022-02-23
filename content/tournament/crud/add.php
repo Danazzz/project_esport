@@ -21,7 +21,7 @@
 
     <!-- Main content -->
     <section class="content">
-      <form action="proses.php" method="post">
+      <form action="proses.php" method="post" enctype="multipart/form-data">
         <div class="row">
           <div class="col-md-6 mx-auto">
             <div class="card card-primary">
@@ -80,6 +80,10 @@
                     </div>
                 </div>
                 <div class="form-group">
+                  <label for="city">City</label>
+                  <input type="text" name="city" id="city" class="form-control" required>
+                </div>
+                <div class="form-group">
                   <label for="address">Address</label>
                   <input type="text" name="address" id="address" class="form-control" required>
                 </div>
@@ -97,7 +101,7 @@
                 </div>
                 <div class="form-group">
                   <label for="description">Description</label>
-                  <input type="text" name="description" id="description" class="form-control" placeholder="Add a description" required>
+                  <textarea name="description" id="description" class="form-control" placeholder="Add a description..."></textarea>
                 </div>
                 <div class="form-group">
                   <label for="image">Image</label><br>
