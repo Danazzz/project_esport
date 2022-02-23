@@ -7,7 +7,7 @@ if(isset($_POST['add'])) {
     $phone = trim(mysqli_real_escape_string($con, $_POST['phone']));
     $birth_date = trim(mysqli_real_escape_string($con, $_POST['birth_date']));
     $gender = trim(mysqli_real_escape_string($con, $_POST['gender']));
-    $role = trim(mysqli_real_escape_string($con, $_POST['role']));
+    // $role = trim(mysqli_real_escape_string($con, $_POST['role']));
     $username = trim(mysqli_real_escape_string($con, $_POST['username']));
     $description = trim(mysqli_real_escape_string($con, $_POST['description']));
     $email = trim(mysqli_real_escape_string($con, $_POST['email']));
@@ -17,7 +17,7 @@ if(isset($_POST['add'])) {
         return false;
     }
 
-    mysqli_query($con,"INSERT INTO user (id_user, full_name, phone_number, birth_date, gender, status, role, image, description) VALUES ('$id_user', '$full_name', '$phone', '$birth_date', '$gender', '0','$role', '$image', '$description')") or die (mysqli_error($con));
+    mysqli_query($con,"INSERT INTO user (id_user, full_name, phone_number, birth_date, gender, status, role, image, description) VALUES ('$id_user', '$full_name', '$phone', '$birth_date', '$gender', '0','admin', '$image', '$description')") or die (mysqli_error($con));
     mysqli_query($con, "INSERT INTO login (id_user, username, email, password) VALUES ('$id_user', '$username', '$email', '$password')") or die (mysqli_error($con));
     echo "<script>alert('User detail added successfully');window.location='../index.html';</script>";
 }

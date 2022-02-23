@@ -128,7 +128,7 @@
                   <?php
                   }
                 }else{
-                echo "<tr><td colspan=\"4\" align=\"center\">Data tidak ditemukan</td></tr>";
+                echo "<tr><td colspan=\"4\" align=\"center\">Not found!</td></tr>";
               }
             ?>
               </tbody>

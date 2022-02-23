@@ -88,7 +88,7 @@ function upload(){
     $newfilename = uniqid();
     $newfilename .= '.';
     $newfilename .= $format; 
-    move_uploaded_file($tmpName,'../../../database/img/' . $newfilename);
+    move_uploaded_file($tmpName,'../database/img/' . $newfilename);
     return $newfilename;
 }
 ?>
