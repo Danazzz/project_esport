@@ -7,12 +7,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>User</h1>
+            <h1>Game List</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">User Admin</a></li>
-              <li class="breadcrumb-item active">User</li>
+              <li class="breadcrumb-item"><a href="">Game</a></li>
+              <li class="breadcrumb-item active">List</li>
             </ol>
           </div>
         </div>
@@ -35,32 +35,29 @@
           </div>
         </div>
         <div class="card-body p-0">
-          <table class="table table-striped projects">
+          <table class="table table-striped projects text-center">
               <thead>
                   <tr>
                       <th style="width: 1%">
                         No.
                       </th>
-                      <th style="width: 20%">
-                        ID Number
+                      <th style="width: 25%">
+                        ID Game
                       </th>
-                      <th style="width: 30%">
-                        Nama
+                      <th style="width: 15%">
+                        Name
                       </th>
-                      <th>
-                        Registered
+                      <th style="width: 15%">
+                        Image
                       </th>
-                      <th style="width: 8%" class="text-center">
-                        Status
-                      </th>
-                      <th style="width: 20%" class="text-center">
-                        <a href="crud/add.php" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-plus"></i> Add new user</a>
+                      <th style="width: 10%" class="text-center">
+                        <a href="crud/add.php" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-plus"></i> Add new Game</a>
                       </th>
                   </tr>
               </thead>
               <tbody>
               <?php
-                $limit = 7;
+                $limit = 5;
                 $page = @$_GET['page'];
                 if(empty($page)){
                   $position = 0;
@@ -73,24 +70,24 @@
                 if($_SERVER['REQUEST_METHOD'] == "POST"){
                   $search = trim(mysqli_real_escape_string($con, $_POST['search']));
                   if($search != ''){
-                                    $sql = "SELECT * FROM user
+                                    $sql = "SELECT * FROM game
                                     WHERE name = '%$search%'
                                     ORDER BY created_at DESC, updated_at DESC
                     ";
                     $query = $sql;
                     $query_sum = $sql;
                   }else{
-                    $query = "SELECT * FROM user
+                    $query = "SELECT * FROM game
                                     ORDER BY created_at DESC, updated_at DESC
                                     LIMIT $position, $limit";
-                    $query_sum = "SELECT * FROM user";
+                    $query_sum = "SELECT * FROM game";
                     $no = $position + 1;
                   }
                 }else{
-                  $query = "SELECT * FROM user
+                  $query = "SELECT * FROM game
                                 ORDER BY created_at DESC, updated_at DESC
                                 LIMIT $position, $limit";
-                  $query_sum = "SELECT * FROM user";
+                  $query_sum = "SELECT * FROM game";
                   $no = $position + 1;
                 }
                 
@@ -99,26 +96,16 @@
                   while($data = mysqli_fetch_array($sql)){ ?>
                     <tr>
                       <td><?= $no++; ?></td>
-                      <td><?= $data['id_user']; ?></td>
-                      <td><?= $data['full_name']; ?></td>
-                      <td><?= indo_date($data['created_at']); ?> <br/>
-                        <small>
-                          <?= $data['updated_at']; ?>
-                        </small>
-                      </td>
-                      <td class="text-center"><?= $data['status'] ?></td>
+                      <td><?= $data['id_game']; ?></td>
+                      <td><?= $data['name']; ?></td>
+                      <td><img src="../../database/img/<?= $data['image'] ?>" width='90' height='110'></td>
                       <td class="project-actions text-right">
-                        <a href="crud/detail.php?id=<?= $data['id_user'] ?>" class="btn btn-primary btn-sm" >
-                            <i class="fas fa-folder">
-                            </i>
-                            View
-                        </a>
-                        <a href="crud/edit.php?id=<?= $data['id_user'] ?>" class="btn btn-info btn-sm">
+                        <a href="crud/edit.php?id=<?= $data['id_game'] ?>" class="btn btn-info btn-sm">
                             <i class="fas fa-pencil-alt">
                             </i>
                             Edit
                         </a>
-                        <a href="crud/delete.php?id=<?= $data['id_user'] ?>" onclick="return confirm('Are you sure to delete this user?')" class="btn btn-danger btn-sm">
+                        <a href="crud/delete.php?id=<?= $data['id_game'] ?>" onclick="return confirm('Are you sure you want to delete this game from the database?')" class="btn btn-danger btn-sm">
                             <i class="fas fa-trash">
                             </i>
                             Delete
