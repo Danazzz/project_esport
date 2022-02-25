@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2022 at 08:59 AM
+-- Generation Time: Feb 24, 2022 at 07:49 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -87,6 +87,18 @@ CREATE TABLE `join_tournament` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `leaderboard_squad`
+--
+
+CREATE TABLE `leaderboard_squad` (
+  `id_leaderboard` int(11) NOT NULL,
+  `id_squad` varchar(50) NOT NULL,
+  `rank` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `login`
 --
 
@@ -127,14 +139,16 @@ CREATE TABLE `organizer` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `schedule_tournament`
+-- Table structure for table `rules_tournament`
 --
 
-CREATE TABLE `schedule_tournament` (
-  `id_schedule` int(11) NOT NULL,
-  `open_registration` date NOT NULL,
-  `technical_meeting` date NOT NULL,
-  `tournament_starts` date NOT NULL
+CREATE TABLE `rules_tournament` (
+  `id_rules` int(11) NOT NULL,
+  `mode` varchar(255) NOT NULL,
+  `match_system` varchar(255) NOT NULL,
+  `requirements` text NOT NULL,
+  `device` varchar(255) NOT NULL,
+  `custom` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -145,11 +159,16 @@ CREATE TABLE `schedule_tournament` (
 
 CREATE TABLE `squad` (
   `id_squad` varchar(50) NOT NULL,
+  `id_game` varchar(50) NOT NULL,
+  `leader` varchar(50) NOT NULL,
+  `member1` varchar(50) NOT NULL,
+  `member2` varchar(50) NOT NULL,
+  `member3` varchar(50) NOT NULL,
+  `member4` varchar(50) NOT NULL,
+  `member5` varchar(50) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `type` varchar(100) NOT NULL,
-  `category` varchar(100) NOT NULL,
-  `leaderboard` int(11) NOT NULL,
   `poin` int(11) NOT NULL,
+  `description` text NOT NULL,
   `image` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -173,22 +192,35 @@ CREATE TABLE `topup` (
 
 CREATE TABLE `tournament` (
   `id_tournament` varchar(50) NOT NULL,
+  `id_user` varchar(50) NOT NULL,
+  `id_game` varchar(50) NOT NULL,
   `name` varchar(255) NOT NULL,
   `type` enum('free','paid') NOT NULL,
   `status` enum('open','closed','ongoing','comingsoon') NOT NULL,
-  `mode` varchar(255) NOT NULL,
   `location` enum('online','offline') NOT NULL,
   `city` varchar(50) NOT NULL,
   `address` text NOT NULL,
   `coordinates` varchar(255) NOT NULL,
   `price` int(11) NOT NULL,
-  `date` datetime NOT NULL,
   `description` text NOT NULL,
   `image` varchar(255) NOT NULL,
-  `startTime` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `endTime` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tournament_schedule`
+--
+
+CREATE TABLE `tournament_schedule` (
+  `id_schedule` int(11) NOT NULL,
+  `registration` date NOT NULL,
+  `technical_meeting` date NOT NULL,
+  `start` date NOT NULL,
+  `end` date NOT NULL,
+  `custom` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -292,6 +324,12 @@ ALTER TABLE `join_tournament`
   ADD UNIQUE KEY `id_squad` (`id_squad`);
 
 --
+-- Indexes for table `leaderboard_squad`
+--
+ALTER TABLE `leaderboard_squad`
+  ADD PRIMARY KEY (`id_leaderboard`);
+
+--
 -- Indexes for table `login`
 --
 ALTER TABLE `login`
@@ -299,10 +337,10 @@ ALTER TABLE `login`
   ADD UNIQUE KEY `id_user` (`id_user`);
 
 --
--- Indexes for table `schedule_tournament`
+-- Indexes for table `rules_tournament`
 --
-ALTER TABLE `schedule_tournament`
-  ADD PRIMARY KEY (`id_schedule`);
+ALTER TABLE `rules_tournament`
+  ADD PRIMARY KEY (`id_rules`);
 
 --
 -- Indexes for table `squad`
@@ -315,6 +353,12 @@ ALTER TABLE `squad`
 --
 ALTER TABLE `tournament`
   ADD PRIMARY KEY (`id_tournament`);
+
+--
+-- Indexes for table `tournament_schedule`
+--
+ALTER TABLE `tournament_schedule`
+  ADD PRIMARY KEY (`id_schedule`);
 
 --
 -- Indexes for table `transaction`
@@ -346,15 +390,27 @@ ALTER TABLE `join_tournament`
   MODIFY `id_join_tournament` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `leaderboard_squad`
+--
+ALTER TABLE `leaderboard_squad`
+  MODIFY `id_leaderboard` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
   MODIFY `id_logIn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `schedule_tournament`
+-- AUTO_INCREMENT for table `rules_tournament`
 --
-ALTER TABLE `schedule_tournament`
+ALTER TABLE `rules_tournament`
+  MODIFY `id_rules` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tournament_schedule`
+--
+ALTER TABLE `tournament_schedule`
   MODIFY `id_schedule` int(11) NOT NULL AUTO_INCREMENT;
 
 --

@@ -1,4 +1,12 @@
-<?php include_once('../../_include/header_crud.php'); ?>
+<?php include_once('../../_include/header_crud.php'); 
+
+$id = @$_GET['id'];
+$sql = "SELECT * FROM game
+WHERE id_game = '$id'
+";
+$query = mysqli_query($con, $sql);
+$data = mysqli_fetch_array($query);
+?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -21,15 +29,6 @@
 
     <!-- Main content -->
     <section class="content">
-      <?php
-      $id = @$_GET['id'];
-      $sql = "SELECT * FROM game
-      WHERE id_game = '$id'
-      ";
-      $query = mysqli_query($con, $sql);
-      $data = mysqli_fetch_array($query);
-      // var_dump($sql);die;
-      ?>
       <form action="proses.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?= $id ?>">
         <div class="row">

@@ -10,7 +10,6 @@ $data = mysqli_fetch_array($query);
 $image= $data['image'];
 $path = "../../../database/img/".$image;
 unlink($path);
-var_dump($_GET);die;
 
 mysqli_query($con, "DELETE FROM game WHERE id_game = '$_GET[id]'") or die (mysqli_error($con));
 echo "<script>alert('Game deleted!');window.location='../index.html';</script>";

@@ -15,7 +15,7 @@ if(isset($_POST['add'])) {
     $price = trim(mysqli_real_escape_string($con, $_POST['price']));
     $date = trim(mysqli_real_escape_string($con, $_POST['date']));
     $description = trim(mysqli_real_escape_string($con, $_POST['description']));
-    $image = upload();
+    $image = upload($path);
     if(!$image){
         return false;
     }
@@ -23,7 +23,7 @@ if(isset($_POST['add'])) {
     $enddate = trim(mysqli_real_escape_string($con, $_POST['enddate']));
 
     mysqli_query($con,"INSERT INTO tournament (id_tournament, name, type, status, mode, location, city, address, coordinates, price, date, description, image, startTime, endTime) VALUES ('$id_tournament', '$name', '$type', '$status', '$t_mode', '$loc', '$city', '$address', '$coordinate', '$price', '$date', '$description', '$image', '$startdate', '$enddate')") or die (mysqli_error($con));
-    echo "<script>alert('Data telah ditambah');window.location='../index.php';</script>";
+    echo "<script>alert('Tournament added!');window.location='../index.php';</script>";
 }
 else if(isset($_POST['edit'])) {
     $id = $_POST['id'];
@@ -39,7 +39,7 @@ else if(isset($_POST['edit'])) {
     $price = trim(mysqli_real_escape_string($con, $_POST['price']));
     $date = trim(mysqli_real_escape_string($con, $_POST['date']));
     $description = trim(mysqli_real_escape_string($con, $_POST['description']));
-    $image = upload();
+    $image = upload($path);
     if(!$image){
         return false;
     }
@@ -49,6 +49,6 @@ else if(isset($_POST['edit'])) {
     var_dump($loc); die;
 
     mysqli_query($con,"UPDATE tournament SET name = '$name', type = '$type', status = '$status', mode = '$t_mode', location = '$loc', city = '$city', address = '$address', coordinates = '$coordinate', price = '$price', date = '$date', description = '$description', image = '$image', startTime = '$startdate', endTime = '$enddate')") or die (mysqli_error($con));
-    echo "<script>alert('Data telah diperbarui');window.location='../index.php';</script>";
+    echo "<script>alert('Tournament profile updated!');window.location='../index.php';</script>";
 }
 ?>

@@ -4,7 +4,7 @@ require_once "../../../config/conn.php";
 if(isset($_POST['add'])) {
     $id_game = uniqid();
     $name = trim(mysqli_real_escape_string($con, $_POST['name']));
-    $image = upload();
+    $image = upload($path);
     if(!$image){
         return false;
     }
@@ -19,9 +19,9 @@ else if(isset($_POST['edit'])) {
     if($_FILES['image']['error'] === 4){
         $image = $oldimage;
     } else {
-        $image = upload();
+        $image = upload($path);
     }
 
-    mysqli_query($con,"UPDATE game SET name = '$name', image = '$image')") or die (mysqli_error($con));
+    mysqli_query($con,"UPDATE game SET name = '$name', image = '$image' WHERE id_game = '$id'") or die (mysqli_error($con));
     echo "<script>alert('Game profile edited!');window.location='../index.html';</script>";
 }

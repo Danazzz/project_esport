@@ -37,9 +37,8 @@ else{
       if(isset($_POST['login'])){
           $email = trim(mysqli_real_escape_string($con, $_POST['email']));
           $password = sha1(trim(mysqli_real_escape_string($con, $_POST['password'])));
-          // $login = mysqli_query($con, "SELECT*FROM login WHERE email = '$email' AND password = '$password'") or die (mysqli_error($con));
-          $sql = "SELECT*FROM login 
-          INNER JOIN user  ON login.id_user = user.id_user 
+          $sql = "SELECT * FROM auth 
+          INNER JOIN user USING (id_user)
           WHERE email = '$email' AND password = '$password'";
           $result=mysqli_query($con, $sql);
           $data=mysqli_fetch_array($result);
@@ -69,7 +68,7 @@ else{
             <div class="row">
                 <div class="col-lg-12">
                     <div class="alert alert-danger alert-dismissable" role="alert">
-                        <a href="loginn.php" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <a href="login.php" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                         <strong>Login Failed!</strong> Wrong Username / Password
                     </div>
