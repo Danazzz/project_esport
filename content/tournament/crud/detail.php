@@ -1,4 +1,12 @@
-<?php include_once('../../_include/header_crud.php'); ?>
+<?php include_once('../../_include/header_crud.php'); 
+
+$id = @$_GET['id'];
+$sql = "SELECT * FROM tournament
+WHERE id_tournament = '$id'
+";
+$query = mysqli_query($con, $sql);
+$data = mysqli_fetch_array($query);
+?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -11,7 +19,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../index.html">User</a></li>
+              <li class="breadcrumb-item"><a href="../index.html">Tournament</a></li>
               <li class="breadcrumb-item active">Detail</li>
             </ol>
           </div>
@@ -21,17 +29,6 @@
 
     <!-- Main content -->
     <section class="content">
-      <?php
-      $id = @$_GET['id'];
-      $sql = "SELECT * FROM user 
-      INNER JOIN login ON user.id_user = login.id_user 
-      WHERE user.id_user = '$id'
-      ";
-      $query = mysqli_query($con, $sql);
-      $data = mysqli_fetch_array($query);
-      // var_dump($data);die;
-      ?>
-
       <!-- Default box -->
       <div class="card">
         <div class="card-header">

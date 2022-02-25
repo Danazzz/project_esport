@@ -14,28 +14,26 @@ if(isset($_POST['edit'])) {
   if($_FILES['image']['error'] === 4){
       $image = $oldimage;
   } else {
-      $path = "../../../database/img/".$oldimage;
+      $path.$oldimage;
       unlink($path);
-      $image = upload();
+      $image = upload($path);
   }
 
   mysqli_query($con,"UPDATE user
-  INNER JOIN login ON user.id_user = login.id_user
+  INNER JOIN auth USING (id_user)
   SET full_name = '$full_name', phone_number = '$phone', birth_date = '$birth_date', gender = '$gender', description = '$description', image = '$image', username = '$username', email = '$email', password = '$password'
   WHERE user.id_user = '$id'") 
   or die (mysqli_error($con));
-  // echo "<script>alert('User detail updated successfully');window.location='../index.html';</script>";
+  echo "<script>alert('User detail updated successfully');window.location='../index.html';</script>";
 }
 
 $id = @$_GET['id'];
 $sql = "SELECT * FROM user 
-INNER JOIN login ON user.id_user = login.id_user 
+INNER JOIN auth (id_user)
 WHERE user.id_user = '$id'
 ";
 $query = mysqli_query($con, $sql);
 $data = mysqli_fetch_array($query);
-
-// var_dump($data);die;
 ?>
 
   <!-- Content Wrapper. Contains page content -->

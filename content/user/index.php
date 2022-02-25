@@ -29,9 +29,6 @@
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
               <i class="fas fa-minus"></i>
             </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-              <i class="fas fa-times"></i>
-            </button>
           </div>
         </div>
         <div class="card-body p-0">
@@ -71,13 +68,14 @@
                   $search = trim(mysqli_real_escape_string($con, $_POST['search']));
                   if($search != ''){
                                     $sql = "SELECT * FROM user
-                                    WHERE full_name = '%$search%'
+                                    WHERE full_name = '%$search%' AND role = 'user'
                                     ORDER BY created_at DESC, updated_at DESC
                     ";
                     $query = $sql;
                     $query_sum = $sql;
                   }else{
                     $query = "SELECT * FROM user
+                                    WHERE role = 'user'
                                     ORDER BY created_at DESC, updated_at DESC
                                     LIMIT $position, $limit";
                     $query_sum = "SELECT * FROM user";
@@ -85,6 +83,7 @@
                   }
                 }else{
                   $query = "SELECT * FROM user
+                                WHERE role = 'user'
                                 ORDER BY created_at DESC, updated_at DESC
                                 LIMIT $position, $limit";
                   $query_sum = "SELECT * FROM user";
