@@ -2,12 +2,11 @@
 
 $id = @$_GET['id'];
 $sql = "SELECT * FROM user 
-INNER JOIN login ON user.id_user = login.id_user 
+INNER JOIN auth USING (id_user)
 WHERE user.id_user = '$id'
 ";
 $query = mysqli_query($con, $sql);
 $data = mysqli_fetch_array($query);
-// var_dump($data);die;
 ?>
 
   <!-- Content Wrapper. Contains page content -->
@@ -17,13 +16,13 @@ $data = mysqli_fetch_array($query);
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <strong>Id User:</strong>
+            <strong>Id Admin:</strong>
             <h1 class="text-primary"><?= $data['id_user'] ?></h1>
 
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../index.html">User</a></li>
+              <li class="breadcrumb-item"><a href="../index.html">Admin</a></li>
               <li class="breadcrumb-item active">Detail</li>
             </ol>
           </div>

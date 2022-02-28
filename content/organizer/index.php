@@ -7,11 +7,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>User List</h1>
+            <h1>Organizer List</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="">User</a></li>
+              <li class="breadcrumb-item"><a href="">Organizer</a></li>
               <li class="breadcrumb-item active">List</li>
             </ol>
           </div>
@@ -29,33 +29,27 @@
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
               <i class="fas fa-minus"></i>
             </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-              <i class="fas fa-times"></i>
-            </button>
           </div>
         </div>
         <div class="card-body p-0">
           <table class="table table-striped projects">
               <thead>
                   <tr>
-                      <th style="width: 1%">
-                        No.
-                      </th>
-                      <th style="width: 20%">
-                        ID Number
-                      </th>
-                      <th style="width: 30%">
-                        Name
-                      </th>
-                      <th>
-                        Registered
-                      </th>
-                      <th style="width: 8%" class="text-center">
-                        Status
-                      </th>
-                      <th style="width: 20%" class="text-center">
-                        <a href="crud/add.php" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-plus"></i>Add new user</a>
-                      </th>
+                    <th style="width: 1%">
+                      No.
+                    </th>
+                    <th style="width: 20%">
+                      ID Number
+                    </th>
+                    <th style="width: 30%">
+                      Name
+                    </th>
+                    <th>
+                      Registered
+                    </th>
+                    <th style="width: 8%" class="text-center">
+                      Status
+                    </th>
                   </tr>
               </thead>
               <tbody>
@@ -74,13 +68,14 @@
                   $search = trim(mysqli_real_escape_string($con, $_POST['search']));
                   if($search != ''){
                                     $sql = "SELECT * FROM user
-                                    WHERE name = '%$search%'
+                                    WHERE full_name = '%$search%' AND role = 'organizer'
                                     ORDER BY created_at DESC, updated_at DESC
                     ";
                     $query = $sql;
                     $query_sum = $sql;
                   }else{
                     $query = "SELECT * FROM user
+                                    WHERE role = 'organizer'
                                     ORDER BY created_at DESC, updated_at DESC
                                     LIMIT $position, $limit";
                     $query_sum = "SELECT * FROM user";
@@ -88,6 +83,7 @@
                   }
                 }else{
                   $query = "SELECT * FROM user
+                                WHERE role = 'organizer'
                                 ORDER BY created_at DESC, updated_at DESC
                                 LIMIT $position, $limit";
                   $query_sum = "SELECT * FROM user";
@@ -118,7 +114,7 @@
                             </i>
                             Edit
                         </a>
-                        <a href="crud/delete.php?id=<?= $data['id_user'] ?>" onclick="return confirm('Are you sure you want to delete this user?')" class="btn btn-danger btn-sm">
+                        <a href="crud/delete.php?id=<?= $data['id_user'] ?>" onclick="return confirm('Are you sure you want to delete this Organizer?')" class="btn btn-danger btn-sm">
                             <i class="fas fa-trash">
                             </i>
                             Delete

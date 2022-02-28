@@ -4,6 +4,6 @@ if(isset($_SESSION['user'])){
     echo "<script>window.location='".base_url('homepage.php')."';</script>";
 }
 else{
-    echo "<script>window.location='".base_url('auth/loginn.php')."';</script>";
+    echo "<script>window.location='".base_url('auth/login.php')."';</script>";
 }
 ?>

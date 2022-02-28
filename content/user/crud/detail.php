@@ -2,12 +2,11 @@
 
 $id = @$_GET['id'];
 $sql = "SELECT * FROM user 
-INNER JOIN login ON user.id_user = login.id_user 
+INNER JOIN auth USING (id_user)
 WHERE user.id_user = '$id'
 ";
 $query = mysqli_query($con, $sql);
 $data = mysqli_fetch_array($query);
-// var_dump($data);die;
 ?>
 
   <!-- Content Wrapper. Contains page content -->

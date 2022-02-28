@@ -1,189 +1,152 @@
-<?php include_once('../../_include/header_crud.php'); ?>
+<?php include_once('../../_include/header_crud.php');
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Detail</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../index.html">User</a></li>
-              <li class="breadcrumb-item active">Detail</li>
-            </ol>
-          </div>
+$id = @$_GET['id'];
+$sql = "SELECT * FROM squad  
+WHERE id_squad = '$id'
+";
+$query = mysqli_query($con, $sql);
+$data = mysqli_fetch_array($query);
+?>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <strong>Id User:</strong>
+          <h1 class="text-primary"><?= $data['id_squad'] ?></h1>
+
         </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-      <?php
-      $id = @$_GET['id'];
-      $sql = "SELECT * FROM user 
-      INNER JOIN login ON user.id_user = login.id_user 
-      WHERE user.id_user = '$id'
-      ";
-      $query = mysqli_query($con, $sql);
-      $data = mysqli_fetch_array($query);
-      // var_dump($data);die;
-      ?>
-
-      <!-- Default box -->
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Detail</h3>
-
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-              <i class="fas fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-              <i class="fas fa-times"></i>
-            </button>
-          </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="../index.html">Squad</a></li>
+            <li class="breadcrumb-item active">Detail</li>
+          </ol>
         </div>
-        <div class="card-body">
-          <div class="row">
-            <div class="col-12 col-md-12 col-lg-8 order-2 order-md-1">
-              <div class="row">
-                <div class="col-12 col-sm-4">
-                  <div class="info-box bg-light">
-                    <div class="info-box-content">
-                      <span class="info-box-text text-center text-muted">Estimated budget</span>
-                      <span class="info-box-number text-center text-muted mb-0">2300</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-4">
-                  <div class="info-box bg-light">
-                    <div class="info-box-content">
-                      <span class="info-box-text text-center text-muted">Total amount spent</span>
-                      <span class="info-box-number text-center text-muted mb-0">2000</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-4">
-                  <div class="info-box bg-light">
-                    <div class="info-box-content">
-                      <span class="info-box-text text-center text-muted">Estimated project duration</span>
-                      <span class="info-box-number text-center text-muted mb-0">20</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <h4>Recent Activity</h4>
-                    <div class="post">
-                      <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
-                        <span class="username">
-                          <a href="#">Jonathan Burke Jr.</a>
-                        </span>
-                        <span class="description">Shared publicly - 7:45 PM today</span>
-                      </div>
-                      <!-- /.user-block -->
-                      <p>
-                        Lorem ipsum represents a long-held tradition for designers,
-                        typographers and the like. Some people hate it and argue for
-                        its demise, but others ignore.
-                      </p>
-
-                      <p>
-                        <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 1 v2</a>
-                      </p>
-                    </div>
-
-                    <div class="post clearfix">
-                      <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="../../dist/img/user7-128x128.jpg" alt="User Image">
-                        <span class="username">
-                          <a href="#">Sarah Ross</a>
-                        </span>
-                        <span class="description">Sent you a message - 3 days ago</span>
-                      </div>
-                      <!-- /.user-block -->
-                      <p>
-                        Lorem ipsum represents a long-held tradition for designers,
-                        typographers and the like. Some people hate it and argue for
-                        its demise, but others ignore.
-                      </p>
-                      <p>
-                        <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 2</a>
-                      </p>
-                    </div>
-
-                    <div class="post">
-                      <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
-                        <span class="username">
-                          <a href="#">Jonathan Burke Jr.</a>
-                        </span>
-                        <span class="description">Shared publicly - 5 days ago</span>
-                      </div>
-                      <!-- /.user-block -->
-                      <p>
-                        Lorem ipsum represents a long-held tradition for designers,
-                        typographers and the like. Some people hate it and argue for
-                        its demise, but others ignore.
-                      </p>
-
-                      <p>
-                        <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 1 v1</a>
-                      </p>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
-              <h3 class="text-primary"><i class="fas fa-paint-brush"></i> AdminLTE v3</h3>
-              <p class="text-muted">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terr.</p>
-              <br>
-              <div class="text-muted">
-                <p class="text-sm">Client Company
-                  <b class="d-block">Deveint Inc</b>
-                </p>
-                <p class="text-sm">Project Leader
-                  <b class="d-block">Tony Chicken</b>
-                </p>
-              </div>
-
-              <h5 class="mt-5 text-muted">Project files</h5>
-              <ul class="list-unstyled">
-                <li>
-                  <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i> Functional-requirements.docx</a>
-                </li>
-                <li>
-                  <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-pdf"></i> UAT.pdf</a>
-                </li>
-                <li>
-                  <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-envelope"></i> Email-from-flatbal.mln</a>
-                </li>
-                <li>
-                  <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-image "></i> Logo.png</a>
-                </li>
-                <li>
-                  <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i> Contract-10_12_2014.docx</a>
-                </li>
-              </ul>
-              <div class="text-center mt-5 mb-3">
-                <a href="#" class="btn btn-sm btn-primary">Add files</a>
-                <a href="#" class="btn btn-sm btn-warning">Report contact</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- /.card-body -->
       </div>
-      <!-- /.card -->
+    </div><!-- /.container-fluid -->
+  </section>
 
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+  <!-- Main content -->
+  <section class="content">
+    <!-- Default box -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title"><i class="fa fa-user-circle" aria-hidden="true"></i> Profile</h3>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12 col-md-12 col-lg-12 text-justify">
+            <div class="d-flex flex-row justify-content-between">
+              <div>
+                <h3><?= $data['full_name'] ?></h3>
+                <p class="text-muted"><?= $data['description'] ?></p>
+                <br>
+                <div class="text-muted">
+                  <div class="d-flex flex-row justify-content-between">
+                    <div>
+                      <p class="text-sm">Username
+                        <b class="d-block"><?= $data['name'] ?></b>
+                      </p>
+                      <p class="text-sm">Email
+                        <b class="d-block"><?= $data['id_game'] ?></b>
+                      </p>
+                      <p class="text-sm">Role
+                        <b class="d-block"><?= $data['role'] ?></b>
+                      </p>
+                      <p class="text-sm">Gender
+                        <b class="d-block">
+                          <?php
+                          if ($data['gender'] == 'L') { ?>
+                            <b class="d-block">Male</b>
+                          <?php
+                          } else if ($data['gender'] == 'P') { ?>
+                            <b class="d-block">Female</b>
+                          <?php
+                          }
+                          ?>
+                        </b>
+                      </p>
+                    </div>
+                    <div>
+                      <p class="text-sm">Poin
+                        <b class="d-block"><?= $data['poin'] ?></b>
+                      </p>
+                      <p class="text-sm">Phone Number
+                        <b class="d-block"><?= $data['phone_number'] ?></b>
+                      </p>
+                      <p class="text-sm">Birth of Date
+                        <b class="d-block"><?= $data['birth_date'] ?></b>
+                      </p>
+                      <p class="text-sm">Status
+                        <b class="d-block">
+                          <?php
+                          if ($data['status'] == '0') { ?>
+                            <b class="d-block">Not Activated</b>
+                          <?php
+                          } else if ($data['status'] == '1') { ?>
+                            <b class="d-block">Activated</b>
+                          <?php
+                          }
+                          ?>
+                        </b>
+                      </p>
+                    </div>
+                    <div>
+                      <p class="text-sm">Signed at
+                        <b class="d-block"><?= $data['created_at'] ?></b>
+                      </p>
+                      <p class="text-sm">Recent Activity
+                        <b class="d-block"><?= $data['updated_at'] ?></b>
+                      </p>
+                      <p class="text-sm">Squad
+                        <b class="d-block">squad</b>
+                      </p>
+                      <p class="text-sm">Games
+                        <b class="d-block">Game</b>
+                        <b class="d-block">Game</b>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <img src="../../../database/img/<?= $data['image'] ?>" alt="" height="150px" style="margin-left:50px">
+            </div>
+
+            <h5 class="mt-5 text-muted">Profile</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i> Functional-requirements.docx</a>
+              </li>
+              <li>
+                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-pdf"></i> UAT.pdf</a>
+              </li>
+              <li>
+                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-envelope"></i> Email-from-flatbal.mln</a>
+              </li>
+              <li>
+                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-image "></i> Logo.png</a>
+              </li>
+              <li>
+                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i> Contract-10_12_2014.docx</a>
+              </li>
+            </ul>
+            <div class="text-center mt-5 mb-3">
+              <a href="#" class="btn btn-sm btn-primary">Add files</a>
+              <a href="#" class="btn btn-sm btn-warning">Report contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
 
 <?php include_once('../../_include/footer_crud.php'); ?>

@@ -64,7 +64,7 @@ function get_time_ago( $time )
     }
 }
 // function upload file to local database
-function upload(){
+function upload($path){
     $nameFile = $_FILES['image']['name'];
     $sizeFIle = $_FILES['image']['size'];
     $error = $_FILES['image']['error'];
@@ -84,10 +84,13 @@ function upload(){
         echo "<script>alert ('The image size is too large!')</script>";
         return false;
     }
+
+
     $newfilename = uniqid();
     $newfilename .= '.';
-    $newfilename .= $format; 
-    move_uploaded_file($tmpName,'../database/img/' . $newfilename);
+    $newfilename .= $format;
+
+    move_uploaded_file($tmpName, $path . $newfilename);
     return $newfilename;
 }
 ?>
