@@ -35,7 +35,7 @@
           </div>
         </div>
         <div class="card-body p-0">
-          <table class="table table-striped projects">
+          <table class="table table-striped projects text-center">
               <thead>
                   <tr>
                       <th style="width: 1%">
@@ -44,7 +44,7 @@
                       <th style="width: 5%">
                         Tournament ID
                       </th>
-                      <th style="width: 5%">
+                      <th style="width: 12%">
                         Tournament Name
                       </th>
                       <th style="width: 5%">
@@ -54,12 +54,9 @@
                         Registered Team
                       </th>
                       <th style="width: 5%">
-                        Price
-                      </th>
-                      <th style="width: 5%">
                         Date
                       </th>
-                      <th style="width: 5%">
+                      <th style="width: 10%">
                         <a href="crud/add.php" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-plus"></i>Add new tournament</a>
                       </th>
                   </tr>
@@ -108,7 +105,6 @@
                       <td><?= $data['id_tournament']; ?></td>
                       <td><?= $data['name']; ?></td>
                       <td><?= $data['status']; ?></td>
-                      <td><?= $data['price']; ?></td>
                       <td><?= $data['price']; ?></td>
                       <td><?= indo_date($data['created_at']); ?> <br/>
                         <small>
