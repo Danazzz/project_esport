@@ -223,6 +223,7 @@ if (!isset($_SESSION['user'])) {
                 <span class="info-box-text">User Registrated</span>
                 <span class="info-box-number">
                   <?php
+                    require_once "config/conn.php";
                     $query = "SELECT id_user FROM user ORDER BY id_user";
                     $query_run = mysqli_query($con, $query);
                     $row = mysqli_num_rows($query_run);
@@ -243,7 +244,7 @@ if (!isset($_SESSION['user'])) {
               <div class="info-box-content">
                 <span class="info-box-text">Tournament Created</span>
                 <span class="info-box-number">
-                
+                  
                 </span>
               </div>
               <!-- /.info-box-content -->
