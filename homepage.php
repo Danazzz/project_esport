@@ -34,6 +34,8 @@ if (!isset($_SESSION['user'])) {
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
   <!-- Icon Logo -->
   <link rel="icon" href="dist/img/LogoESIDPS.png">
+  <!-- All icon in homepage -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -211,8 +213,75 @@ if (!isset($_SESSION['user'])) {
       <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
-        <div class="container-fluid">
-          <!-- /.row -->
+        
+        <div class="row">
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+              <span class="info-box-icon bg-info elevation-1"><i class="fa-solid fa-user"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">User Registrated</span>
+                <span class="info-box-number">
+                  <?php
+                    $query = "SELECT id_user FROM user ORDER BY id_user";
+                    $query_run = mysqli_query($con, $query);
+                    $row = mysqli_num_rows($query_run);
+                    echo '<h4> '.$row.'</h4>';
+                  ?>
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+
+          <!-- /.col -->
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-danger elevation-1"><i class="fa-solid fa-trophy"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Tournament Created</span>
+                <span class="info-box-number">
+                
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+
+          <div class="clearfix hidden-md-up"></div>
+
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Sales</span>
+                <span class="info-box-number">760</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Squad Created</span>
+                <span class="info-box-number">2,000</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+        </div>
+          
           <!-- Main row -->
           <div class="row">
             <!-- Left col -->
@@ -327,12 +396,11 @@ if (!isset($_SESSION['user'])) {
             <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
-        <div class="container-fluid">
           <!-- /.row -->
           <!-- Main row -->
           <div class="row">
             <!-- Left col -->
-            <section class="col-lg-20 connectedSortable">
+            <section class="col-lg-12 connectedSortable">
               <!-- Custom tabs (Charts with tabs)-->
               <div class="card direct-chat direct-chat-primary">
                 <div class="card-header">
