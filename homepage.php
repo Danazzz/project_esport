@@ -213,21 +213,26 @@ if (!isset($_SESSION['user'])) {
       <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
-        
-        <div class="row">
-        <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon bg-info elevation-1"><i class="fa-solid fa-user"></i></span>
+          <div class="row">
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="info-box">
+                <span class="info-box-icon bg-info elevation-1"><i class="fa-solid fa-user"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">User Registrated</span>
                 <span class="info-box-number">
                   <?php
-                    require_once "config/conn.php";
-                    $query = "SELECT id_user FROM user ORDER BY id_user";
-                    $query_run = mysqli_query($con, $query);
-                    $row = mysqli_num_rows($query_run);
-                    echo '<h4> '.$row.'</h4>';
+                    $dash_query = "SELECT * from user";
+                    $dash_query_run = mysqli_query($con, $dash_query);
+                    
+                    if($user_total = mysqli_num_rows($dash_query_run))
+                    {
+                      echo '<h4 class="mb-0"> '.$user_total.' </h4>';
+                    }
+                    else
+                    {
+                      echo '<h4 class="mb-0"> No Data </h4>';
+                    }
                   ?>
                 </span>
               </div>
@@ -244,7 +249,19 @@ if (!isset($_SESSION['user'])) {
               <div class="info-box-content">
                 <span class="info-box-text">Tournament Created</span>
                 <span class="info-box-number">
-                  
+                  <?php
+                    $dash_query = "SELECT * from tournament";
+                    $dash_query_run = mysqli_query($con, $dash_query);
+                    
+                    if($user_total = mysqli_num_rows($dash_query_run))
+                    {
+                      echo '<h4 class="mb-0"> '.$user_total.' </h4>';
+                    }
+                    else
+                    {
+                      echo '<h4 class="mb-0"> No Data </h4>';
+                    }
+                  ?>
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -274,25 +291,32 @@ if (!isset($_SESSION['user'])) {
 
               <div class="info-box-content">
                 <span class="info-box-text">Squad Created</span>
-                <span class="info-box-number">2,000</span>
+                <span class="info-box-number">
+                  <?php
+                    $dash_query = "SELECT * from squad";
+                    $dash_query_run = mysqli_query($con, $dash_query);
+                    
+                    if($user_total = mysqli_num_rows($dash_query_run))
+                    {
+                      echo '<h4 class="mb-0"> '.$user_total.' </h4>';
+                    }
+                    else
+                    {
+                      echo '<h4 class="mb-0"> No Data </h4>';
+                    }
+                  ?>
+                </span>
               </div>
               <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
           </div>
           <!-- /.col -->
-        </div>
-          
+        </div>          
           <!-- Main row -->
           <div class="row">
             <!-- Left col -->
-            <section class="col-lg-6 connectedSortable">
-              <!-- Custom tabs (Charts with tabs)-->
-              <div class="card direct-chat direct-chat-primary">
-                <div class="card-header">
-                  <h3 class="card-title">User Registration History</h3>
-                </div>
-
+            <section class="col-md-6 connectedSortable">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                   <div class="container-fluid">
@@ -301,107 +325,200 @@ if (!isset($_SESSION['user'])) {
                   </div>
                 </section>
 
-                <!-- Main content -->
-            <section class="content">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-12">
-                    <div class="card">
-                      <!-- /.card-header -->
-                      <div class="card-body">
-                        <table class="table table-bordered table-hover">
-                          <thead>
-                            <tr>
-                              <th style="width: 1%">
-                                No.
-                              </th>
-                              <th style="width: 15%">
-                                User Registration
-                              </th>
-                              <th style="width: 5%">
-                                Date Register
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                          <?php
-                              $limit = 5;
-                              $page = @$_GET['page'];
-                              if(empty($page)){
-                                $position = 0;
-                                $page = 1;
-                              }
-                              else{
-                                $position = ($page - 1) * $limit;
-                              }
-                                $no = 1;
-                              if($_SERVER['REQUEST_METHOD'] == "POST"){
-                                $search = trim(mysqli_real_escape_string($con, $_POST['search']));
-                              if($search != ''){
-                                $sql = "SELECT * FROM user
-                                  WHERE name = '%$search%'
-                                  ORDER BY created_at DESC, updated_at DESC
-                                  ";
-                                $query = $sql;
-                                $query_sum = $sql;
-                              }else{
-                                $query = "SELECT * FROM user
-                                  ORDER BY created_at DESC, updated_at DESC
-                                  LIMIT $position, $limit";
-                                $query_sum = "SELECT * FROM user";
-                                $no = $position + 1;
-                              }
-                              }else{
-                                $query = "SELECT * FROM user
-                                  ORDER BY created_at DESC, updated_at DESC
-                                  LIMIT $position, $limit";
-                                $query_sum = "SELECT * FROM user";
-                                $no = $position + 1;
-                              }
-                                    
+              <!-- Main content -->
+              <section class="content">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="card">
+                          <div class="card-header">
+                            <h3 class="card-title">User Registration History</h3>
+                          </div>
+                          <!-- /.card-header -->
+                          <div class="card-body">
+                            <table class="table table-bordered">
+                              <thead>
+                                <tr>
+                                  <th style="width: 1%">No.</th>
+                                  <th style="width: 40%">User Registration</th>
+                                  <th>Date Register</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                              <?php
+                                $limit = 5;
+                                $page = @$_GET['page'];
+                                if(empty($page)){
+                                  $position = 0;
+                                  $page = 1;
+                                }
+                                else{
+                                  $position = ($page - 1) * $limit;
+                                }
+                                  $no = 1;
+                                if($_SERVER['REQUEST_METHOD'] == "POST"){
+                                  $search = trim(mysqli_real_escape_string($con, $_POST['search']));
+                                if($search != ''){
+                                  $sql = "SELECT * FROM user
+                                    WHERE name = '%$search%'
+                                    ORDER BY created_at DESC, updated_at DESC";
+                                  $query = $sql;
+                                  $query_sum = $sql;
+                                }else{
+                                  $query = "SELECT * FROM user
+                                    ORDER BY created_at DESC, updated_at DESC
+                                    LIMIT $position, $limit";
+                                  $query_sum = "SELECT * FROM user";
+                                  $no = $position + 1;
+                                }
+                                }else{
+                                  $query = "SELECT * FROM user
+                                    ORDER BY created_at DESC, updated_at DESC
+                                    LIMIT $position, $limit";
+                                  $query_sum = "SELECT * FROM user";
+                                  $no = $position + 1;
+                                }
+                                                  
                                 $sql = mysqli_query($con, $query) or die(mysqli_error($con));
                                   if(mysqli_num_rows($sql) > 0){
                                     while($data = mysqli_fetch_array($sql)){ ?>
                                       <tr>
                                         <td><?= $no++; ?></td>
                                         <td><?= $data['full_name']; ?></td>
-                                        <td><?= indo_date($data['created_at']); ?> <br/>
-                                          <small>
-                                            <?= $data['updated_at']; ?>
-                                          </small>
+                                        <td><?= indo_date($data['created_at']); ?> </br>
+                                        <small>
+                                          <?= $data['updated_at']; ?>
+                                        </small>
+                                        </td>
+                                        <td>
+                                          <a href="crud/detail.php?id=<?= $data['id_user'] ?>" class="btn btn-primary btn-sm" >
+                                            <i class="fas fa-folder"></i>
+                                            View
+                                          </a>
                                         </td>
                                       </tr>
-                                    <?php
-                                    }
-                              }else{
-                                echo "<tr><td colspan=\"7\" align=\"center\">Data tidak ditemukan</td></tr>";
-                              }
-                            ?>
+                                      <?php
+                                      }
+                                      }else{
+                                        echo "<tr><td colspan=\"7\" align=\"center\">Data tidak ditemukan</td></tr>";
+                                      }
+                                      ?>
                               </tbody>
                             </table>
                           </div>
                           <!-- /.card-body -->
                         </div>
-                        <!-- /.card -->
-                        </div>
-                        <!-- /.card -->
-                      </div>
-                      <!-- /.col -->
+                      <!-- /.card -->
                     </div>
-                    <!-- /.row -->
+                    <!-- /.col -->
                   </div>
-                  <!-- /.container-fluid -->
-                </section>
-                <!-- /.content -->
+                  <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+              </section>
+              <!-- /.content -->
+              
+              <!-- Main content -->
+              <section class="content">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="card">
+                          <div class="card-header">
+                            <h3 class="card-title">Tournament History Registration</h3>
+                          </div>
+                          <!-- /.card-header -->
+                          <div class="card-body">
+                            <table class="table table-bordered">
+                              <thead>
+                                <tr>
+                                  <th style="width: 1%">No.</th>
+                                  <th style="width: 40%">Tournament Name</th>
+                                  <th>Date Created</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                              <?php
+                                $limit = 5;
+                                $page = @$_GET['page'];
+                                if(empty($page)){
+                                  $position = 0;
+                                  $page = 1;
+                                }
+                                else{
+                                  $position = ($page - 1) * $limit;
+                                }
+                                  $no = 1;
+                                if($_SERVER['REQUEST_METHOD'] == "POST"){
+                                  $search = trim(mysqli_real_escape_string($con, $_POST['search']));
+                                if($search != ''){
+                                  $sql = "SELECT * FROM tournament
+                                    WHERE name = '%$search%'
+                                    ORDER BY created_at DESC, updated_at DESC";
+                                  $query = $sql;
+                                  $query_sum = $sql;
+                                }else{
+                                  $query = "SELECT * FROM tournament
+                                    ORDER BY created_at DESC, updated_at DESC
+                                    LIMIT $position, $limit";
+                                  $query_sum = "SELECT * FROM tournament";
+                                  $no = $position + 1;
+                                }
+                                }else{
+                                  $query = "SELECT * FROM tournament
+                                    ORDER BY created_at DESC, updated_at DESC
+                                    LIMIT $position, $limit";
+                                  $query_sum = "SELECT * FROM tournament";
+                                  $no = $position + 1;
+                                }
+                                                  
+                                $sql = mysqli_query($con, $query) or die(mysqli_error($con));
+                                  if(mysqli_num_rows($sql) > 0){
+                                    while($data = mysqli_fetch_array($sql)){ ?>
+                                      <tr>
+                                        <td><?= $no++; ?></td>
+                                        <td><?= $data['name']; ?></td>
+                                        <td><?= indo_date($data['created_at']); ?> </br>
+                                        <small>
+                                          <?= $data['updated_at']; ?>
+                                        </small>
+                                        </td>
+                                        <td>
+                                          <a href="crud/detail.php?id=<?= $data['id_tournament'] ?>" class="btn btn-primary btn-sm" >
+                                            <i class="fas fa-folder"></i>
+                                            View
+                                          </a>
+                                        </td>
+                                      </tr>
+                                      <?php
+                                      }
+                                      }else{
+                                        echo "<tr><td colspan=\"7\" align=\"center\">Data tidak ditemukan</td></tr>";
+                                      }
+                                      ?>
+                              </tbody>
+                            </table>
+                          </div>
+                          <!-- /.card-body -->
+                        </div>
+                      <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+              </section>
+              <!-- /.content -->
 
-            <!-- Main content -->
+      <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
           <!-- /.row -->
           <!-- Main row -->
           <div class="row">
             <!-- Left col -->
-            <section class="col-lg-12 connectedSortable">
+            <section class="col-sm-11 connectedSortable">
               <!-- Custom tabs (Charts with tabs)-->
               <div class="card direct-chat direct-chat-primary">
                 <div class="card-header">
@@ -430,11 +547,14 @@ if (!isset($_SESSION['user'])) {
                               <th style="width: 1%">
                                 No.
                               </th>
-                              <th style="width: 15%">
+                              <th style="width: 35%">
                                 Tournament
                               </th>
-                              <th style="width: 5%">
+                              <th style="width: 30%">
                                 Date Created
+                              </th>
+                              <th style="width: 20%" class="text-center">
+                                <a href="..\..\crud\add.php" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-plus"></i> Add Tournament</a>
                               </th>
                             </tr>
                           </thead>
@@ -485,6 +605,12 @@ if (!isset($_SESSION['user'])) {
                                             <?= $data['updated_at']; ?>
                                           </small>
                                         </td>
+                                        <td>
+                                          <a href="crud/detail.php?id=<?= $data['id_tournament'] ?>" class="btn btn-primary btn-sm" >
+                                            <i class="fas fa-folder"></i>
+                                            View
+                                          </a>
+                                        </td>
                                       </tr>
                                     <?php
                                     }
@@ -512,7 +638,7 @@ if (!isset($_SESSION['user'])) {
             </section>
             <!-- /.Left col -->
             <!-- right col (We are only adding the ID to make the widgets sortable)-->
-            <section class="col-lg-5 connectedSortable">
+            <section class="col-lg-6 connectedSortable">
 
               <!-- Map card -->
               <div class="card bg-gradient-primary">
