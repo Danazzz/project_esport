@@ -1,7 +1,7 @@
 <?php
 require_once "config/conn.php";
 if (!isset($_SESSION['user'])) {
-  echo "<script>window.location='" . base_url('auth/login.php') . "';</script>";
+  echo "<script>window.location='" . base_url('auth/loginn.php') . "';</script>";
 } ?>
 
 <!DOCTYPE html>
@@ -34,6 +34,8 @@ if (!isset($_SESSION['user'])) {
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
   <!-- Icon Logo -->
   <link rel="icon" href="dist/img/LogoESIDPS.png">
+  <!-- All icon in homepage -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -210,262 +212,294 @@ if (!isset($_SESSION['user'])) {
 
       <!-- Main content -->
       <section class="content">
-        <div class="container-fluid"
         <div class="container-fluid">
-          <!-- /.row -->
-          <!-- Main row -->
+          <!-- Info boxes -->
           <div class="row">
-            <!-- Left col -->
-            <section class="col-lg-7 connectedSortable">
-              <!-- Custom tabs (Charts with tabs)-->
-              <div class="card direct-chat direct-chat-primary">
-                <div class="card-header d-flex flex-row justify-content-between">
-                  <h3 class="card-title">User History Registration</h3>
-                  <button type="button" class="btn btn-primary btn-sm daterange" title="Date range" >
-                      <i class="far fa-calendar-alt"></i>
-                    </button>
-                </div>
-                <!-- Default box -->
-      <div class="card">
-        <div class="card-body p-0">
-          <table class="table table-striped projects">
-              <thead>
-                  <tr>
-                      <th style="width: 1%">
-                        No.
-                      </th>
-                      <th style="width: 5%">
-                        User Registration
-                      </th>
-                      <th style="width: 1%">
-                        Date Register
-                      </th>
-                  </tr>
-              </thead>
-              <tbody>
-              <?php
-                $limit = 5;
-                $page = @$_GET['page'];
-                if(empty($page)){
-                  $position = 0;
-                  $page = 1;
-                }
-                else{
-                  $position = ($page - 1) * $limit;
-                }
-                $no = 1;
-                if($_SERVER['REQUEST_METHOD'] == "POST"){
-                  $search = trim(mysqli_real_escape_string($con, $_POST['search']));
-                  if($search != ''){
-                                    $sql = "SELECT * FROM user
-                                    WHERE name = '%$search%'
-                                    ORDER BY created_at DESC, updated_at DESC
-                    ";
-                    $query = $sql;
-                    $query_sum = $sql;
-                  }else{
-                    $query = "SELECT * FROM user
-                                    ORDER BY created_at DESC, updated_at DESC
-                                    LIMIT $position, $limit";
-                    $query_sum = "SELECT * FROM user";
-                    $no = $position + 1;
-                  }
-                }else{
-                  $query = "SELECT * FROM user
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="info-box">
+                <span class="info-box-icon bg-info elevation-1"><i class="fa-solid fa-user"></i></span>
+
+                <div class="info-box-content">
+                  <span class="info-box-text">User Registrated</span>
+                  <span class="info-box-number">
+                    <?php
+                      $dash_query = "SELECT * from user";
+                      $dash_query_run = mysqli_query($con, $dash_query);
+                      
+                      if($user_total = mysqli_num_rows($dash_query_run))
+                      {
+                        echo '<h4 class="mb-0"> '.$user_total.' </h4>';
+                      }
+                      else
+                      {
+                        echo '<h4 class="mb-0"> No Data </h4>';
+                      }
+                    ?>
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-danger elevation-1"><i class="fa-solid fa-trophy"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Tournament Created</span>
+                <span class="info-box-number">
+                  <?php
+                    $dash_query = "SELECT * from tournament";
+                    $dash_query_run = mysqli_query($con, $dash_query);
+                    
+                    if($user_total = mysqli_num_rows($dash_query_run))
+                    {
+                      echo '<h4 class="mb-0"> '.$user_total.' </h4>';
+                    }
+                    else
+                    {
+                      echo '<h4 class="mb-0"> No Data </h4>';
+                    }
+                  ?>
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          
+          <!-- fix for small devices only -->
+          <div class="clearfix hidden-md-up"></div>
+
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Sales</span>
+                <span class="info-box-number">760</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Squad Created</span>
+                <span class="info-box-number">
+                  <?php
+                    $dash_query = "SELECT * from squad";
+                    $dash_query_run = mysqli_query($con, $dash_query);
+                    
+                    if($user_total = mysqli_num_rows($dash_query_run))
+                    {
+                      echo '<h4 class="mb-0"> '.$user_total.' </h4>';
+                    }
+                    else
+                    {
+                      echo '<h4 class="mb-0"> No Data </h4>';
+                    }
+                  ?>
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.container fluid -->
+        
+        <!-- Main row -->
+        <div class="row">
+          <!-- Left col -->
+          <section class="col-lg-6 connectedSortable">
+            <!-- Custom tabs (Charts with tabs)-->
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <h3 class="card-title">User Registration History</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th style="width: 1%">No.</th>
+                            <th style="width: 40%">User Registration</th>
+                            <th>Date Register</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php
+                            $limit = 5;
+                            $page = @$_GET['page'];
+                            if(empty($page)){
+                              $position = 0;
+                              $page = 1;
+                            }
+                            else{
+                              $position = ($page - 1) * $limit;
+                            }
+                            $no = 1;
+                            if($_SERVER['REQUEST_METHOD'] == "POST"){
+                              $search = trim(mysqli_real_escape_string($con, $_POST['search']));
+                            if($search != ''){
+                              $sql = "SELECT * FROM user
+                                WHERE name = '%$search%'
+                                ORDER BY created_at DESC, updated_at DESC";
+                              $query = $sql;
+                              $query_sum = $sql;
+                            }else{
+                              $query = "SELECT * FROM user
                                 ORDER BY created_at DESC, updated_at DESC
                                 LIMIT $position, $limit";
-                  $query_sum = "SELECT * FROM user";
-                  $no = $position + 1;
-                }
-                
-                $sql = mysqli_query($con, $query) or die(mysqli_error($con));
-                if(mysqli_num_rows($sql) > 0){
-                  while($data = mysqli_fetch_array($sql)){ ?>
-                    <tr>
-                      <td><?= $no++; ?></td>
-                      <td><?= $data['full_name']; ?></td>
-                      <td><?= indo_date($data['created_at']); ?> <br/>
-                        <small>
-                          <?= $data['updated_at']; ?>
-                        </small>
-                      </td>
-                    </tr>
-                  <?php
-                  }
-                }else{
-                echo "<tr><td colspan=\"7\" align=\"center\">Data tidak ditemukan</td></tr>";
-              }
-            ?>
-              </tbody>
-          </table>
-        </div>
-                <div class="card-footer">
+                              $query_sum = "SELECT * FROM user";
+                              $no = $position + 1;
+                            }
+                            }else{
+                              $query = "SELECT * FROM user
+                                ORDER BY created_at DESC, updated_at DESC
+                                LIMIT $position, $limit";
+                              $query_sum = "SELECT * FROM user";
+                              $no = $position + 1;
+                            }
+                                                  
+                              $sql = mysqli_query($con, $query) or die(mysqli_error($con));
+                                if(mysqli_num_rows($sql) > 0){
+                                  while($data = mysqli_fetch_array($sql)){ ?>
+                                    <tr>
+                                      <td><?= $no++; ?></td>
+                                      <td><?= $data['full_name']; ?></td>
+                                      <td><?= indo_date($data['created_at']); ?> </br>
+                                      <small>
+                                        <?= $data['updated_at']; ?>
+                                      </small>
+                                      </td>
+                                      <td>
+                                        <a href="crud/detail.php?id=<?= $data['id_user'] ?>" class="btn btn-primary btn-sm" >
+                                          <i class="fas fa-folder"></i>
+                                            View
+                                        </a>
+                                      </td>
+                                    </tr>
+                                    <?php
+                                    }
+                                    }else{
+                                      echo "<tr><td colspan=\"7\" align=\"center\">Data tidak ditemukan</td></tr>";
+                                    }
+                                    ?>
+                        </tbody>
+                      </table>
+                    </div>
+                    <!-- /.card-body -->
+                  </div>
+                  <!-- /.card -->
                 </div>
-                <!-- /.card-footer-->
+                <!-- /.col -->
               </div>
+              <!-- /.row -->
+          </section>
+          <!-- /.Left col -->
 
-              <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">
-                    <i class="fas fa-chart-pie mr-1"></i>
-                    Visitors
-                  </h3>
-                  <div class="card-tools">
-                    <ul class="nav nav-pills ml-auto">
-                      <li class="nav-item">
-                        <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div><!-- /.card-header -->
-                <div class="card-body">
-                  <div class="tab-content p-0">
-                    <!-- Morris chart - Sales -->
-                    <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
-                      <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
+          <!-- right col (We are only adding the ID to make the widgets sortable)-->
+          <section class="col-lg-6 connectedSortable">
+            
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <h3 class="card-title">Tournament History Registration</h3>
                     </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th style="width: 1%">No.</th>
+                            <th style="width: 40%">Tournament Name</th>
+                            <th>Date Created</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <?php
+                            $limit = 5;
+                            $page = @$_GET['page'];
+                            if(empty($page)){
+                              $position = 0;
+                              $page = 1;
+                            }
+                            else{
+                              $position = ($page - 1) * $limit;
+                            }
+                              $no = 1;
+                            if($_SERVER['REQUEST_METHOD'] == "POST"){
+                              $search = trim(mysqli_real_escape_string($con, $_POST['search']));
+                            if($search != ''){
+                              $sql = "SELECT * FROM tournament
+                                WHERE name = '%$search%'
+                                ORDER BY created_at DESC, updated_at DESC";
+                              $query = $sql;
+                              $query_sum = $sql;
+                            }else{
+                              $query = "SELECT * FROM tournament
+                                ORDER BY created_at DESC, updated_at DESC
+                                LIMIT $position, $limit";
+                              $query_sum = "SELECT * FROM tournament";
+                              $no = $position + 1;
+                            }
+                            }else{
+                              $query = "SELECT * FROM tournament
+                                ORDER BY created_at DESC, updated_at DESC
+                                LIMIT $position, $limit";
+                              $query_sum = "SELECT * FROM tournament";
+                              $no = $position + 1;
+                            }
+                                                  
+                            $sql = mysqli_query($con, $query) or die(mysqli_error($con));
+                              if(mysqli_num_rows($sql) > 0){
+                                while($data = mysqli_fetch_array($sql)){ ?>
+                                  <tr>
+                                    <td><?= $no++; ?></td>
+                                    <td><?= $data['name']; ?></td>
+                                    <td><?= indo_date($data['created_at']); ?> </br>
+                                    <small>
+                                      <?= $data['updated_at']; ?>
+                                    </small>
+                                    </td>
+                                    <td>
+                                      <a href="crud/detail.php?id=<?= $data['id_tournament'] ?>" class="btn btn-primary btn-sm" >
+                                        <i class="fas fa-folder"></i>
+                                        View
+                                      </a>
+                                    </td>
+                                  </tr>
+                                  <?php
+                                  }
+                                  }else{
+                                    echo "<tr><td colspan=\"7\" align=\"center\">Data tidak ditemukan</td></tr>";
+                                  }
+                                  ?>
+                          </tbody>
+                      </table>
+                    </div>
+                    <!-- /.card-body -->
                   </div>
-                </div><!-- /.card-body -->
+                  <!-- /.card -->
+                </div>
+                <!-- /.col -->
               </div>
-              <!-- /.card -->
-
-            </section>
-            <!-- /.Left col -->
-            <!-- right col (We are only adding the ID to make the widgets sortable)-->
-            <section class="col-lg-5 connectedSortable">
-
-              <!-- Map card -->
-              <div class="card bg-gradient-primary">
-                <div class="card-header border-0">
-                  <h3 class="card-title">
-                    <i class="fas fa-map-marker-alt mr-1"></i>
-                    History Registration
-                  </h3>
-                  <!-- card tools -->
-                  <div class="card-tools">
-                    <button type="button" class="btn btn-primary btn-sm daterange" title="Date range">
-                      <i class="far fa-calendar-alt"></i>
-                    </button>
-                    <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse">
-                      <i class="fas fa-minus"></i>
-                    </button>
-                  </div>
-                  <!-- /.card-tools -->
-                </div>
-                <div class="card-body">
-                  
-                </div>
-                <!-- /.card-body-->
-                <div class="card-footer bg-transparent">
-                  <div class="row">
-                    <div class="col-4 text-center">
-                      <div id="sparkline-1"></div>
-                      
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-4 text-center">
-                      <div id="sparkline-2"></div>
-                      
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-4 text-center">
-                      <div id="sparkline-3"></div>
-                      
-                    </div>
-                    <!-- ./col -->
-                  </div>
-                  <!-- /.row -->
-                </div>
-              </div>
-              <!-- /.card -->
-
-              <!-- solid sales graph -->
-              <div class="card bg-gradient-info">
-                <div class="card-header border-0">
-                  <h3 class="card-title">
-                    <i class="fas fa-th mr-1"></i>
-                    Sales Graph
-                  </h3>
-
-                  <div class="card-tools">
-                    <button type="button" class="btn bg-info btn-sm" data-card-widget="collapse">
-                      <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn bg-info btn-sm" data-card-widget="remove">
-                      <i class="fas fa-times"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <canvas class="chart" id="line-chart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer bg-transparent">
-                  <div class="row">
-                    <div class="col-4 text-center">
-                      <input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60" data-fgColor="#39CCCC">
-
-                      <div class="text-white">Mail-Orders</div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-4 text-center">
-                      <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60" data-fgColor="#39CCCC">
-
-                      <div class="text-white">Online</div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-4 text-center">
-                      <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60" data-fgColor="#39CCCC">
-
-                      <div class="text-white">In-Store</div>
-                    </div>
-                    <!-- ./col -->
-                  </div>
-                  <!-- /.row -->
-                </div>
-                <!-- /.card-footer -->
-              </div>
-              <!-- /.card -->
-
-              <!-- Calendar -->
-              <div class="card bg-gradient-success">
-                <div class="card-header border-0">
-
-                  <h3 class="card-title">
-                    <i class="far fa-calendar-alt"></i>
-                    Calendar
-                  </h3>
-                  <!-- tools card -->
-                  <div class="card-tools">
-                    <!-- button with a dropdown -->
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
-                        <i class="fas fa-bars"></i>
-                      </button>
-                      <div class="dropdown-menu" role="menu">
-                        <a href="#" class="dropdown-item">Add new event</a>
-                        <a href="#" class="dropdown-item">Clear events</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">View calendar</a>
-                      </div>
-                    </div>
-                    <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
-                      <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-success btn-sm" data-card-widget="remove">
-                      <i class="fas fa-times"></i>
-                    </button>
-                  </div>
-                  <!-- /. tools -->
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body pt-0">
-                  <!--The calendar -->
-                  <div id="calendar" style="width: 100%"></div>
-                </div>
-                <!-- /.card-body -->
-              </div>
-              <!-- /.card -->
+              <!-- /.row -->
             </section>
             <!-- right col -->
           </div>
@@ -526,5 +560,4 @@ if (!isset($_SESSION['user'])) {
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="dist/js/pages/dashboard.js"></script>
 </body>
-
 </html>

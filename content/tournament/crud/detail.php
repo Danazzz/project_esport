@@ -70,28 +70,6 @@ $data = mysqli_fetch_array($query);
             <div class="small-box bg-warning">
               <div class="inner">
                 <h3><?= $data['id_rules'] ?></h3>
-
-                <p>Rules</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="rules.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3><?= $data['id_bracket'] ?></h3>
-                <p>Bracket</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-pie-graph"></i>
-              </div>
-              <a href="bracket.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
           </div>
           <!-- ./col -->
         </div>
