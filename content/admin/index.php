@@ -68,7 +68,7 @@
                   $search = trim(mysqli_real_escape_string($con, $_POST['search']));
                   if($search != ''){
                                     $sql = "SELECT * FROM user
-                                    WHERE full_name = '%$search%' AND role = 'admin'
+                                    WHERE full_name LIKE '%$search%' AND role = 'admin'
                                     ORDER BY created_at DESC, updated_at DESC
                     ";
                     $query = $sql;

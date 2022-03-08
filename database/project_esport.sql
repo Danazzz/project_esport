@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2022 at 09:43 AM
+-- Generation Time: Mar 01, 2022 at 07:53 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -140,21 +140,6 @@ CREATE TABLE `organizer` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rules_tournament`
---
-
-CREATE TABLE `rules_tournament` (
-  `id_rules` int(11) NOT NULL,
-  `mode` varchar(255) NOT NULL,
-  `match_system` varchar(255) NOT NULL,
-  `requirements` text NOT NULL,
-  `device` varchar(255) NOT NULL,
-  `custom` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `squad`
 --
 
@@ -201,7 +186,10 @@ CREATE TABLE `topup` (
 CREATE TABLE `tournament` (
   `id_tournament` varchar(50) NOT NULL,
   `id_user` varchar(50) NOT NULL,
+  `id_registeam` int(11) NOT NULL,
   `id_game` varchar(50) NOT NULL,
+  `id_schedule` int(11) NOT NULL,
+  `id_rules` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `type` enum('free','paid') NOT NULL,
   `status` enum('open','closed','ongoing','comingsoon') NOT NULL,
@@ -212,8 +200,57 @@ CREATE TABLE `tournament` (
   `price` int(11) NOT NULL,
   `description` text NOT NULL,
   `image` varchar(255) NOT NULL,
+  `id_bracket` int(11) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tournament`
+--
+
+INSERT INTO `tournament` (`id_tournament`, `id_user`, `id_registeam`, `id_game`, `id_schedule`, `id_rules`, `name`, `type`, `status`, `location`, `city`, `address`, `coordinates`, `price`, `description`, `image`, `id_bracket`, `created_at`, `updated_at`) VALUES
+('12345678AABBCC', '41930026', 0, '62108a45e522d', 0, 0, 'Tournamnet test', 'free', 'open', 'online', 'Denpasar Utara', 'Jln. Cargo Permai', '-8.643575 , 115.209175', 0, 'tes tournament', '', 0, '2022-02-28 10:45:13', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tournament_bracket`
+--
+
+CREATE TABLE `tournament_bracket` (
+  `id_bracket` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tournament_registeam`
+--
+
+CREATE TABLE `tournament_registeam` (
+  `id_registeam` int(11) NOT NULL,
+  `id_squad` varchar(50) NOT NULL,
+  `member1` varchar(50) NOT NULL,
+  `member2` varchar(50) NOT NULL,
+  `member3` varchar(50) NOT NULL,
+  `member4` varchar(50) NOT NULL,
+  `member5` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tournament_rules`
+--
+
+CREATE TABLE `tournament_rules` (
+  `id_rules` int(11) NOT NULL,
+  `mode` varchar(255) NOT NULL,
+  `match_system` varchar(255) NOT NULL,
+  `requirements` text NOT NULL,
+  `device` varchar(255) NOT NULL,
+  `custom` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -345,12 +382,6 @@ ALTER TABLE `login`
   ADD UNIQUE KEY `id_user` (`id_user`);
 
 --
--- Indexes for table `rules_tournament`
---
-ALTER TABLE `rules_tournament`
-  ADD PRIMARY KEY (`id_rules`);
-
---
 -- Indexes for table `squad`
 --
 ALTER TABLE `squad`
@@ -361,6 +392,24 @@ ALTER TABLE `squad`
 --
 ALTER TABLE `tournament`
   ADD PRIMARY KEY (`id_tournament`);
+
+--
+-- Indexes for table `tournament_bracket`
+--
+ALTER TABLE `tournament_bracket`
+  ADD PRIMARY KEY (`id_bracket`);
+
+--
+-- Indexes for table `tournament_registeam`
+--
+ALTER TABLE `tournament_registeam`
+  ADD PRIMARY KEY (`id_registeam`);
+
+--
+-- Indexes for table `tournament_rules`
+--
+ALTER TABLE `tournament_rules`
+  ADD PRIMARY KEY (`id_rules`);
 
 --
 -- Indexes for table `tournament_schedule`
@@ -410,9 +459,21 @@ ALTER TABLE `login`
   MODIFY `id_logIn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `rules_tournament`
+-- AUTO_INCREMENT for table `tournament_bracket`
 --
-ALTER TABLE `rules_tournament`
+ALTER TABLE `tournament_bracket`
+  MODIFY `id_bracket` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tournament_registeam`
+--
+ALTER TABLE `tournament_registeam`
+  MODIFY `id_registeam` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tournament_rules`
+--
+ALTER TABLE `tournament_rules`
   MODIFY `id_rules` int(11) NOT NULL AUTO_INCREMENT;
 
 --
