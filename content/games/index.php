@@ -68,7 +68,7 @@
                   $search = trim(mysqli_real_escape_string($con, $_POST['search']));
                   if($search != ''){
                                     $sql = "SELECT * FROM game
-                                    WHERE name = '%$search%'
+                                    WHERE name LIKE '%$search%'
                                     ORDER BY created_at DESC, updated_at DESC
                     ";
                     $query = $sql;
