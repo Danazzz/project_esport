@@ -387,7 +387,7 @@ if (!isset($_SESSION['user'])) {
                                       </small>
                                       </td>
                                       <td>
-                                        <a href="crud/detail.php?id=<?= $data['id_user'] ?>" class="btn btn-primary btn-sm" >
+                                        <a href="content/user/crud/detail.php?id=<?= $data['id_user'] ?>" class="btn btn-primary btn-sm" >
                                           <i class="fas fa-folder"></i>
                                             View
                                         </a>
@@ -478,7 +478,7 @@ if (!isset($_SESSION['user'])) {
                                     </small>
                                     </td>
                                     <td>
-                                      <a href="crud/detail.php?id=<?= $data['id_tournament'] ?>" class="btn btn-primary btn-sm" >
+                                      <a href="content/tournament/crud/detail.php?id=<?= $data['id_tournament'] ?>" class="btn btn-primary btn-sm" >
                                         <i class="fas fa-folder"></i>
                                         View
                                       </a>
