@@ -44,8 +44,11 @@
                       <th style="width: 5%">
                         Tournament ID
                       </th>
-                      <th style="width: 12%">
+                      <th style="width: 10%">
                         Tournament Name
+                      </th>
+                      <th style="width: 10%">
+                      Game
                       </th>
                       <th style="width: 5%">
                         Status
