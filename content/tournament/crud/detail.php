@@ -85,7 +85,6 @@ $data = mysqli_fetch_array($query);
             <div class="small-box bg-danger">
               <div class="inner">
                 <h3><?= $data['id_bracket'] ?></h3>
-
                 <p>Bracket</p>
               </div>
               <div class="icon">
