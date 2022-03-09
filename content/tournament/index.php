@@ -80,22 +80,26 @@
                   $search = trim(mysqli_real_escape_string($con, $_POST['search']));
                   if($search != ''){
                                     $sql = "SELECT * FROM tournament
-                                    WHERE name LIKE '%$search%'
+                                    INNER JOIN game USING (id_game)
+                                    WHERE tournament.name LIKE '%$search%'
                                     ORDER BY created_at DESC, updated_at DESC
                     ";
+                  
                     $query = $sql;
                     $query_sum = $sql;
                   }else{
                     $query = "SELECT * FROM tournament
-                                    ORDER BY created_at DESC, updated_at DESC
-                                    LIMIT $position, $limit";
+                              INNER JOIN game USING (id_game)
+                              WHERE tournament.id_game
+                              ORDER BY created_at DESC, updated_at DESC
+                              LIMIT $position, $limit";
                     $query_sum = "SELECT * FROM tournament";
                     $no = $position + 1;
                   }
                 }else{
                   $query = "SELECT * FROM tournament
-                                ORDER BY created_at DESC, updated_at DESC
-                                LIMIT $position, $limit";
+                            ORDER BY created_at DESC, updated_at DESC
+                            LIMIT $position, $limit";
                   $query_sum = "SELECT * FROM tournament";
                   $no = $position + 1;
                 }
@@ -107,6 +111,7 @@
                       <td><?= $no++; ?></td>
                       <td><?= $data['id_tournament']; ?></td>
                       <td><?= $data['name']; ?></td>
+                      <td><?= $data['id_game']; ?></td>
                       <td><?= $data['status']; ?></td>
                       <td><?= $data['price']; ?></td>
                       <td><?= indo_date($data['created_at']); ?> <br/>
