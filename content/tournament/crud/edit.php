@@ -30,8 +30,8 @@ $data = mysqli_fetch_array($query);
     <section class="content">
       <form action="proses.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?= $id ?>">
-        <div class="row">
-          <div class="col-md-6 mx-auto">
+          <div class="row">
+          <div class="col-md-6">
             <div class="card card-primary">
               <div class="card-header">
                 <h3 class="card-title">Tournament</h3>
@@ -45,26 +45,39 @@ $data = mysqli_fetch_array($query);
               <div class="card-body">
                 <div class="form-group">
                   <label for="name">Tournament Name</label>
-                  <input type="text" name="name" id="name" class="form-control" value="<?= $data['name'] ?>">
+                  <input type="text" name="name" id="name" class="form-control" placeholder="PMGC Season 0" required>
                 </div>
                 <div class="form-group">
-                    <label for="type">Type</label>
-                    <div>
-                        <label class="radio-inline">
-                            <input type="radio" name="type" id="free" value="free"> Free
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="type" id="paid" value="paid"> paid
-                        </label>
-                    </div>
+                  <label for="game">Game</label>
+                  <select name="game" id="game" class="form-control custom-select" required>
+                    <option selected disabled>Select one</option>
+                    <option value="open">Mobile Legends : Bang Bang</option>
+                    <option value="closed">Player Unknown Battle Ground Mobile</option>
+                    <option value="closed">Valorant</option>
+                    <option value="closed">Free Fire</option>
+                    <option value="closed">Arena of Valor</option>
+                    <option value="closed">League of Legends : Wild Rift</option>
+                    <option value="closed">Apex Legends Mobile</option>
+                    <option value="closed">Call of Duty Mobile</option>
+                    <option value="closed">Lokapala</option>
+                    <option value="closed">Pro Evolution Soccer</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="type">Type</label>
+                  <select name="type" id="type" class="form-control custom-select" required>
+                    <option selected disabled>Select one</option>
+                    <option value="open">Free</option>
+                    <option value="closed">Paid</option>
+                  </select>
                 </div>
                 <div class="form-group">
                   <label for="t_regis">Team Registered</label>
-                  <input type="t_regis" name="t_regis" id="t_regis" class="form-control">
+                  <input type="t_regis" name="t_regis" id="t_regis" class="form-control" required>
                 </div>
                 <div class="form-group">
                   <label for="status">Status</label>
-                  <select name="status" id="status" class="form-control custom-select">
+                  <select name="status" id="status" class="form-control custom-select" required>
                     <option selected disabled>Select one</option>
                     <option value="open">Open</option>
                     <option value="closed">Closed</option>
@@ -74,70 +87,158 @@ $data = mysqli_fetch_array($query);
                 </div>
                 <div class="form-group">
                   <label for="t_mode">Tournament Mode</label>
-                  <input type="text" name="t_mode" id="t_mode" class="form-control" value="<?= $data['mode'] ?>">
+                  <input type="text" name="t_mode" id="t_mode" class="form-control" placeholder="Single Elimination" required>
                 </div>
                 <div class="form-group">
-                    <label for="loc">Location</label>
-                    <div>
-                        <label class="radio-inline">
-                            <input type="radio" name="loc" id="online" value="online"> Online
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="loc" id="offline" value="offline"> Offline
-                        </label>
-                    </div>
+                  <label for="loc">Location</label>
+                  <select name="loc" id="loc" class="form-control custom-select" required>
+                    <option selected disabled>Select one</option>
+                    <option value="open">Offline</option>
+                    <option value="closed">Online</option>
+                  </select>
                 </div>
                 <div class="form-group">
                   <label for="city">City</label>
-                  <input type="text" name="city" id="city" class="form-control" value="<?= $data['city'] ?>">
+                  <input type="text" name="city" id="city" class="form-control" required>
                 </div>
                 <div class="form-group">
                   <label for="address">Address</label>
-                  <input type="text" name="address" id="address" class="form-control" value="<?= $data['address'] ?>">
+                  <input type="text" name="address" id="address" class="form-control" required>
                 </div>
                 <div class="form-group">
                   <label for="coordinate">Coordinates</label>
-                  <input type="text" name="coordinate" id="coordinate" class="form-control" value="<?= $data['coordinates'] ?>">
+                  <input type="text" name="coordinate" id="coordinate" class="form-control" required>
                 </div>
                 <div class="form-group">
                   <label for="price">Price</label>
-                  <input type="price" name="price" id="price" class="form-control" value="<?= $data['price'] ?>">
-                </div>
-                <div class="form-group">
-                  <label for="date">Date</label>
-                  <input type="date" name="date" id="date" class="form-control" value="<?= $data['date'] ?>">
+                  <input type="price" name="price" id="price" class="form-control" placeholder="xxx.xxx.xxx" required>
                 </div>
                 <div class="form-group">
                   <label for="description">Description</label>
-                  <textarea name="description" id="description" class="form-control" value="<?= $data['description']?>" placeholder="Add a description..." ></textarea>
+                  <textarea name="description" id="description" class="form-control" placeholder="Add a description..."></textarea>
                 </div>
                 <div class="form-group">
                   <label for="image">Image</label><br>
-                  <input type="file" id="image" name="image">
+                  <input type="file" id="image" name="image" required>
                 </div>
                 <div class="form-group">
-                  <label for="startdate">Start Date</label>
-                  <input type="date" name="startdate" id="startdate" class="form-control" value="<?= $data['startTime'] ?>">
-                </div>
-                <div class="form-group">
-                  <label for="enddate">End Date</label>
-                  <input type="date" name="enddate" id="enddate" class="form-control" value="<?= $data['endTime'] ?>">
-                </div>
-              <div class="row">
-                <div class="mb-3 mx-auto">
-                  <input type="submit" name="edit" value="Save Changes" class="btn btn-success">
+                  <label for="date">Date</label>
+                  <input type="date" name="date" id="date" class="form-control" required>
                 </div>
               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
           </div>
-        </div>
-        <div class="row">
-          <div class="col-12 mb-3">
-            <a href="../index.html" class="btn btn-secondary float-right">Cancel</a>
+          <!-- /.col -->
+
+          <div class="col-md-6">
+            <div class="card card-secondary">
+              <div class="card-header">
+                <h3 class="card-title">Tournament</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="name">Tournament Name</label>
+                  <input type="text" name="name" id="name" class="form-control" placeholder="PMGC Season 0" required>
+                </div>
+                <div class="form-group">
+                  <label for="game">Game</label>
+                  <select name="game" id="game" class="form-control custom-select" required>
+                    <option selected disabled>Select one</option>
+                    <option value="open">Mobile Legends : Bang Bang</option>
+                    <option value="closed">Player Unknown Battle Ground Mobile</option>
+                    <option value="closed">Valorant</option>
+                    <option value="closed">Free Fire</option>
+                    <option value="closed">Arena of Valor</option>
+                    <option value="closed">League of Legends : Wild Rift</option>
+                    <option value="closed">Apex Legends Mobile</option>
+                    <option value="closed">Call of Duty Mobile</option>
+                    <option value="closed">Lokapala</option>
+                    <option value="closed">Pro Evolution Soccer</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="type">Type</label>
+                  <select name="type" id="type" class="form-control custom-select" required>
+                    <option selected disabled>Select one</option>
+                    <option value="open">Free</option>
+                    <option value="closed">Paid</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="t_regis">Team Registered</label>
+                  <input type="t_regis" name="t_regis" id="t_regis" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="status">Status</label>
+                  <select name="status" id="status" class="form-control custom-select" required>
+                    <option selected disabled>Select one</option>
+                    <option value="open">Open</option>
+                    <option value="closed">Closed</option>
+                    <option value="ongoing">On Going</option>
+                    <option value="comingsoon">Coming Soon</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="t_mode">Tournament Mode</label>
+                  <input type="text" name="t_mode" id="t_mode" class="form-control" placeholder="Single Elimination" required>
+                </div>
+                <div class="form-group">
+                  <label for="loc">Location</label>
+                  <select name="loc" id="loc" class="form-control custom-select" required>
+                    <option selected disabled>Select one</option>
+                    <option value="open">Offline</option>
+                    <option value="closed">Online</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="city">City</label>
+                  <input type="text" name="city" id="city" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="address">Address</label>
+                  <input type="text" name="address" id="address" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="coordinate">Coordinates</label>
+                  <input type="text" name="coordinate" id="coordinate" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="price">Price</label>
+                  <input type="price" name="price" id="price" class="form-control" placeholder="xxx.xxx.xxx" required>
+                </div>
+                <div class="form-group">
+                  <label for="description">Description</label>
+                  <textarea name="description" id="description" class="form-control" placeholder="Add a description..."></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="image">Image</label><br>
+                  <input type="file" id="image" name="image" required>
+                </div>
+                <div class="form-group">
+                  <label for="date">Date</label>
+                  <input type="date" name="date" id="date" class="form-control" required>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
           </div>
-        </div>
+          <!-- /.col -->
+          </div>
+          <div class="row">
+            <div class="col-12 mb-3">
+              <a href="../index.html" class="btn btn-secondary">Cancel</a>
+              <input type="submit" name="edit" value="Save Changes" class="btn btn-success float-right">
+            </div>
+          </div>
       </form>
     </section>
     <!-- /.content -->

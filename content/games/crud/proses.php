@@ -4,6 +4,7 @@ require_once "../../../config/conn.php";
 if(isset($_POST['add'])) {
     $id_game = uniqid();
     $name = trim(mysqli_real_escape_string($con, $_POST['name']));
+    $path = "../../../database/img/games/";
     $image = upload($path);
     if(!$image){
         return false;
