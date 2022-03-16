@@ -42,7 +42,7 @@
                     <th style="width: 10%">
                       Game
                     </th>
-                    <th style="width: 5%">
+                    <th style="width: 3%">
                       Status
                     </th>
                     <th style="width: 5%">
@@ -134,7 +134,6 @@
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-
           </div>
           <!-- /.col -->
         </div>

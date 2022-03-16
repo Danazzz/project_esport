@@ -45,7 +45,7 @@ $data = mysqli_fetch_array($query);
               <div class="card-body">
                 <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="text" name="name" id="name" class="form-control" value="<?= $data['name'] ?>">
+                  <input type="text" name="name" id="name" class="form-control" value="<?= $data['game_name'] ?>">
                 </div>
                 <div class="form-group">
                   <label for="image">Change Image</label>
