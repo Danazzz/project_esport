@@ -1,7 +1,7 @@
 <?php include_once('../../_include/header_crud.php');
 
 $id = @$_GET['id'];
-$sql = "SELECT * FROM tournament
+$sql = "SELECT tournament.*, game.*, tournament_rules.*, tournament_schedule.* FROM tournament, game, tournament_rules, tournament_schedule
 WHERE id_tournament = '$id'
 ";
 $query = mysqli_query($con, $sql);
@@ -16,13 +16,16 @@ $data = mysqli_fetch_array($query);
       <div class="row mb-2">
         <div class="col-sm-6">
           <strong>Id Tournament:</strong>
-          <h1 class="text-primary"><?= $data['id_tournament'] ?></h1>
+          <h1 class="text-primary"><?= $data['id_tournament']; ?></h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="../index.html">Tournament</a></li>
             <li class="breadcrumb-item active">Detail</li>
           </ol>
+        </div>
+        <div class="col-12">
+          <td><?= $data['image'];">"?></td>
         </div>
       </div>
     </div><!-- /.container-fluid -->
@@ -34,156 +37,90 @@ $data = mysqli_fetch_array($query);
     <div class="card">
       <div class="card-header">
         <div class="row">
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3><?= $data['id_registeam'] ?><sup style="font-size: 20px">/5</sup></h3>
-                <h3></h3>
-
-                <p>Registered Team</p>
+          <div class="col-12">
+            <div class="card card-primary card-tabs">
+              <div class="card-header p-0 pt-1">
+                <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+                  <li class="nav-item col-md-2">
+                    <a class="nav-link active text-center" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">Overview</a>
+                  </li>
+                  <li class="nav-item col-md-2">
+                    <a class="nav-link text-center" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Jadwal</a>
+                  </li>
+                  <li class="nav-item col-md-2">
+                    <a class="nav-link text-center" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">Peraturan</a>
+                  </li>
+                  <li class="nav-item col-md-2">
+                    <a class="nav-link text-center" id="custom-tabs-one-settings-tab" data-toggle="pill" href="#custom-tabs-one-settings" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">Bracket</a>
+                  </li>
+                  <li class="nav-item col-md-2">
+                    <a class="nav-link text-center" id="custom-tabs-one-about-tab" data-toggle="pill" href="#custom-tabs-one-about" role="tab" aria-controls="custom-tabs-one-about" aria-selected="false">Team Registered</a>
+                  </li>
+                </ul>
               </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
+              <div class="card-body">
+                <div class="tab-content" id="custom-tabs-one-tabContent">
+                  <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
+                    <small>Penyelenggara</small> <br>
+                    Nimo TV <br><br>
+                    <small>Komunitas</small> <br>
+                    GarudaKu <br><br>
+                    <small>Mode Turnamen</small> <br>
+                    <td><?= $data['mode']; ?><br><br> 
+                    <small>Lokasi</small> <br>
+                    <td><?= $data['location']; ?></td><br><br>
+                    <small>Tim Terdaftar</small> <br>
+                    <?= $data['id_registeam']; ?><sup>/5</sup><br><br>
+                    <small>Biaya Pendaftaran</small> <br>
+                    <td><?= $data['regis_fee']; ?></td><br><br>
+                    <small>Total Hadiah</small> <br>
+                    <td><?= $data['price']; ?></td><br><br>
+                    <small>Deskripsi</small> <br>
+                    <td><?= $data['description']; ?></td>
+                  </div>
+                  <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
+                    <small>Pendaftaran Dibuka</small> <br>
+                    <td><?= $data['registration']; ?></td><br><br>
+                    <small>Rapat Teknis</small> <br>
+                    <td><?= $data['technical_meeting']; ?></td><br><br>
+                    <small>Turnamen Dimulai</small> <br>
+                    <td><?= $data['start']; ?></td>
+                  </div>
+                  <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
+                    <small>Mode Turnamen</small> <br>
+                    <td><?= $data['mode']; ?><br><br>
+                    <small>Sistem Pertandingan</small> <br>
+                    <td><?= $data['match_system']; ?><br><br>
+                    <small>Persyaratan Tim</small> <br>
+                    <td><?= $data['requirements']; ?><br><br>
+                    <small>Perangkat dan Sinyal</small> <br>
+                    <td><?= $data['device']; ?><br><br>
+                  </div>
+                  <div class="tab-pane fade" id="custom-tabs-one-settings" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
+                    <!-- Bracket on detail -->
+                    <link rel="stylesheet" href="../../bracket.js">
+                    <div id="add" class="metroBtn">Add Bracket</div>
+                    <div id="clear" class="metroBtn">Clear</div>
+                    <div class="brackets" id="brackets"></div>
+                  </div>
+                  <div class="tab-pane fade" id="custom-tabs-one-about" role="tabpanel" aria-labelledby="custom-tabs-one-about-tab">
+                    <h2 style: text-center>Tim yang Terdaftar</h2>
+                  </div>
+                </div>
               </div>
-              <a href="registeam.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <!-- /.card body-->
             </div>
+            <!-- /.card -->
           </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3><?= $data['id_schedule'] ?></h3>
-
-                <p>Schedule</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-stats-bars"></i>
-              </div>
-              <a href="schedule.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3><?= $data['id_rules'] ?></h3>
-          </div>
-          <!-- ./col -->
+          <!-- /.col -->
         </div>
+        <!-- /.row -->
       </div>
-      <div class="card-body">
-        <div class="row">
-          <div class="row">
-            <div class="col-12">
-              <h4>Recent Activity</h4>
-              <div class="post">
-                <div class="user-block">
-                  <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
-                  <span class="username">
-                    <a href="#">Jonathan Burke Jr.</a>
-                  </span>
-                  <span class="description">Shared publicly - 7:45 PM today</span>
-                </div>
-                <!-- /.user-block -->
-                <p>
-                  Lorem ipsum represents a long-held tradition for designers,
-                  typographers and the like. Some people hate it and argue for
-                  its demise, but others ignore.
-                </p>
-
-                <p>
-                  <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 1 v2</a>
-                </p>
-              </div>
-
-              <div class="post clearfix">
-                <div class="user-block">
-                  <img class="img-circle img-bordered-sm" src="../../dist/img/user7-128x128.jpg" alt="User Image">
-                  <span class="username">
-                    <a href="#">Sarah Ross</a>
-                  </span>
-                  <span class="description">Sent you a message - 3 days ago</span>
-                </div>
-                <!-- /.user-block -->
-                <p>
-                  Lorem ipsum represents a long-held tradition for designers,
-                  typographers and the like. Some people hate it and argue for
-                  its demise, but others ignore.
-                </p>
-                <p>
-                  <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 2</a>
-                </p>
-              </div>
-
-              <div class="post">
-                <div class="user-block">
-                  <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
-                  <span class="username">
-                    <a href="#">Jonathan Burke Jr.</a>
-                  </span>
-                  <span class="description">Shared publicly - 5 days ago</span>
-                </div>
-                <!-- /.user-block -->
-                <p>
-                  Lorem ipsum represents a long-held tradition for designers,
-                  typographers and the like. Some people hate it and argue for
-                  its demise, but others ignore.
-                </p>
-
-                <p>
-                  <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 1 v1</a>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
-          <h3 class="text-primary"><i class="fas fa-paint-brush"></i> AdminLTE v3</h3>
-          <p class="text-muted">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terr.</p>
-          <br>
-          <div class="text-muted">
-            <p class="text-sm">Client Company
-              <b class="d-block">Deveint Inc</b>
-            </p>
-            <p class="text-sm">Project Leader
-              <b class="d-block">Tony Chicken</b>
-            </p>
-          </div>
-
-          <h5 class="mt-5 text-muted">Project files</h5>
-          <ul class="list-unstyled">
-            <li>
-              <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i> Functional-requirements.docx</a>
-            </li>
-            <li>
-              <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-pdf"></i> UAT.pdf</a>
-            </li>
-            <li>
-              <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-envelope"></i> Email-from-flatbal.mln</a>
-            </li>
-            <li>
-              <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-image "></i> Logo.png</a>
-            </li>
-            <li>
-              <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i> Contract-10_12_2014.docx</a>
-            </li>
-          </ul>
-          <div class="text-center mt-5 mb-3">
-            <a href="#" class="btn btn-sm btn-primary">Add files</a>
-            <a href="#" class="btn btn-sm btn-warning">Report contact</a>
-          </div>
-        </div>
-      </div>
+      <!-- /.card header -->
     </div>
-    <!-- /.card-body -->
-</div>
-<!-- /.card -->
-
-</section>
-<!-- /.content -->
+    <!-- /.card -->
+  </section>
+  <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 

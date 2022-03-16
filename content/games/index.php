@@ -94,7 +94,7 @@
                     <tr>
                       <td><?= $no++; ?></td>
                       <td><?= $data['id_game']; ?></td>
-                      <td><?= $data['name']; ?></td>
+                      <td><?= $data['game_name']; ?></td>
                       <td><img src="../../database/img/games/<?= $data['image'] ?>" width='90' height='110'></td>
                       <td class="project-actions text-right">
                         <a href="crud/edit.php?id=<?= $data['id_game'] ?>" class="btn btn-info btn-sm">

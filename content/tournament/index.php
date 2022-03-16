@@ -78,19 +78,17 @@
                       $query = $sql;
                       $query_sum = $sql;
                     }else{
-                    $query = "SELECT tournament.id_tournament, tournament.name, game.game_name, tournament.status, tournament.created_at
-                              FROM tournament
-                              INNER JOIN game ON tournament.id_game = game.id_game
+                    $query = "SELECT tournament.*, game.game_name FROM tournament INNER JOIN game on tournament.id_game = game.id_game
                               ORDER BY created_at DESC, updated_at DESC
                               LIMIT $position, $limit";
-                    $query_sum = "SELECT * FROM tournament";
+                    $query_sum = "SELECT tournament.*, game.game_name FROM tournament INNER JOIN game on tournament.id_game = game.id_game";
                     $no = $position + 1;
                     }
                     }else{
-                    $query = "SELECT * FROM tournament
+                    $query = "SELECT tournament.*, game.game_name FROM tournament INNER JOIN game on tournament.id_game = game.id_game
                               ORDER BY created_at DESC, updated_at DESC
                               LIMIT $position, $limit";
-                    $query_sum = "SELECT * FROM tournament";
+                    $query_sum = "SELECT tournament.*, game.game_name FROM tournament INNER JOIN game on tournament.id_game = game.id_game";
                     $no = $position + 1;
                     }
                 
@@ -101,7 +99,7 @@
                           <td><?= $no++; ?></td>
                           <td><?= $data['id_tournament']; ?></td>
                           <td><?= $data['name']; ?></td>
-                          <td><?= $data['id_game']; ?></td>
+                          <td><?= $data['game_name']; ?></td>
                           <td><?= $data['status']; ?></td>
                           <td><?= $data['price']; ?></td>
                           <td><?= indo_date($data['created_at']); ?> <br/>

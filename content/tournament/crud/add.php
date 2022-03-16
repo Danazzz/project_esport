@@ -41,7 +41,7 @@
                 </div>
                 <div class="form-group">
                   <label for="game">Game</label>
-                  <select name="game" id="game" class="form-control custom-select" required>
+                  <select name="game_name" id="game" class="form-control custom-select" required>
                     <option selected disabled>Select one</option>
                     <option value="">Mobile Legends : Bang Bang</option>
                     <option value="closed">PUBG Mobile</option>
