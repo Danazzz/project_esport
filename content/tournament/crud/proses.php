@@ -1,5 +1,5 @@
 <?php
-require_once "../../../config/conn.php";
+require_once "../../_include/header_crud.php";
 
 if(isset($_POST['add'])) {
     $id_tournament = uniqid();
@@ -7,14 +7,13 @@ if(isset($_POST['add'])) {
     $type = trim(mysqli_real_escape_string($con, $_POST['type']));
     $t_regis = trim(mysqli_real_escape_string($con, $_POST['t_regis']));
     $status = trim(mysqli_real_escape_string($con, $_POST['status']));
-    $t_mode = trim(mysqli_real_escape_string($con, $_POST['t_mode']));
     $loc = trim(mysqli_real_escape_string($con, $_POST['loc']));
     $city = trim(mysqli_real_escape_string($con, $_POST['city']));
     $address = trim(mysqli_real_escape_string($con, $_POST['address']));
     $coordinate = trim(mysqli_real_escape_string($con, $_POST['coordinate']));
     $price = trim(mysqli_real_escape_string($con, $_POST['price']));
-    $date = trim(mysqli_real_escape_string($con, $_POST['date']));
     $description = trim(mysqli_real_escape_string($con, $_POST['description']));
+    $path = "../../../database/img/";
     $image = upload($path);
     if(!$image){
         return false;
@@ -22,7 +21,7 @@ if(isset($_POST['add'])) {
     $startdate = trim(mysqli_real_escape_string($con, $_POST['startdate']));
     $enddate = trim(mysqli_real_escape_string($con, $_POST['enddate']));
 
-    mysqli_query($con,"INSERT INTO tournament (id_tournament, name, type, status, mode, location, city, address, coordinates, price, date, description, image, startTime, endTime) VALUES ('$id_tournament', '$name', '$type', '$status', '$t_mode', '$loc', '$city', '$address', '$coordinate', '$price', '$date', '$description', '$image', '$startdate', '$enddate')") or die (mysqli_error($con));
+    mysqli_query($con,"INSERT INTO tournament (id_tournament, name, type, status, location, city, address, coordinates, price, description, image) VALUES ('$id_tournament', '$name', '$type', '$status', '$loc', '$city', '$address', '$coordinate', '$price','$description', '$image')") or die (mysqli_error($con));
     echo "<script>alert('Tournament added!');window.location='../index.php';</script>";
 }
 else if(isset($_POST['edit'])) {

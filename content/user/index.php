@@ -26,19 +26,23 @@
     <div class="card">
       <div class="card-header">
         <div class="card-tools">
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown button
+          <!-- Default dropstart button -->
+          <div class="btn-group dropstart">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-filter"></i>
             </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <ul class="dropdown-menu">
+              <!-- Dropdown menu links -->
+              <li><span class="dropdown-item-text">Descend</span></li>
+              <li><a class="dropdown-item" href="#">Ascend</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Separated link</a></li>
+              <li><span class="dropdown-item-text">Status</span></li>
               <li><a class="dropdown-item" href="#">Action</a></li>
               <li><a class="dropdown-item" href="#">Another action</a></li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </div>
-          <button type="button" class="btn btn-tool" data-card-widget="dropdown" title="Collapse">
-            <i class="fas fa-filter"></i>
-          </button>
         </div>
       </div>
       <div class="card-body p-0">
