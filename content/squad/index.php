@@ -21,19 +21,14 @@
 
     <!-- Main content -->
     <section class="content">
-
-      <!-- Default box -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-              <i class="fas fa-minus"></i>
-            </button>
-          </div>
-        </div>
-        <div class="card-body p-0">
-          <table class="table table-striped projects">
-              <thead>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped text-center">
+                  <thead>
                   <tr>
                     <th style="width: 1%">
                       No.
@@ -54,9 +49,9 @@
                       <a href="crud/add.php" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-plus"></i> Add Squad</a>
                     </th>
                   </tr>
-              </thead>
-              <tbody>
-              <?php
+                  </thead>
+                  <tbody>
+                  <?php
                 $limit = 7;
                 $page = @$_GET['page'];
                 if(empty($page)){
@@ -127,14 +122,20 @@
                 }else{
                 echo "<tr><td colspan=\"4\" align=\"center\">Not found!</td></tr>";
               }
-            ?>
-              </tbody>
-          </table>
-        </div>
-        <!-- /.card-body -->
-      </div>
-      <!-- /.card -->
+            ?>                    
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
 
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container -->
     </section>
     <!-- /.content -->
   </div>

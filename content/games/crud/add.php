@@ -36,8 +36,8 @@
               </div>
               <div class="card-body">
                 <div class="form-group">
-                  <label for="name">Name</label>
-                  <input type="text" name="name" id="name" class="form-control">
+                  <label for="game_name">Name</label>
+                  <input type="text" name="game_name" id="game_name" class="form-control">
                 </div>
                 <div class="form-group">
                   <label for="image">Image</label>
@@ -56,7 +56,7 @@
         </div>
         <div class="row">
           <div class="col-12 mb-3">
-            <a href="../../index.html" class="btn btn-secondary float-right">Cancel</a>
+            <a href="../index.html" class="btn btn-secondary float-right">Cancel</a>
           </div>
         </div>
       </form>

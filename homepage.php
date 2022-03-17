@@ -128,37 +128,37 @@ if (!isset($_SESSION['user'])) {
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="content/admin/" class="nav-link">
-                    <i class="nav-icon fa fa-book"></i>
+                    <i class="nav-icon fa-solid fa-user-gear"></i>
                     <p class="text">Admin</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="content/organizer/" class="nav-link">
-                    <i class="nav-icon fa fa-book"></i>
+                    <i class="nav-icon fa-solid fa-user-pen"></i>
                     <p class="text">Organizer</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="content/user/" class="nav-link">
-                    <i class="nav-icon fa fa-book"></i>
+                    <i class="nav-icon fa-solid fa-user"></i>
                     <p class="text">User</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="content/squad/" class="nav-link">
-                    <i class="nav-icon fa fa-book"></i>
+                    <i class="nav-icon fa-solid fa-users"></i>
                     <p class="text">Squad</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="content/tournament/" class="nav-link">
-                    <i class="nav-icon fa fa-book"></i>
+                    <i class="nav-icon fa-solid fa-trophy"></i>
                     <p class="text">Tournament</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="content/games/" class="nav-link">
-                    <i class="nav-icon fa fa-book"></i>
+                    <i class="nav-icon fa-solid fa-gamepad"></i>
                     <p class="text">Games</p>
                   </a>
                 </li>
@@ -276,7 +276,7 @@ if (!isset($_SESSION['user'])) {
 
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
-              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+              <span class="info-box-icon bg-success elevation-1"><i class="fa-solid fa-eye"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Sales</span>
@@ -387,7 +387,7 @@ if (!isset($_SESSION['user'])) {
                                       </small>
                                       </td>
                                       <td>
-                                        <a href="crud/detail.php?id=<?= $data['id_user'] ?>" class="btn btn-primary btn-sm" >
+                                        <a href="content/user/crud/detail.php?id=<?= $data['id_user'] ?>" class="btn btn-primary btn-sm" >
                                           <i class="fas fa-folder"></i>
                                             View
                                         </a>
@@ -478,7 +478,7 @@ if (!isset($_SESSION['user'])) {
                                     </small>
                                     </td>
                                     <td>
-                                      <a href="crud/detail.php?id=<?= $data['id_tournament'] ?>" class="btn btn-primary btn-sm" >
+                                      <a href="content/tournament/crud/detail.php?id=<?= $data['id_tournament'] ?>" class="btn btn-primary btn-sm" >
                                         <i class="fas fa-folder"></i>
                                         View
                                       </a>

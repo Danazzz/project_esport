@@ -21,30 +21,15 @@
 
   <!-- Main content -->
   <section class="content">
-
-    <!-- Default box -->
-    <div class="card">
-      <div class="card-header">
-        <div class="card-tools">
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown button
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </div>
-          <button type="button" class="btn btn-tool" data-card-widget="dropdown" title="Collapse">
-            <i class="fas fa-filter"></i>
-          </button>
-        </div>
-      </div>
-      <div class="card-body p-0">
-        <table class="table table-striped projects">
-          <thead>
-            <tr>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped text-center">
+                  <thead>
+                  <tr>
               <th style="width: 1%">
                 No.
               </th>
@@ -60,6 +45,7 @@
               <th style="width: 8%" class="text-center">
                 Status
               </th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -135,14 +121,20 @@
             } else {
               echo "<tr><td colspan=\"4\" align=\"center\">Not found!</td></tr>";
             }
-            ?>
-          </tbody>
-        </table>
-      </div>
-      <!-- /.card-body -->
-    </div>
-    <!-- /.card -->
+            ?>                    
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
 
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container -->
   </section>
   <!-- /.content -->
 </div>

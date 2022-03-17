@@ -21,24 +21,19 @@
 
     <!-- Main content -->
     <section class="content">
-
-      <!-- Default box -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-              <i class="fas fa-minus"></i>
-            </button>
-          </div>
-        </div>
-        <div class="card-body p-0">
-          <table class="table table-striped projects text-center">
-              <thead>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped text-center">
+                  <thead>
                   <tr>
-                      <th style="width: 1%">
+                  <th style="width: 1%">
                         No.
                       </th>
-                      <th style="width: 25%">
+                      <th style="width: 10%">
                         ID Game
                       </th>
                       <th style="width: 15%">
@@ -51,51 +46,19 @@
                         <a href="crud/add.php" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-plus"></i> Add new Game</a>
                       </th>
                   </tr>
-              </thead>
-              <tbody>
-              <?php
-                $limit = 5;
-                $page = @$_GET['page'];
-                if(empty($page)){
-                  $position = 0;
-                  $page = 1;
-                }
-                else{
-                  $position = ($page - 1) * $limit;
-                }
-                $no = 1;
-                if($_SERVER['REQUEST_METHOD'] == "POST"){
-                  $search = trim(mysqli_real_escape_string($con, $_POST['search']));
-                  if($search != ''){
-                                    $sql = "SELECT * FROM game
-                                    WHERE name LIKE '%$search%'
-                                    ORDER BY created_at DESC, updated_at DESC
-                    ";
-                    $query = $sql;
-                    $query_sum = $sql;
-                  }else{
-                    $query = "SELECT * FROM game
-                                    ORDER BY created_at DESC, updated_at DESC
-                                    LIMIT $position, $limit";
-                    $query_sum = "SELECT * FROM game";
-                    $no = $position + 1;
-                  }
-                }else{
-                  $query = "SELECT * FROM game
-                                ORDER BY created_at DESC, updated_at DESC
-                                LIMIT $position, $limit";
-                  $query_sum = "SELECT * FROM game";
-                  $no = $position + 1;
-                }
-                
-                $sql = mysqli_query($con, $query) or die(mysqli_error($con));
-                if(mysqli_num_rows($sql) > 0){
-                  while($data = mysqli_fetch_array($sql)){ ?>
+                  </thead>
+                  <tbody>
+                  <?php
+                  $i = 1;
+                  $query = "SELECT * FROM game";               
+                    $sql = mysqli_query($con, $query) or die(mysqli_error($con));
+                    if(mysqli_num_rows($sql) > 0){
+                      while($data = mysqli_fetch_array($sql)){ ?>
                     <tr>
-                      <td><?= $no++; ?></td>
+                      <td><?= $i++; ?></td>
                       <td><?= $data['id_game']; ?></td>
-                      <td><?= $data['name']; ?></td>
-                      <td><img src="../../database/img/<?= $data['image'] ?>" width='90' height='110'></td>
+                      <td><?= $data['game_name']; ?></td>
+                      <td><img src="../../database/img/games/<?= $data['image'] ?>" width='90' height='110'></td>
                       <td class="project-actions text-right">
                         <a href="crud/edit.php?id=<?= $data['id_game'] ?>" class="btn btn-info btn-sm">
                             <i class="fas fa-pencil-alt">
@@ -114,14 +77,20 @@
                 }else{
                 echo "<tr><td colspan=\"4\" align=\"center\">Data tidak ditemukan</td></tr>";
               }
-            ?>
-              </tbody>
-          </table>
-        </div>
-        <!-- /.card-body -->
-      </div>
-      <!-- /.card -->
+            ?>                   
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
 
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container -->
     </section>
     <!-- /.content -->
   </div>

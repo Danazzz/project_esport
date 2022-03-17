@@ -100,7 +100,7 @@
         </div>
         <div class="row">
           <div class="col-12 mb-3">
-            <a href="../../index.html" class="btn btn-secondary float-right">Cancel</a>
+            <a href="../index.html" class="btn btn-secondary float-right">Cancel</a>
           </div>
         </div>
     </form>
