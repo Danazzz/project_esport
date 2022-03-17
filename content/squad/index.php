@@ -52,45 +52,13 @@
                   </thead>
                   <tbody>
                   <?php
-                $limit = 7;
-                $page = @$_GET['page'];
-                if(empty($page)){
-                  $position = 0;
-                  $page = 1;
-                }
-                else{
-                  $position = ($page - 1) * $limit;
-                }
-                $no = 1;
-                if($_SERVER['REQUEST_METHOD'] == "POST"){
-                  $search = trim(mysqli_real_escape_string($con, $_POST['search']));
-                  if($search != ''){
-                                    $sql = "SELECT * FROM squad
-                                    WHERE name LIKE '%$search%'
-                                    ORDER BY created_at DESC, updated_at DESC
-                    ";
-                    $query = $sql;
-                    $query_sum = $sql;
-                  }else{
-                    $query = "SELECT * FROM squad
-                                    ORDER BY created_at DESC, updated_at DESC
-                                    LIMIT $position, $limit";
-                    $query_sum = "SELECT * FROM squad";
-                    $no = $position + 1;
-                  }
-                }else{
-                  $query = "SELECT * FROM squad
-                                ORDER BY created_at DESC, updated_at DESC
-                                LIMIT $position, $limit";
-                  $query_sum = "SELECT * FROM squad";
-                  $no = $position + 1;
-                }
-                
-                $sql = mysqli_query($con, $query) or die(mysqli_error($con));
-                if(mysqli_num_rows($sql) > 0){
-                  while($data = mysqli_fetch_array($sql)){ ?>
+                    $i=1;
+                    $query = "SELECT * FROM squad";
+                      $sql = mysqli_query($con, $query) or die(mysqli_error($con));
+                      if(mysqli_num_rows($sql) > 0){
+                      while($data = mysqli_fetch_array($sql)){ ?>
                     <tr>
-                      <td><?= $no++; ?></td>
+                      <td><?= $i++; ?></td>
                       <td><?= $data['id_squad']; ?></td>
                       <td><?= $data['name']; ?></td>
                       <td><?= indo_date($data['created_at']); ?> <br/>

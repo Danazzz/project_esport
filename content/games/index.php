@@ -33,7 +33,7 @@
                   <th style="width: 1%">
                         No.
                       </th>
-                      <th style="width: 10%">
+                      <th style="width: 1%">
                         ID Game
                       </th>
                       <th style="width: 15%">

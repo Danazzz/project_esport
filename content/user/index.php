@@ -50,46 +50,14 @@
           </thead>
           <tbody>
             <?php
-            $limit = 7;
-            $page = @$_GET['page'];
-            if (empty($page)) {
-              $position = 0;
-              $page = 1;
-            } else {
-              $position = ($page - 1) * $limit;
-            }
-            $no = 1;
-            if ($_SERVER['REQUEST_METHOD'] == "POST") {
-              $search = trim(mysqli_real_escape_string($con, $_POST['search']));
-              if ($search != '') {
-                $sql = "SELECT * FROM user
-                                    WHERE full_name LIKE '%$search%' AND role = 'user'
-                                    ORDER BY created_at DESC, updated_at DESC
-                    ";
-                $query = $sql;
-                $query_sum = $sql;
-              } else {
-                $query = "SELECT * FROM user
-                                    WHERE role = 'user'
-                                    ORDER BY created_at DESC, updated_at DESC
-                                    LIMIT $position, $limit";
-                $query_sum = "SELECT * FROM user";
-                $no = $position + 1;
-              }
-            } else {
+            $i=1;
               $query = "SELECT * FROM user
-                                WHERE role = 'user'
-                                ORDER BY created_at DESC, updated_at DESC
-                                LIMIT $position, $limit";
-              $query_sum = "SELECT * FROM user";
-              $no = $position + 1;
-            }
-
-            $sql = mysqli_query($con, $query) or die(mysqli_error($con));
-            if (mysqli_num_rows($sql) > 0) {
-              while ($data = mysqli_fetch_array($sql)) { ?>
+                        WHERE role = 'user'";
+                $sql = mysqli_query($con, $query) or die(mysqli_error($con));
+                if (mysqli_num_rows($sql) > 0) {
+                while ($data = mysqli_fetch_array($sql)) { ?>
                 <tr>
-                  <td><?= $no++; ?></td>
+                  <td><?= $i++; ?></td>
                   <td><?= $data['id_user']; ?></td>
                   <td><?= $data['full_name']; ?></td>
                   <td><?= indo_date($data['created_at']); ?> <br />
@@ -119,7 +87,7 @@
             <?php
               }
             } else {
-              echo "<tr><td colspan=\"4\" align=\"center\">Not found!</td></tr>";
+              echo "<tr><td colspan=\"6\" align=\"center\">Not found!</td></tr>";
             }
             ?>                    
                   </tbody>
