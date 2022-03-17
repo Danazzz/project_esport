@@ -15,10 +15,16 @@ if(!isset($_SESSION['user'])){
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
   <!-- Icon Logo -->
   <link rel="icon" href="../../dist/img/LogoESIDPS.png">
+  <!-- All icon in homepage -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -105,37 +111,37 @@ if(!isset($_SESSION['user'])){
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="../../content/admin/" class="nav-link">
-                    <i class="nav-icon fa fa-book"></i>
+                    <i class="nav-icon fa-solid fa-user-gear"></i>
                     <p class="text">Admin</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="../../content/organizer/" class="nav-link">
-                    <i class="nav-icon fa fa-book"></i>
+                    <i class="nav-icon fa-solid fa-user-pen"></i>
                     <p class="text">Organizer</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="../../content/user/" class="nav-link">
-                    <i class="nav-icon fa fa-book"></i>
+                    <i class="nav-icon fa-solid fa-user"></i>
                     <p class="text">User</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="../../content/squad/" class="nav-link">
-                    <i class="nav-icon fa fa-book"></i>
+                    <i class="nav-icon fa-solid fa-users"></i>
                     <p class="text">Squad</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="../../content/tournament/" class="nav-link">
-                    <i class="nav-icon fa fa-book"></i>
+                    <i class="nav-icon fa-solid fa-trophy"></i>
                     <p class="text">Tournament</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="../../content/games/" class="nav-link">
-                  <i class="nav-icon fa fa-book"></i>
+                  <i class="nav-icon fa-solid fa-gamepad"></i>
                   <p class="text">Games</p>
                   </a>
               </li>

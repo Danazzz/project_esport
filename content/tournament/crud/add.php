@@ -23,7 +23,7 @@
     <section class="content">
       <form action="proses.php" method="post" enctype="multipart/form-data">
         <div class="row">
-          <div class="col-md-6 mx-auto">
+          <div class="col-md-6">
             <div class="card card-primary">
               <div class="card-header">
                 <h3 class="card-title">Tournament</h3>
@@ -40,15 +40,28 @@
                   <input type="text" name="name" id="name" class="form-control" placeholder="PMGC Season 0" required>
                 </div>
                 <div class="form-group">
-                    <label for="type">Type</label>
-                    <div>
-                        <label class="radio-inline">
-                            <input type="radio" name="type" id="free" value="free" required> Free
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="type" id="paid" value="paid" required> paid
-                        </label>
-                    </div>
+                  <label for="game">Game</label>
+                  <select name="game_name" id="game" class="form-control custom-select" required>
+                    <option selected disabled>Select one</option>
+                    <option value="">Mobile Legends : Bang Bang</option>
+                    <option value="closed">PUBG Mobile</option>
+                    <option value="closed">Valorant</option>
+                    <option value="closed">Free Fire</option>
+                    <option value="closed">Arena of Valor</option>
+                    <option value="closed">League of Legends : Wild Rift</option>
+                    <option value="closed">Apex Legends Mobile</option>
+                    <option value="closed">Call of Duty Mobile</option>
+                    <option value="closed">Lokapala</option>
+                    <option value="closed">Pro Evolution Soccer</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="type">Type</label>
+                  <select name="type" id="type" class="form-control custom-select" required>
+                    <option selected disabled>Select one</option>
+                    <option value="open">Free</option>
+                    <option value="closed">Paid</option>
+                  </select>
                 </div>
                 <div class="form-group">
                   <label for="t_regis">Team Registered</label>
@@ -69,15 +82,12 @@
                   <input type="text" name="t_mode" id="t_mode" class="form-control" placeholder="Single Elimination" required>
                 </div>
                 <div class="form-group">
-                    <label for="loc">Location</label>
-                    <div>
-                        <label class="radio-inline">
-                            <input type="radio" name="loc" id="online" value="online" required> Online
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="loc" id="offline" value="offline" required> Offline
-                        </label>
-                    </div>
+                  <label for="loc">Location</label>
+                  <select name="loc" id="loc" class="form-control custom-select" required>
+                    <option selected disabled>Select one</option>
+                    <option value="open">Offline</option>
+                    <option value="closed">Online</option>
+                  </select>
                 </div>
                 <div class="form-group">
                   <label for="city">City</label>
@@ -104,26 +114,22 @@
                   <input type="file" id="image" name="image" required>
                 </div>
                 <div class="form-group">
-                  <label for="startdate">Start Date</label>
-                  <input type="date" name="startdate" id="startdate" class="form-control" required>
-                </div>
-                <div class="form-group">
-                  <label for="enddate">End Date</label>
-                  <input type="date" name="enddate" id="enddate" class="form-control" required>
-                </div>
-              <div class="row">
-                <div class="mb-3 mx-auto">
-                  <input type="submit" name="add" value="Add Tournament" class="btn btn-success">
+                  <label for="date">Date</label>
+                  <input type="date" name="date" id="date" class="form-control" required>
                 </div>
               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
           </div>
+          <!-- /.col -->
+
+          
         </div>
         <div class="row">
-          <div class="col-12 mb-3">
-            <a href="../../index.html" class="btn btn-secondary float-right">Cancel</a>
+          <div class="col-12">
+            <a href=../index.html class="btn btn-secondary">Cancel</a>
+            <input type="submit" value="Add Tournament"class="btn btn-success float-right">
           </div>
         </div>
       </form>

@@ -3,7 +3,7 @@ require_once "../../../config/conn.php";
 if(!isset($_SESSION['user'])){
   echo "<script>window.location='".base_url('../../../auth/login.php')."';</script>";
 } 
-$path = "../../../database/img/";?>
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +20,8 @@ $path = "../../../database/img/";?>
   <link rel="stylesheet" href="../../../dist/css/adminlte.min.css">
   <!-- Icon Logo -->
   <link rel="icon" href="../../../dist/img/LogoESIDPS.png">
+  <!-- All icon in homepage -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -106,37 +108,37 @@ $path = "../../../database/img/";?>
               <ul class="nav nav-treeview">
               <li class="nav-item">
                   <a href="../../../content/admin/" class="nav-link">
-                  <i class="nav-icon fa fa-book"></i>
+                  <i class="nav-icon fa-solid fa-user-gear"></i>
                   <p class="text">Admin</p>
                   </a>
               </li>
               <li class="nav-item">
                   <a href="../../../content/organizer/" class="nav-link">
-                    <i class="nav-icon fa fa-book"></i>
+                    <i class="nav-icon fa-solid fa-user-pen"></i>
                     <p class="text">Organizer</p>
                   </a>
                 </li>
               <li class="nav-item">
                   <a href="../../../content/user/" class="nav-link">
-                  <i class="nav-icon fa fa-book"></i>
+                  <i class="nav-icon fa-solid fa-user"></i>
                   <p class="text">User</p>
                   </a>
               </li>
               <li class="nav-item">
                   <a href="../../../content/squad/" class="nav-link">
-                  <i class="nav-icon fa fa-book"></i>
+                  <i class="nav-icon fa-solid fa-users"></i>
                   <p class="text">Squad</p>
                   </a>
               </li>
               <li class="nav-item">
                   <a href="../../../content/tournament/" class="nav-link">
-                  <i class="nav-icon fa fa-book"></i>
+                  <i class="nav-icon fa-solid fa-trophy"></i>
                   <p class="text">Tournament</p>
                   </a>
               </li>
               <li class="nav-item">
                   <a href="../../../content/games/" class="nav-link">
-                  <i class="nav-icon fa fa-book"></i>
+                  <i class="nav-icon fa-solid fa-gamepad"></i>
                   <p class="text">Games</p>
                   </a>
               </li>

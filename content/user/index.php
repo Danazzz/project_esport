@@ -21,34 +21,15 @@
 
   <!-- Main content -->
   <section class="content">
-
-    <!-- Default box -->
-    <div class="card">
-      <div class="card-header">
-        <div class="card-tools">
-          <!-- Default dropstart button -->
-          <div class="btn-group dropstart">
-            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fas fa-filter"></i>
-            </button>
-            <ul class="dropdown-menu">
-              <!-- Dropdown menu links -->
-              <li><span class="dropdown-item-text">Descend</span></li>
-              <li><a class="dropdown-item" href="#">Ascend</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Separated link</a></li>
-              <li><span class="dropdown-item-text">Status</span></li>
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="card-body p-0">
-        <table class="table table-striped projects">
-          <thead>
-            <tr>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped text-center">
+                  <thead>
+                  <tr>
               <th style="width: 1%">
                 No.
               </th>
@@ -64,6 +45,7 @@
               <th style="width: 8%" class="text-center">
                 Status
               </th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -139,14 +121,20 @@
             } else {
               echo "<tr><td colspan=\"4\" align=\"center\">Not found!</td></tr>";
             }
-            ?>
-          </tbody>
-        </table>
-      </div>
-      <!-- /.card-body -->
-    </div>
-    <!-- /.card -->
+            ?>                    
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
 
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container -->
   </section>
   <!-- /.content -->
 </div>
