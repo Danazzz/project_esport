@@ -36,8 +36,8 @@
               </div>
               <div class="card-body">
                 <div class="form-group">
-                  <label for="name">Name</label>
-                  <input type="text" name="name" id="name" class="form-control">
+                  <label for="game_name">Name</label>
+                  <input type="text" name="game_name" id="game_name" class="form-control">
                 </div>
                 <div class="form-group">
                   <label for="image">Image</label>
