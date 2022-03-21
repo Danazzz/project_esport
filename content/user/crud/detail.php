@@ -1,8 +1,7 @@
 <?php include_once('../../_include/header_crud.php');
 
 $id = @$_GET['id'];
-$sql = "SELECT * FROM user 
-INNER JOIN auth USING (id_user)
+$sql = "SELECT user.*, game.*, squad.* FROM user, game, squad 
 WHERE user.id_user = '$id'
 ";
 $query = mysqli_query($con, $sql);
@@ -16,9 +15,7 @@ $data = mysqli_fetch_array($query);
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <strong>Id User:</strong>
-            <h1 class="text-primary"><?= $data['id_user'] ?></h1>
-
+            <h2>Informasi Akun</h2>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -42,8 +39,8 @@ $data = mysqli_fetch_array($query);
             <div class="col-12 col-md-12 col-lg-12 text-justify">
               <div class="d-flex flex-row justify-content-between">
                 <div>                
-                  <h3><?= $data['full_name'] ?></h3>
-                  <p class="text-muted"><?= $data['description'] ?></p>
+                  <h4><?= $data['full_name'] ?></h4>
+                  <p class="text-muted"><?= $data['id_user'] ?></p>
                   <br>
                   <div class="text-muted">
                     <div class="d-flex flex-row justify-content-between">
@@ -103,11 +100,10 @@ $data = mysqli_fetch_array($query);
                           <b class="d-block"><?= $data['updated_at'] ?></b>
                         </p>
                         <p class="text-sm">Squad
-                          <b class="d-block">squad</b>
+                          <b class="d-block"><?= $data['name'] ?></b>
                         </p>
                         <p class="text-sm">Games
-                          <b class="d-block">Game</b>
-                          <b class="d-block">Game</b>
+                          <b class="d-block"><?= $data['game_name'] ?></b> 
                         </p>
                       </div>
                     </div>
@@ -116,28 +112,6 @@ $data = mysqli_fetch_array($query);
                 <img src="../../../database/img/<?= $data['image'] ?>" alt="" height="150px" style="margin-left:50px">
               </div>
 
-              <h5 class="mt-5 text-muted">Profile</h5>
-              <ul class="list-unstyled">
-                <li>
-                  <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i> Functional-requirements.docx</a>
-                </li>
-                <li>
-                  <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-pdf"></i> UAT.pdf</a>
-                </li>
-                <li>
-                  <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-envelope"></i> Email-from-flatbal.mln</a>
-                </li>
-                <li>
-                  <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-image "></i> Logo.png</a>
-                </li>
-                <li>
-                  <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i> Contract-10_12_2014.docx</a>
-                </li>
-              </ul>
-              <div class="text-center mt-5 mb-3">
-                <a href="#" class="btn btn-sm btn-primary">Add files</a>
-                <a href="#" class="btn btn-sm btn-warning">Report contact</a>
-              </div>
             </div>
           </div>
         </div>

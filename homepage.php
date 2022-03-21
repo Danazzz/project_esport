@@ -388,8 +388,7 @@ if (!isset($_SESSION['user'])) {
                                       </td>
                                       <td>
                                         <a href="content/user/crud/detail.php?id=<?= $data['id_user'] ?>" class="btn btn-primary btn-sm" >
-                                          <i class="fas fa-folder"></i>
-                                            View
+                                          <i class="fas fa-eye"></i>
                                         </a>
                                       </td>
                                     </tr>
@@ -412,9 +411,10 @@ if (!isset($_SESSION['user'])) {
           </section>
           <!-- /.Left col -->
 
+
           <!-- right col (We are only adding the ID to make the widgets sortable)-->
           <section class="col-lg-6 connectedSortable">
-            
+
               <div class="row">
                 <div class="col-md-12">
                   <div class="card">
@@ -479,18 +479,17 @@ if (!isset($_SESSION['user'])) {
                                     </td>
                                     <td>
                                       <a href="content/tournament/crud/detail.php?id=<?= $data['id_tournament'] ?>" class="btn btn-primary btn-sm" >
-                                        <i class="fas fa-folder"></i>
-                                        View
+                                        <i class="fas fa-eye"></i>
                                       </a>
                                     </td>
                                   </tr>
-                                  <?php
-                                  }
-                                  }else{
-                                    echo "<tr><td colspan=\"7\" align=\"center\">Data tidak ditemukan</td></tr>";
-                                  }
-                                  ?>
-                          </tbody>
+                          <?php
+                            }
+                            }else{
+                              echo "<tr><td colspan=\"7\" align=\"center\">Data tidak ditemukan</td></tr>";
+                            }
+                          ?>
+                        </tbody>
                       </table>
                     </div>
                     <!-- /.card-body -->
@@ -529,7 +528,7 @@ if (!isset($_SESSION['user'])) {
   <script src="plugins/jquery/jquery.min.js"></script>
   <!-- jQuery UI 1.11.4 -->
   <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
-  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip --> 
   <script>
     $.widget.bridge('uibutton', $.ui.button)
   </script>
@@ -559,5 +558,6 @@ if (!isset($_SESSION['user'])) {
   <!-- <script src="dist/js/demo.js"></script> -->
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="dist/js/pages/dashboard.js"></script>
+  </script>
 </body>
 </html>
