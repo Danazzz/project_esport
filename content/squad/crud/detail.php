@@ -45,6 +45,9 @@ $data = mysqli_fetch_array($query);
                 <div class="text-muted">
                   <div class="d-flex flex-row justify-content-between">
                     <div>
+                    <p class="text-sm">Lokasi
+                        <b class="d-block"><?= $data['location'] ?></b>
+                      </p>
                       <p class="text-sm">Squad Leader
                         <b class="d-block"><?= $data['leader'] ?></b>
                       </p>
