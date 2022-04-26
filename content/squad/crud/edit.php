@@ -58,8 +58,8 @@ $data = mysqli_fetch_array($query);
                 </select>
               </div>
               <div class="form-group">
-                <label for="description">Squad Descrition</label>
-                <textarea name="description" id="description" class="form-control"><?= $data['description'] ?>"</textarea>
+                <label for="description">Squad Description</label>
+                <textarea name="description" id="description" class="form-control"><?= $data['s_description'] ?>"</textarea>
               </div>
               <div class="form-group">
                 <label for="image">Squad Image</label>
@@ -89,6 +89,22 @@ $data = mysqli_fetch_array($query);
               <div class="form-group">
                 <label for="name">Member 5</label>
                 <input type="text" name="member5" id="member5" class="form-control" value="<?= $data['member5'] ?>">
+              </div>
+              <div class="form-group">
+                <label for="name">Member 6</label>
+                <input type="text" name="member6" id="member6" class="form-control" value="<?= $data['member6'] ?>">
+              </div>
+              <div class="form-group">
+                <label for="name">Member 7</label>
+                <input type="text" name="member7" id="member7" class="form-control" value="<?= $data['member7'] ?>">
+              </div>
+              <div class="form-group">
+                <label for="name">Member 8</label>
+                <input type="text" name="member8" id="member8" class="form-control" value="<?= $data['member8'] ?>">
+              </div>
+              <div class="form-group">
+                <label for="name">Member 9</label>
+                <input type="text" name="member9" id="member9" class="form-control" value="<?= $data['member9'] ?>">
               </div>
             </div>
             <div class="row">

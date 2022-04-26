@@ -6,11 +6,12 @@ if(isset($_POST['edit'])) {
   $phone = trim(mysqli_real_escape_string($con, $_POST['phone']));
   $birth_date = trim(mysqli_real_escape_string($con, $_POST['birth_date']));
   $gender = trim(mysqli_real_escape_string($con, $_POST['gender']));
-  $role = trim(mysqli_real_escape_string($con, $_POST['role']));
   $username = trim(mysqli_real_escape_string($con, $_POST['username']));
   $description = trim(mysqli_real_escape_string($con, $_POST['description']));
   $email = trim(mysqli_real_escape_string($con, $_POST['email']));
   $password = sha1(trim(mysqli_real_escape_string($con, $_POST['password'])));
+  $oldimage = $_POST['oldimage'];
+  $path = "../../../database/img/organizer/";
   if($_FILES['image']['error'] === 4){
       $image = $oldimage;
   } else {
@@ -19,7 +20,7 @@ if(isset($_POST['edit'])) {
 
   mysqli_query($con,"UPDATE user
   INNER JOIN auth USING (id_user)
-  SET full_name = '$full_name', phone_number = '$phone', birth_date = '$birth_date', gender = '$gender', role = '$role', description = '$description', image = '$image', username = '$username', email = '$email', password = '$password'
+  SET full_name = '$full_name', phone_number = '$phone', birth_date = '$birth_date', gender = '$gender', description = '$description', image = '$image', username = '$username', email = '$email', password = '$password'
   WHERE user.id_user = '$id'") 
   or die (mysqli_error($con));
   echo "<script>alert('User detail updated successfully');window.location='../index.html';</script>";
@@ -41,11 +42,11 @@ $data = mysqli_fetch_array($query);
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Edit Organizer</h1>
+            <h1>Edit Admin</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../index.html">Organizer</a></li>
+              <li class="breadcrumb-item"><a href="../index.html">Admin</a></li>
               <li class="breadcrumb-item active">Edit</li>
             </ol>
           </div>
@@ -57,6 +58,7 @@ $data = mysqli_fetch_array($query);
     <section class="content">
       <form action="" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?= $id ?>">
+        <input type="hidden" name="oldimage" value="<?= $image ?>">
         <div class="row">
           <div class="col-md-6 mx-auto">
             <div class="card card-primary">
@@ -71,22 +73,22 @@ $data = mysqli_fetch_array($query);
               <div class="card-body">
                 <div class="form-group">
                   <label for="full_name">Full Name</label>
-                  <input type="text" name="full_name" id="full_name" class="form-control" value="<?= $data['full_name'] ?>">
+                  <input type="text" name="full_name" id="full_name" class="form-control" value="<?= $data['full_name'] ?>" required>
                 </div>
                 <div class="form-group">
                   <label for="username">Username</label>
-                  <input type="text" name="username" id="username" class="form-control" value="<?= $data['username'] ?>">
+                  <input type="text" name="username" id="username" class="form-control" value="<?= $data['username'] ?>" required>
                 </div>
                 <div class="form-group">
                   <label for="phone">Phone</label>
-                  <input type="tel" id="phone" name="phone" pattern="[0-9]{12}" class="form-control" value="<?= $data['phone_number'] ?>">
+                  <input type="tel" id="phone" name="phone" pattern="[0-9]{12}" class="form-control" value="<?= $data['phone_number'] ?>" required>
                 </div>
                 <div class="form-group">
                   <label for="birth_date">Birth of Date</label>
-                  <input type="date" name="birth_date" id="birth_date" class="form-control" value="<?= $data['birth_date'] ?>">
+                  <input type="date" name="birth_date" id="birth_date" class="form-control" value="<?= $data['birth_date'] ?>" required>
                 </div>
                 <div class="mb-3">
-                  <select type="gender" id="gender" name="gender" class="form-control custom-select">
+                  <select id="gender" name="gender" class="form-control custom-select" required>
                     <option selected disabled>Select your Gender</option>
                     <option value="L">Male</option>
                     <option value="P">Female</option>
@@ -98,11 +100,11 @@ $data = mysqli_fetch_array($query);
                 </div>
                 <div class="form-group">
                   <label for="email">Email</label>
-                  <input type="email" name="email" id="email" class="form-control" value="<?= $data['email'] ?>">
+                  <input type="email" name="email" id="email" class="form-control" value="<?= $data['email'] ?>" required>
                 </div>
                 <div class="form-group">
                   <label for="password">Password</label>
-                  <input type="password" name="password" id="password" class="form-control">
+                  <input type="password" name="password" id="password" class="form-control" required>
                 </div>
                 <div class="form-group">
                   <label for="image">Image</label>

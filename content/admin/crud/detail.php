@@ -1,7 +1,7 @@
 <?php include_once('../../_include/header_crud.php');
 
 $id = @$_GET['id'];
-$sql = "SELECT user.*, login.* FROM user, login
+$sql = "SELECT user.*, auth.* FROM user, auth
 WHERE user.id_user = '$id'
 ";
 $query = mysqli_query($con, $sql);

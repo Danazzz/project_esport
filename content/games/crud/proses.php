@@ -15,8 +15,9 @@ if(isset($_POST['add'])) {
 }
 else if(isset($_POST['edit'])) {
     $id = $_POST['id'];
-    $name = trim(mysqli_real_escape_string($con, $_POST['game_name']));
+    $name = trim(mysqli_real_escape_string($con, $_POST['name']));
     $oldimage = trim(mysqli_real_escape_string($con,$_POST['oldimage']));
+    $path = "../../../database/img/games/";
     if($_FILES['image']['error'] === 4){
         $image = $oldimage;
     } else {

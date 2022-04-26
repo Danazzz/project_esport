@@ -41,6 +41,7 @@ $data = mysqli_fetch_array($query);
                 <div>                
                   <h4><?= $data['full_name'] ?></h4>
                   <p class="text-muted"><?= $data['id_user'] ?></p>
+                  <p class="text-muted"><?= $data['description'] ?></p>
                   <br>
                   <div class="text-muted">
                     <div class="d-flex flex-row justify-content-between">

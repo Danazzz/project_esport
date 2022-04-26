@@ -31,6 +31,7 @@ $data = mysqli_fetch_array($query);
     <section class="content">
       <form action="proses.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?= $id ?>">
+        <input type="hidden" name="oldimage" value="<?= $image ?>">
         <div class="row">
           <div class="col-md-6 mx-auto">
             <div class="card card-primary">

@@ -1,13 +1,11 @@
 <?php include_once('../../_include/header_crud.php');
 
 $id = @$_GET['id'];
-$sql = "SELECT * FROM user 
-INNER JOIN login ON user.id_user = login.id_user 
+$sql = "SELECT user.*, auth.* FROM user, auth
 WHERE user.id_user = '$id'
 ";
 $query = mysqli_query($con, $sql);
 $data = mysqli_fetch_array($query);
-// var_dump($data);die;
 ?>
 
   <!-- Content Wrapper. Contains page content -->
@@ -17,13 +15,13 @@ $data = mysqli_fetch_array($query);
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <strong>Id Organizer:</strong>
+            <strong>Id Admin:</strong>
             <h1 class="text-primary"><?= $data['id_user'] ?></h1>
 
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../index.html">User</a></li>
+              <li class="breadcrumb-item"><a href="../index.html">Admin</a></li>
               <li class="breadcrumb-item active">Detail</li>
             </ol>
           </div>
@@ -73,9 +71,6 @@ $data = mysqli_fetch_array($query);
                         </p>
                       </div>
                       <div>
-                        <p class="text-sm">Poin
-                          <b class="d-block"><?= $data['poin'] ?></b>
-                        </p>
                         <p class="text-sm">Phone Number
                           <b class="d-block"><?= $data['phone_number'] ?></b>
                         </p>
@@ -103,41 +98,11 @@ $data = mysqli_fetch_array($query);
                         <p class="text-sm">Recent Activity
                           <b class="d-block"><?= $data['updated_at'] ?></b>
                         </p>
-                        <p class="text-sm">Squad
-                          <b class="d-block">squad</b>
-                        </p>
-                        <p class="text-sm">Games
-                          <b class="d-block">Game</b>
-                          <b class="d-block">Game</b>
-                        </p>
                       </div>
                     </div>
                   </div>
                 </div>
                 <img src="../../../database/img/<?= $data['image'] ?>" alt="" height="150px" style="margin-left:50px">
-              </div>
-
-              <h5 class="mt-5 text-muted">Profile</h5>
-              <ul class="list-unstyled">
-                <li>
-                  <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i> Functional-requirements.docx</a>
-                </li>
-                <li>
-                  <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-pdf"></i> UAT.pdf</a>
-                </li>
-                <li>
-                  <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-envelope"></i> Email-from-flatbal.mln</a>
-                </li>
-                <li>
-                  <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-image "></i> Logo.png</a>
-                </li>
-                <li>
-                  <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i> Contract-10_12_2014.docx</a>
-                </li>
-              </ul>
-              <div class="text-center mt-5 mb-3">
-                <a href="#" class="btn btn-sm btn-primary">Add files</a>
-                <a href="#" class="btn btn-sm btn-warning">Report contact</a>
               </div>
             </div>
           </div>
