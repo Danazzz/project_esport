@@ -45,7 +45,7 @@ require_once "../config/conn.php";
             $email = trim(mysqli_real_escape_string($con, $_POST['email']));
             $password = sha1(trim(mysqli_real_escape_string($con, $_POST['password'])));
             $role = trim(mysqli_real_escape_string($con, $_POST['role']));
-            $path = "../database/img/";
+            $path = "../database/img/user";
             $image = upload($path);
             if (!$image) {
               return false;
