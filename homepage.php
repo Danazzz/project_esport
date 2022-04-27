@@ -254,9 +254,9 @@ if (!isset($_SESSION['user'])) {
                     $dash_query = "SELECT * from tournament";
                     $dash_query_run = mysqli_query($con, $dash_query);
                     
-                    if($user_total = mysqli_num_rows($dash_query_run))
+                    if($tournament_total = mysqli_num_rows($dash_query_run))
                     {
-                      echo '<h4 class="mb-0"> '.$user_total.' </h4>';
+                      echo '<h4 class="mb-0"> '.$tournament_total.' </h4>';
                     }
                     else
                     {
@@ -277,10 +277,24 @@ if (!isset($_SESSION['user'])) {
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
               <span class="info-box-icon bg-success elevation-1"><i class="fa-solid fa-eye"></i></span>
-
+              
               <div class="info-box-content">
-                <span class="info-box-text">Sales</span>
-                <span class="info-box-number">760</span>
+                <span class="info-box-text">Games Added</span>
+                <span class="info-box-number">
+                  <?php
+                    $dash_query = "SELECT * from game";
+                    $dash_query_run = mysqli_query($con, $dash_query);
+                    
+                    if($game_total = mysqli_num_rows($dash_query_run))
+                    {
+                      echo '<h4 class="mb-0"> '.$game_total.' </h4>';
+                    }
+                    else
+                    {
+                      echo '<h4 class="mb-0"> No Data </h4>';
+                    }
+                  ?>
+                </span>
               </div>
               <!-- /.info-box-content -->
             </div>
